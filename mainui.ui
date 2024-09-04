@@ -23,13 +23,13 @@
      <rect>
       <x>-20</x>
       <y>20</y>
-      <width>161</width>
+      <width>181</width>
       <height>641</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
-border-radius:20px
+     <string notr="true">border-radius:20px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0.853565, y2:0.824, stop:0.0543478 rgba(15, 1, 1, 255), stop:1 rgba(24, 0, 48, 255));
 
 </string>
     </property>
@@ -51,7 +51,7 @@ border-radius:20px
      <property name="styleSheet">
       <string notr="true">border: none;
 color: rgb(255, 255, 255);
-font: 10pt &quot;Cascadia Code&quot;;
+font: 10pt;
 text-align: left;</string>
      </property>
      <property name="text">
@@ -89,7 +89,7 @@ text-align: left;</string>
      <property name="styleSheet">
       <string notr="true">border: none;
 color: rgb(255, 255, 255);
-font: 10pt &quot;Cascadia Code&quot;;
+font: 10pt;
 text-align: left;</string>
      </property>
      <property name="text">
@@ -121,7 +121,7 @@ text-align: left;</string>
      <property name="styleSheet">
       <string notr="true">border: none;
 color: rgb(255, 255, 255);
-font: 10pt &quot;Cascadia Code&quot;;
+font: 10pt;
 text-align: left;</string>
      </property>
      <property name="text">
@@ -153,7 +153,7 @@ text-align: left;</string>
      <property name="styleSheet">
       <string notr="true">border: none;
 color: rgb(255, 255, 255);
-font: 10pt &quot;Cascadia Code&quot;;
+font: 10pt;
 text-align: left;</string>
      </property>
      <property name="text">
@@ -178,7 +178,7 @@ text-align: left;</string>
      <x>0</x>
      <y>0</y>
      <width>1051</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
