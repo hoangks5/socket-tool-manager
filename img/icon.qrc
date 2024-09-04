@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="iconpink">
+    <file>dashboard.svg</file>
+    <file>info.svg</file>
+    <file>info1.svg</file>
+    <file>more.svg</file>
+    <file>setting.svg</file>
+  </qresource>
+</RCC>
