@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="iconpink">
+    <file>start.svg</file>
+    <file>load.svg</file>
+    <file>stop.svg</file>
+    <file>sellect.svg</file>
     <file>logout.svg</file>
     <file>dashboard.svg</file>
     <file>info.svg</file>
