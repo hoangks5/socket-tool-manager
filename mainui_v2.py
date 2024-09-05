@@ -223,7 +223,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.pushButton_9)
         self.lineEdit = QtWidgets.QLineEdit(parent=self.widget_3)
         self.lineEdit.setStyleSheet("border: none;\n"
-"color: rgb(255, 0, 0)")
+"color: rgb(255, 0, 0);\n"
+"font: 75 italic 13pt \"Arial\";")
         self.lineEdit.setReadOnly(True)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout.addWidget(self.lineEdit)

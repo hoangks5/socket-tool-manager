@@ -445,7 +445,8 @@ border:none;
           <widget class="QLineEdit" name="lineEdit">
            <property name="styleSheet">
             <string notr="true">border: none;
-color: rgb(255, 0, 0)</string>
+color: rgb(255, 0, 0);
+font: 75 italic 13pt &quot;Arial&quot;;</string>
            </property>
            <property name="readOnly">
             <bool>true</bool>
