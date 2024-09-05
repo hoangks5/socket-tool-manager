@@ -500,42 +500,42 @@ border:none;
              </property>
              <column>
               <property name="text">
-               <string>Chọn</string>
+               <string/>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Tên PC</string>
+               <string>Hostname</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Địa Chỉ IP</string>
+               <string>IP Address</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Quốc Gia</string>
+               <string>Location</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Kịch Bản</string>
+               <string>Script</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Trạng Thái</string>
+               <string>Status</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Xem Màn Hình</string>
+               <string>View Sceen</string>
               </property>
              </column>
              <column>
               <property name="text">
-               <string>Thiết Lập</string>
+               <string>Setting</string>
               </property>
              </column>
             </widget>
