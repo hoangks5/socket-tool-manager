@@ -354,6 +354,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_5)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.textEdit = QtWidgets.QTextEdit(parent=self.widget_5)
+        self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
         self.horizontalLayout_2.addWidget(self.textEdit)
         self.horizontalLayout_3.addWidget(self.widget_5)
