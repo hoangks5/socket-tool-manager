@@ -222,6 +222,9 @@ class Ui_MainWindow(object):
         self.pushButton_9.setObjectName("pushButton_9")
         self.horizontalLayout.addWidget(self.pushButton_9)
         self.lineEdit = QtWidgets.QLineEdit(parent=self.widget_3)
+        self.lineEdit.setStyleSheet("border: none;\n"
+"color: rgb(255, 0, 0)")
+        self.lineEdit.setReadOnly(True)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout.addWidget(self.lineEdit)
         self.pushButton_10 = QtWidgets.QPushButton(parent=self.widget_3)
