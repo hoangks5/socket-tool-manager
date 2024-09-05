@@ -19,8 +19,13 @@ class MainWindow(QMainWindow):
         self.setup_marquee()
         self.ui.textEdit.verticalScrollBar().setVisible(False)
         self.ui.textEdit.horizontalScrollBar().setVisible(False)
+        self.resize_table()
+        # tắt scroll stackwidget
+        self.ui.stackedWidget.setContentsMargins(0, 0, 0, 0)
+        self.ui.stackedWidget.setFrameStyle(0)
+    
         
-        
+    
         self.setup_log_generation()
         
     def setup_marquee(self):
@@ -40,9 +45,17 @@ class MainWindow(QMainWindow):
     def add_log_cmd(self, message):
         self.ui.textEdit.append(message)  # Append the message to QTextEdit
     def resize_table(self):
-        self.ui.tableWidget.resizeColumnsToContents()
-        self.ui.tableWidget.resizeRowsToContents()
-    
+        # thiết lập kích thước cột cho tableWidget reponsive với kích thuớc cửa sổ tính theo %
+        table_width = self.ui.tableWidget.width()
+        self.ui.tableWidget.setColumnWidth(0, int(table_width * 0.01))
+        self.ui.tableWidget.setColumnWidth(1, int(table_width * 0.2))
+        self.ui.tableWidget.setColumnWidth(2, int(table_width * 0.4))
+        self.ui.tableWidget.setColumnWidth(3, int(table_width * 0.2))
+        self.ui.tableWidget.setColumnWidth(4, int(table_width * 0.3))
+        self.ui.tableWidget.setColumnWidth(5, int(table_width * 0.3))
+        self.ui.tableWidget.setColumnWidth(7, int(table_width * 0.2))
+        
+        
     
     
     
