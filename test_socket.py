@@ -30,24 +30,24 @@ def send_command(client_socket, command):
 # Send a message to the server
     try:
         # lấy các clients đang kết nối
-        """ command = {
+        command = {
             'cmd': 'ls_clients'
         }
         
         client_socket.sendall(json.dumps(command).encode())
         response = client_socket.recv(1024)
         
-        print(response.decode()) """
+        print(response.decode())
         
         
         
-        command = {
+        """ command = {
             'cmd': 'python',
             'clients': ['118.70.190.129'],
             'code': 'import webbrowser; webbrowser.open("https://www.google.com")'
         }
         
-        client_socket.sendall(json.dumps(command).encode())
+        client_socket.sendall(json.dumps(command).encode()) """
         
         
         client_socket.shutdown(socket.SHUT_WR)
