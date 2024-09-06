@@ -1,5 +1,5 @@
 from mainui_v2 import Ui_MainWindow
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QTableWidgetItem, QCheckBox, QWidget, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QTableWidgetItem, QCheckBox, QWidget, QHBoxLayout, QPushButton, QComboBox
 from PyQt6.QtCore import QRect, QPropertyAnimation, QEasingCurve, QAbstractAnimation, QTimer, Qt
 from PyQt6.QtGui import QPixmap, QIcon
 from PyQt6 import QtCore
@@ -24,6 +24,20 @@ def download_image(url):
     image.loadFromData(response.content)
     return image
 
+def get_script_name():
+    return ['script1', 'script2', 'script3', 'script4']
+class LoadClientsThread(QtCore.QThread):
+    clients = QtCore.pyqtSignal(list)
+    old_clients = []
+    def run(self):
+        while True:
+            clients = get_clients(client_socket)
+            if clients != self.old_clients:
+                self.old_clients = clients
+                self.clients.emit(clients)
+                time.sleep(2)
+        
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -37,12 +51,12 @@ class MainWindow(QMainWindow):
         # tắt scroll stackwidget
         self.ui.stackedWidget.setContentsMargins(0, 0, 0, 0)
         self.ui.stackedWidget.setFrameStyle(0)
-    
+        self.add_item_combobox(self.ui.comboBox)
+        
         
         self.load_clients()
         
-        
-        
+
         self.setup_log_generation()
         
     def setup_marquee(self):
@@ -66,16 +80,24 @@ class MainWindow(QMainWindow):
         table_width = self.ui.tableWidget.width()
         self.ui.tableWidget.setColumnWidth(0, int(table_width * 0.01))
         self.ui.tableWidget.setColumnWidth(1, int(table_width * 0.3))
-        self.ui.tableWidget.setColumnWidth(2, int(table_width * 0.2))
+        self.ui.tableWidget.setColumnWidth(2, int(table_width * 0.3))
         self.ui.tableWidget.setColumnWidth(3, int(table_width * 0.3))
         self.ui.tableWidget.setColumnWidth(4, int(table_width * 0.3))
-        self.ui.tableWidget.setColumnWidth(5, int(table_width * 0.2))
-        self.ui.tableWidget.setColumnWidth(7, int(table_width * 0.2))
+        self.ui.tableWidget.setColumnWidth(5, int(table_width * 0.25))
+        self.ui.tableWidget.setColumnWidth(6, int(table_width * 0.15))
+        self.ui.tableWidget.setColumnWidth(7, int(table_width * 0.15))
         
     def load_clients(self):
-        clients = get_clients(client_socket)
-        print(clients)
-        
+        self.load_clients_thread = LoadClientsThread()
+        self.load_clients_thread.clients.connect(self.update_clients)
+        self.load_clients_thread.start()
+    
+    def add_item_combobox(self, combobox):
+        list_script = get_script_name()
+        combobox.addItems(list_script)
+    
+    def update_clients(self, clients):
+        self.ui.tableWidget.setRowCount(0)
         self.ui.tableWidget.setRowCount(len(clients))
         for i, client in enumerate(clients):
             # cột 0 là ô checkbox
@@ -99,15 +121,77 @@ class MainWindow(QMainWindow):
             status.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.ui.tableWidget.setItem(i, 5, status)
             
-            view_screen = QTableWidgetItem("🖥️")
-            view_screen.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
-            self.ui.tableWidget.setItem(i, 6, view_screen)
+            view_screen = QPushButton("🖥️")
+            view_screen.setStyleSheet("QPushButton{\n"
+"border-radius:5px;\n"
+"border: 2px solid #23074d;\n"
+"background-color: #cc5333;\n"
+"color:#FFB6C1;\n"
+"height: 40px;\n"
+"width: 120px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #009fff ;\n"
+"    background-color:#23074d;\n"
+"            }\n"
+"QPushButton:pressed {\n"
+"                background-color: #5650de; /* Màu nền khi nhấn */\n"
+"            }\n"
+"\n"
+"QComboBox{\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 5px;\n"
+"border: 2px solid #23074d;\n"
+"height:40px;\n"
+"width: 105px;\n"
+"}\n"
+"")
+            view_screen.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)       
+            self.ui.tableWidget.setCellWidget(i, 6, view_screen)
+
+            button_setting = QPushButton("⚙️")
+            button_setting.setStyleSheet("QPushButton{\n"
+"border-radius:5px;\n"
+"border: 2px solid #23074d;\n"
+"background-color: #cc5333;\n"
+"color:#FFB6C1;\n"
+"height: 40px;\n"
+"width: 120px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #009fff ;\n"
+"    background-color:#23074d;\n"
+"            }\n"
+"QPushButton:pressed {\n"
+"                background-color: #5650de; /* Màu nền khi nhấn */\n"
+"            }\n"
+"\n"
+"QComboBox{\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 5px;\n"
+"border: 2px solid #23074d;\n"
+"height:40px;\n"
+"width: 105px;\n"
+"}\n"
+"")
+            button_setting.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+            self.ui.tableWidget.setCellWidget(i, 7, button_setting)
             
-            setting = QTableWidgetItem("⚙️")
-            setting.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
-            self.ui.tableWidget.setItem(i, 7, setting)
-            
-            
+            # nhúng combobox vào tablewidget
+            # copy self.ui.comboBox 
+            self.combobox = QComboBox(parent=self.ui.widget_4)
+            self.combobox.setStyleSheet("QComboBox{\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 5px;\n"
+"border: 2px solid #23074d;\n"
+"height:40px;\n"
+"width: 105px;\n"
+"}\n"
+"")
+            self.add_item_combobox(self.combobox)
+            self.ui.tableWidget.setCellWidget(i, 4, self.combobox)
             
         
             

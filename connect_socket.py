@@ -1,23 +1,22 @@
 import socket
 import json
+import time
 
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Connect to the server
 server_address = ('localhost', 12345)
 client_socket.connect(server_address)
 
-
 def get_clients(client_socket):
+    # Send command to the server
     command = {
         'cmd': 'ls_clients'
     }
     client_socket.sendall(json.dumps(command).encode())
+    # Receive response from server
     response = client_socket.recv(1024)
     response = json.loads(response.decode())
     return response['result']
-
 
 
 def send_command(client_socket, command):
@@ -40,6 +39,3 @@ def send_command(client_socket, command):
         client_socket.close()
     
     
-    
-if __name__ == '__main__':
-    print(get_clients(client_socket))

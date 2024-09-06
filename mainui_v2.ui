@@ -579,18 +579,7 @@ width: 105px;
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
                 <item row="0" column="0">
-                 <widget class="QComboBox" name="comboBox">
-                  <item>
-                   <property name="text">
-                    <string>Login</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Download</string>
-                   </property>
-                  </item>
-                 </widget>
+                 <widget class="QComboBox" name="comboBox"/>
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="pushButton_11">
