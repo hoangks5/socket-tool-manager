@@ -253,6 +253,7 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         self.tableWidget = QtWidgets.QTableWidget(parent=self.dashboard)
         self.tableWidget.setStyleSheet("height:300px;")
+        self.tableWidget.setGridStyle(QtCore.Qt.PenStyle.SolidLine)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(8)
         self.tableWidget.setRowCount(0)

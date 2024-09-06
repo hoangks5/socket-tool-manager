@@ -1,4 +1,5 @@
 from mainui_v2 import Ui_MainWindow
+from login import Ui_MainWindow as Ui_Login
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QTableWidgetItem, QCheckBox, QWidget, QHBoxLayout, QPushButton, QComboBox
 from PyQt6.QtCore import QRect, QPropertyAnimation, QEasingCurve, QAbstractAnimation, QTimer, Qt
 from PyQt6.QtGui import QPixmap, QIcon
@@ -26,15 +27,61 @@ def download_image(url):
 
 def get_script_name():
     return ['script1', 'script2', 'script3', 'script4']
+class LoginWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Login()
+        self.ui.setupUi(self)
+    
+    def connect_button(self):
+        self.ui.pushButton.clicked.connect(self.login)
+        
+    def check_socket(self):
+        socket = self.ui.lineEdit.text()
+        if socket == "":
+            return False
+        else:
+            socket = socket.split(":")
+            if len(socket) == 2:
+                ip, port = socket
+                status = check_server(ip, int(port))
+                return status
+            else:
+                QMessageBox.critical(None, "Error", "Địa chỉ socket không hợp lệ")
+                return False
+        
+    def login(self):
+        if self.check_socket() == True:
+            self.main_window = MainWindow()
+            self.main_window.show()
+            self.main_window.connect_button()
+            self.close()
+        else:
+            QMessageBox.critical(None, "Error", "Không thể kết nối đến server")
+            
+    def show(self):
+        super().show()
+        self.connect_button()
+        
+    
+            
+            
 class LoadClientsThread(QtCore.QThread):
     clients = QtCore.pyqtSignal(list)
     old_clients = []
+    def __init__(self):
+        super().__init__()
     def run(self):
+        self.main()
+        
+    def main(self):
         while True:
-            clients = get_clients(client_socket)
+            clients = get_clients()
             if clients != self.old_clients:
                 self.old_clients = clients
                 self.clients.emit(clients)
+                time.sleep(2)
+            else:
                 time.sleep(2)
         
 
@@ -54,10 +101,12 @@ class MainWindow(QMainWindow):
         self.add_item_combobox(self.ui.comboBox)
         
         
-        self.load_clients()
+        self.load_clients_thread = LoadClientsThread()
+        self.load_clients_thread.clients.connect(self.update_clients)
+        self.load_clients_thread.start()
         
-
-        self.setup_log_generation()
+        
+        #self.setup_log_generation()
         
     def setup_marquee(self):
         self.text = " "*250 + " Khuyến mãi giảm giá 50% cho tất cả các sản phẩm. Hãy nhanh tay đặt hàng ngay hôm nay! "
@@ -73,6 +122,38 @@ class MainWindow(QMainWindow):
             self.ui.lineEdit.setText(displayed_text)
             # Tăng chỉ số để dịch chuyển chuỗi
             self.index = (self.index + 1) % len(self.text)
+            
+    def get_row_selected(self):
+        selected_rows = []
+        for i in range(self.ui.tableWidget.rowCount()):
+            checkbox = self.ui.tableWidget.cellWidget(i, 0).layout().itemAt(0).widget()
+            if checkbox.isChecked():
+                selected_rows.append(i)
+        return selected_rows
+    
+    def setup_script(self):
+        # lấy script từ combobox
+        script_name_now = self.ui.comboBox.currentText()
+        # lấy row được chọn
+        selected_rows = self.get_row_selected()
+        for row in selected_rows:
+            # đổi combobox thành script đã chọn
+            self.combobox = QComboBox(parent=self.ui.widget_4)
+            self.combobox.setStyleSheet("QComboBox{\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 5px;\n"
+"border: 2px solid #23074d;\n"
+"height:40px;\n"
+"width: 105px;\n"
+"}\n"
+"")
+            self.add_item_combobox(self.combobox)
+            self.combobox.setCurrentText(script_name_now)
+            self.ui.tableWidget.setCellWidget(row, 4, self.combobox)
+            # thêm log
+            self.add_log_cmd(f"📜 [{self.get_current_time()}] [{self.ui.tableWidget.item(row, 2).text()}] Script {script_name_now} has been added to client {self.ui.tableWidget.item(row, 1).text()}")
+           
+            
     def add_log_cmd(self, message):
         self.ui.textEdit.append(message)  # Append the message to QTextEdit
     def resize_table(self):
@@ -82,21 +163,20 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget.setColumnWidth(1, int(table_width * 0.3))
         self.ui.tableWidget.setColumnWidth(2, int(table_width * 0.3))
         self.ui.tableWidget.setColumnWidth(3, int(table_width * 0.3))
-        self.ui.tableWidget.setColumnWidth(4, int(table_width * 0.3))
+        self.ui.tableWidget.setColumnWidth(4, int(table_width * 0.2))
         self.ui.tableWidget.setColumnWidth(5, int(table_width * 0.25))
         self.ui.tableWidget.setColumnWidth(6, int(table_width * 0.15))
         self.ui.tableWidget.setColumnWidth(7, int(table_width * 0.15))
         
-    def load_clients(self):
-        self.load_clients_thread = LoadClientsThread()
-        self.load_clients_thread.clients.connect(self.update_clients)
-        self.load_clients_thread.start()
+    
+        
     
     def add_item_combobox(self, combobox):
         list_script = get_script_name()
         combobox.addItems(list_script)
     
     def update_clients(self, clients):
+        print(clients)
         self.ui.tableWidget.setRowCount(0)
         self.ui.tableWidget.setRowCount(len(clients))
         for i, client in enumerate(clients):
@@ -292,12 +372,18 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_8.clicked.connect(self.switch_to_setting)
         
         self.ui.pushButton_11.clicked.connect(lambda: self.push_select_all(self.ui.tableWidget))
+        self.ui.pushButton_12.clicked.connect(self.setup_script)
         
         
         
         
 
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = LoginWindow()
+    window.show()
+    sys.exit(app.exec())
+    
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()

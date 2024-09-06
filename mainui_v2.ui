@@ -498,6 +498,9 @@ border:none;
              <property name="styleSheet">
               <string notr="true">height:300px;</string>
              </property>
+             <property name="gridStyle">
+              <enum>Qt::SolidLine</enum>
+             </property>
              <column>
               <property name="text">
                <string/>
