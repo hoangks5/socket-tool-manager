@@ -9,16 +9,23 @@ def check_server(ip, port):
     server_address = (ip, port)
     try:
         client_socket.connect(server_address)
-        return True
+        command = {
+            'cmd': 'connect'
+        }
+        client_socket.sendall(json.dumps(command).encode())
+        response = client_socket.recv(1024)
+        response = json.loads(response.decode())
+        if response['result'] == 'success':
+            return True
+        else:
+            return False
     except Exception as e:
         return False
-    finally:
-        client_socket.close()
     
 
-def get_clients():
+def get_clients(ip, port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('3.18.29.6', 12345)
+    server_address = (ip, port)
     client_socket.connect(server_address)
     # Send command to the server
     command = {

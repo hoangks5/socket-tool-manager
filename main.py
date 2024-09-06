@@ -13,6 +13,10 @@ import datetime
 import random
 from connect_socket import *
 
+
+socket_string = '3.18.29.6:12345'
+
+
 def get_flag_url(country_code):
     response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}')
     data = response.json()
@@ -26,7 +30,7 @@ def download_image(url):
     return image
 
 def get_script_name():
-    return ['script1', 'script2', 'script3', 'script4']
+    return ['Mở trình duyệt', 'Tắt máy', 'Mở ứng dụng', 'Tải file', 'Cài đặt ứng dụng']
 class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -52,7 +56,10 @@ class LoginWindow(QMainWindow):
         
     def login(self):
         if self.check_socket() == True:
-            self.main_window = MainWindow()
+            self.ip_socket = self.ui.lineEdit.text().split(":")[0]
+            self.port_socket = self.ui.lineEdit.text().split(":")[1]
+            
+            self.main_window = MainWindow(self.ip_socket, self.port_socket)
             self.main_window.show()
             self.main_window.connect_button()
             self.close()
@@ -69,14 +76,16 @@ class LoginWindow(QMainWindow):
 class LoadClientsThread(QtCore.QThread):
     clients = QtCore.pyqtSignal(list)
     old_clients = []
-    def __init__(self):
+    def __init__(self, ip_socket, port_socket):
+        self.ip_socket = ip_socket
+        self.port_socket = port_socket
         super().__init__()
     def run(self):
         self.main()
         
     def main(self):
         while True:
-            clients = get_clients()
+            clients = get_clients(self.ip_socket, int(self.port_socket))
             if clients != self.old_clients:
                 self.old_clients = clients
                 self.clients.emit(clients)
@@ -86,8 +95,10 @@ class LoadClientsThread(QtCore.QThread):
         
 
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, ip_socket, port_socket):
         super().__init__()
+        self.ip_socket = ip_socket
+        self.port_socket = port_socket
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.widget_2.hide()
@@ -101,7 +112,7 @@ class MainWindow(QMainWindow):
         self.add_item_combobox(self.ui.comboBox)
         
         
-        self.load_clients_thread = LoadClientsThread()
+        self.load_clients_thread = LoadClientsThread(self.ip_socket, self.port_socket)
         self.load_clients_thread.clients.connect(self.update_clients)
         self.load_clients_thread.start()
         
@@ -382,12 +393,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = LoginWindow()
     window.show()
-    sys.exit(app.exec())
-    
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    window.connect_button()
     sys.exit(app.exec())
         
         
