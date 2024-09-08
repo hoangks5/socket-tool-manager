@@ -373,6 +373,25 @@ class Ui_MainWindow(object):
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
+        self.groupBox = QtWidgets.QGroupBox(parent=self.system)
+        self.groupBox.setGeometry(QtCore.QRect(290, 200, 211, 151))
+        self.groupBox.setStyleSheet("background-color: rgb(108, 199, 200);\n"
+"border-radius: 15px;\n"
+"color: rgb(0, 0, 0);\n"
+"font: 75 10pt \"Consolas\";")
+        self.groupBox.setObjectName("groupBox")
+        self.comboBox_3 = QtWidgets.QComboBox(parent=self.groupBox)
+        self.comboBox_3.setGeometry(QtCore.QRect(40, 40, 131, 31))
+        self.comboBox_3.setStyleSheet("QComboBox{\n"
+"background-color: rgb(85, 255, 127);\n"
+"border-radius: 5px;\n"
+"border: 2px solid #23074d;\n"
+"height:40px;\n"
+"width: 105px;\n"
+"}")
+        self.comboBox_3.setObjectName("comboBox_3")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
         self.stackedWidget.addWidget(self.system)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -415,7 +434,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore
         self.pushButton_4.toggled['bool'].connect(self.pushButton_8.setChecked) # type: ignore
@@ -460,6 +479,9 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "Login"))
         self.comboBox_2.setItemText(1, _translate("MainWindow", "Download"))
+        self.groupBox.setTitle(_translate("MainWindow", "Action"))
+        self.comboBox_3.setItemText(0, _translate("MainWindow", "Login"))
+        self.comboBox_3.setItemText(1, _translate("MainWindow", "Download"))
 
 
 if __name__ == "__main__":
