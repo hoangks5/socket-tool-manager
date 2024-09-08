@@ -80,6 +80,9 @@ border-radius: 10px;
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="text">
+     <string>3.18.29.6:12345</string>
+    </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>

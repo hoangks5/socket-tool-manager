@@ -14,8 +14,6 @@ import random
 from connect_socket import *
 
 
-socket_string = '3.18.29.6:12345'
-
 
 def get_flag_url(country_code):
     response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}')
@@ -118,6 +116,14 @@ class MainWindow(QMainWindow):
         
         
         #self.setup_log_generation()
+    def logout(self):
+        self.close()
+        self.login_window = LoginWindow()
+        self.login_window.show()
+        
+        # disconnect thread
+        self.load_clients_thread.terminate()
+        
         
     def setup_marquee(self):
         self.text = " "*250 + " Khuyến mãi giảm giá 50% cho tất cả các sản phẩm. Hãy nhanh tay đặt hàng ngay hôm nay! "
@@ -381,6 +387,8 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_7.clicked.connect(self.switch_to_monitor)
         self.ui.pushButton_4.clicked.connect(self.switch_to_setting)
         self.ui.pushButton_8.clicked.connect(self.switch_to_setting)
+        
+        self.ui.pushButton_10.clicked.connect(self.logout)
         
         self.ui.pushButton_11.clicked.connect(lambda: self.push_select_all(self.ui.tableWidget))
         self.ui.pushButton_12.clicked.connect(self.setup_script)
