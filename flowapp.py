@@ -23,20 +23,20 @@ class Ui_MainWindow(object):
         self.widget_4 = QtWidgets.QWidget(parent=self.centralwidget)
         self.widget_4.setStyleSheet("QWidget{\n"
 "background-color: rgb(206, 206, 206);\n"
-"border-radius: 15px;\n"
+"border-radius: 8px;\n"
 "font: 8pt \"MS Reference Sans Serif\";\n"
 "}\n"
 "\n"
 "QPushButton {\n"
-"    border-radius: 12px;\n"
+"    border-radius: 5px;\n"
 "    border: 2px solid #2ecc71; /* Màu viền xanh lá sáng */\n"
 "    background-color: #ffffff; /* Nền màu trắng sáng */\n"
 "    color: #2c3e50; /* Màu chữ tối để tạo sự tương phản tốt */\n"
 "    height: 25px;\n"
-"    width: 140px;\n"
-"    text-align: center; /* Sửa lỗi chính tả từ \'text-algin\' thành \'text-align\' */\n"
+"    width: 100px;\n"
+"    text-align: left; /* Sửa lỗi chính tả từ \'text-algin\' thành \'text-align\' */\n"
 "    font-weight: bold; /* Chữ đậm để nổi bật hơn */\n"
-"    font-size: 14px; /* Kích thước chữ phù hợp */\n"
+"    font-size: 11px; /* Kích thước chữ phù hợp */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -69,18 +69,11 @@ class Ui_MainWindow(object):
         self.pushButton_11.setIcon(icon1)
         self.pushButton_11.setObjectName("pushButton_11")
         self.gridLayout.addWidget(self.pushButton_11, 0, 0, 1, 1)
-        self.pushButton_12 = QtWidgets.QPushButton(parent=self.widget_4)
-        self.pushButton_12.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("img/load.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_12.setIcon(icon2)
-        self.pushButton_12.setObjectName("pushButton_12")
-        self.gridLayout.addWidget(self.pushButton_12, 3, 0, 1, 1)
         self.pushButton_13 = QtWidgets.QPushButton(parent=self.widget_4)
         self.pushButton_13.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("img/stop.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_13.setIcon(icon3)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("img/stop.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_13.setIcon(icon2)
         self.pushButton_13.setObjectName("pushButton_13")
         self.gridLayout.addWidget(self.pushButton_13, 1, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget_4, 0, 0, 1, 1)
@@ -160,12 +153,14 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.pushButton_19 = QtWidgets.QPushButton(parent=self.widget_5)
         self.pushButton_19.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_19.setIcon(icon3)
+        self.pushButton_19.setIcon(icon2)
         self.pushButton_19.setObjectName("pushButton_19")
         self.gridLayout_3.addWidget(self.pushButton_19, 0, 0, 1, 1)
         self.pushButton_18 = QtWidgets.QPushButton(parent=self.widget_5)
         self.pushButton_18.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_18.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("img/load.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_18.setIcon(icon3)
         self.pushButton_18.setObjectName("pushButton_18")
         self.gridLayout_3.addWidget(self.pushButton_18, 0, 1, 1, 1)
         self.pushButton_17 = QtWidgets.QPushButton(parent=self.widget_5)
@@ -188,10 +183,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton_14.setText(_translate("MainWindow", "Nghỉ"))
+        self.pushButton_14.setText(_translate("MainWindow", "Quãng nghỉ"))
         self.pushButton_11.setText(_translate("MainWindow", "Mở Chrome"))
-        self.pushButton_12.setText(_translate("MainWindow", "Thoát"))
-        self.pushButton_13.setText(_translate("MainWindow", "Thêm Cookie"))
+        self.pushButton_13.setText(_translate("MainWindow", "Click"))
         self.pushButton_19.setText(_translate("MainWindow", "Chạy thử"))
         self.pushButton_18.setText(_translate("MainWindow", "Xóa"))
         self.pushButton_17.setText(_translate("MainWindow", "Lưu"))
