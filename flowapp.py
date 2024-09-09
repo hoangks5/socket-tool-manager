@@ -107,7 +107,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2 = QtWidgets.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
         spacerItem = QtWidgets.QSpacerItem(318, 418, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_2.addItem(spacerItem, 1, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem, 3, 0, 1, 1)
         self.widget_4 = QtWidgets.QWidget(parent=self.centralwidget)
         self.widget_4.setStyleSheet("QWidget{\n"
 "background-color: rgb(206, 206, 206);\n"
@@ -140,13 +140,10 @@ class Ui_MainWindow(object):
 "    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
 "    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
 "    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
-"}")
-        self.widget_4.setObjectName("widget_4")
-        self.gridLayout = QtWidgets.QGridLayout(self.widget_4)
-        self.gridLayout.setObjectName("gridLayout")
-        self.chrome = QtWidgets.QGroupBox(parent=self.widget_4)
-        self.chrome.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.chrome.setStyleSheet("QGroupBox {\n"
+"}\n"
+"\n"
+"\n"
+"QGroupBox {\n"
 "    border: 2px solid #666;\n"
 "    border-radius: 10px;\n"
 "    padding: 10px;\n"
@@ -169,6 +166,30 @@ class Ui_MainWindow(object):
 "    background-color: #333; /* Màu nền của QLineEdit */\n"
 "    color: #fff; /* Màu chữ của QLineEdit */\n"
 "}")
+        self.widget_4.setObjectName("widget_4")
+        self.gridLayout = QtWidgets.QGridLayout(self.widget_4)
+        self.gridLayout.setObjectName("gridLayout")
+        self.click_8 = QtWidgets.QGroupBox(parent=self.widget_4)
+        self.click_8.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.click_8.setStyleSheet("")
+        self.click_8.setObjectName("click_8")
+        self.gridLayout_47 = QtWidgets.QGridLayout(self.click_8)
+        self.gridLayout_47.setObjectName("gridLayout_47")
+        self.lineEdit_73 = QtWidgets.QLineEdit(parent=self.click_8)
+        self.lineEdit_73.setText("")
+        self.lineEdit_73.setObjectName("lineEdit_73")
+        self.gridLayout_47.addWidget(self.lineEdit_73, 3, 0, 1, 1)
+        self.lineEdit_74 = QtWidgets.QLineEdit(parent=self.click_8)
+        self.lineEdit_74.setText("")
+        self.lineEdit_74.setObjectName("lineEdit_74")
+        self.gridLayout_47.addWidget(self.lineEdit_74, 2, 0, 1, 1)
+        self.pushButton_65 = QtWidgets.QPushButton(parent=self.click_8)
+        self.pushButton_65.setObjectName("pushButton_65")
+        self.gridLayout_47.addWidget(self.pushButton_65, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.click_8, 1, 2, 1, 1)
+        self.chrome = QtWidgets.QGroupBox(parent=self.widget_4)
+        self.chrome.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.chrome.setStyleSheet("")
         self.chrome.setObjectName("chrome")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.chrome)
         self.gridLayout_5.setObjectName("gridLayout_5")
@@ -179,9 +200,100 @@ class Ui_MainWindow(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.gridLayout_5.addWidget(self.pushButton_3, 1, 0, 1, 1)
         self.gridLayout.addWidget(self.chrome, 1, 0, 1, 1)
-        self.sleep = QtWidgets.QGroupBox(parent=self.widget_4)
-        self.sleep.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.sleep.setStyleSheet("QGroupBox {\n"
+        self.chrome_2 = QtWidgets.QGroupBox(parent=self.widget_4)
+        self.chrome_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.chrome_2.setStyleSheet("")
+        self.chrome_2.setObjectName("chrome_2")
+        self.gridLayout_6 = QtWidgets.QGridLayout(self.chrome_2)
+        self.gridLayout_6.setObjectName("gridLayout_6")
+        self.lineEdit_13 = QtWidgets.QLineEdit(parent=self.chrome_2)
+        self.lineEdit_13.setObjectName("lineEdit_13")
+        self.gridLayout_6.addWidget(self.lineEdit_13, 0, 0, 1, 1)
+        self.pushButton_4 = QtWidgets.QPushButton(parent=self.chrome_2)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.gridLayout_6.addWidget(self.pushButton_4, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.chrome_2, 1, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.widget_4, 0, 0, 1, 1)
+        self.widget_6 = QtWidgets.QWidget(parent=self.centralwidget)
+        self.widget_6.setStyleSheet("QWidget{\n"
+"background-color: rgb(206, 206, 206);\n"
+"border-radius: 8px;\n"
+"font: 8pt \"MS Reference Sans Serif\";\n"
+"width: 10px;\n"
+"height: 10px;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 7px;\n"
+"    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */\n"
+"    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */\n"
+"    color: rgb(0, 0, 0);\n"
+"    height: 20px;\n"
+"    text-align: center; /* Sửa chính tả từ text-algin thành text-align */\n"
+"    font-weight: bold; /* Chữ đậm để tạo ấn tượng */\n"
+"    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */\n"
+"    background:#4A569D; /* Gradient sáng hơn khi hover */\n"
+"    color: #ffffff; /* Đảm bảo màu chữ vẫn trắng khi hover */\n"
+"    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
+"    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
+"    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
+"}")
+        self.widget_6.setObjectName("widget_6")
+        self.gridLayout_38 = QtWidgets.QGridLayout(self.widget_6)
+        self.gridLayout_38.setObjectName("gridLayout_38")
+        self.click_7 = QtWidgets.QGroupBox(parent=self.widget_6)
+        self.click_7.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.click_7.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid rgb(170, 0, 0);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QGroupBox:title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center;\n"
+"    padding: 0 10px;\n"
+"    background: transparent;\n"
+"    color: rgb(0, 0, 0);\n"
+"    font-size: 16px;\n"
+"}\n"
+"\n"
+"QGroupBox QLineEdit {\n"
+"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
+"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
+"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
+"    background-color: #333; /* Màu nền của QLineEdit */\n"
+"    color: #fff; /* Màu chữ của QLineEdit */\n"
+"}")
+        self.click_7.setObjectName("click_7")
+        self.gridLayout_45 = QtWidgets.QGridLayout(self.click_7)
+        self.gridLayout_45.setObjectName("gridLayout_45")
+        self.lineEdit_69 = QtWidgets.QLineEdit(parent=self.click_7)
+        self.lineEdit_69.setText("")
+        self.lineEdit_69.setObjectName("lineEdit_69")
+        self.gridLayout_45.addWidget(self.lineEdit_69, 2, 0, 1, 1)
+        self.lineEdit_70 = QtWidgets.QLineEdit(parent=self.click_7)
+        self.lineEdit_70.setText("")
+        self.lineEdit_70.setObjectName("lineEdit_70")
+        self.gridLayout_45.addWidget(self.lineEdit_70, 2, 1, 1, 1)
+        self.pushButton_63 = QtWidgets.QPushButton(parent=self.click_7)
+        self.pushButton_63.setObjectName("pushButton_63")
+        self.gridLayout_45.addWidget(self.pushButton_63, 3, 0, 1, 2)
+        self.gridLayout_38.addWidget(self.click_7, 0, 0, 1, 1)
+        self.sleep_12 = QtWidgets.QGroupBox(parent=self.widget_6)
+        self.sleep_12.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.sleep_12.setStyleSheet("QGroupBox {\n"
 "    border: 2px solid rgb(0, 226, 166);\n"
 "    border-radius: 10px;\n"
 "    padding: 10px;\n"
@@ -204,115 +316,146 @@ class Ui_MainWindow(object):
 "    background-color: #333; /* Màu nền của QLineEdit */\n"
 "    color: #fff; /* Màu chữ của QLineEdit */\n"
 "}")
-        self.sleep.setObjectName("sleep")
-        self.gridLayout_6 = QtWidgets.QGridLayout(self.sleep)
-        self.gridLayout_6.setObjectName("gridLayout_6")
-        self.pushButton_4 = QtWidgets.QPushButton(parent=self.sleep)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout_6.addWidget(self.pushButton_4, 1, 0, 1, 3)
-        self.label_2 = QtWidgets.QLabel(parent=self.sleep)
+        self.sleep_12.setObjectName("sleep_12")
+        self.gridLayout_42 = QtWidgets.QGridLayout(self.sleep_12)
+        self.gridLayout_42.setObjectName("gridLayout_42")
+        self.pushButton_58 = QtWidgets.QPushButton(parent=self.sleep_12)
+        self.pushButton_58.setObjectName("pushButton_58")
+        self.gridLayout_42.addWidget(self.pushButton_58, 0, 2, 1, 1)
+        self.pushButton_59 = QtWidgets.QPushButton(parent=self.sleep_12)
+        self.pushButton_59.setObjectName("pushButton_59")
+        self.gridLayout_42.addWidget(self.pushButton_59, 0, 0, 1, 1)
+        self.gridLayout_38.addWidget(self.sleep_12, 1, 1, 1, 1)
+        self.click_6 = QtWidgets.QGroupBox(parent=self.widget_6)
+        self.click_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.click_6.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid rgb(170, 0, 0);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QGroupBox:title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center;\n"
+"    padding: 0 10px;\n"
+"    background: transparent;\n"
+"    color: rgb(0, 0, 0);\n"
+"    font-size: 16px;\n"
+"}\n"
+"\n"
+"QGroupBox QLineEdit {\n"
+"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
+"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
+"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
+"    background-color: #333; /* Màu nền của QLineEdit */\n"
+"    color: #fff; /* Màu chữ của QLineEdit */\n"
+"}")
+        self.click_6.setObjectName("click_6")
+        self.gridLayout_44 = QtWidgets.QGridLayout(self.click_6)
+        self.gridLayout_44.setObjectName("gridLayout_44")
+        self.pushButton_61 = QtWidgets.QPushButton(parent=self.click_6)
+        self.pushButton_61.setObjectName("pushButton_61")
+        self.gridLayout_44.addWidget(self.pushButton_61, 3, 0, 1, 1)
+        self.pushButton_62 = QtWidgets.QPushButton(parent=self.click_6)
+        self.pushButton_62.setObjectName("pushButton_62")
+        self.gridLayout_44.addWidget(self.pushButton_62, 3, 1, 1, 1)
+        self.lineEdit_67 = QtWidgets.QLineEdit(parent=self.click_6)
+        self.lineEdit_67.setText("")
+        self.lineEdit_67.setObjectName("lineEdit_67")
+        self.gridLayout_44.addWidget(self.lineEdit_67, 2, 1, 1, 1)
+        self.lineEdit_68 = QtWidgets.QLineEdit(parent=self.click_6)
+        self.lineEdit_68.setText("")
+        self.lineEdit_68.setObjectName("lineEdit_68")
+        self.gridLayout_44.addWidget(self.lineEdit_68, 2, 0, 1, 1)
+        self.gridLayout_38.addWidget(self.click_6, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.widget_6, 1, 0, 1, 1)
+        self.widget_7 = QtWidgets.QWidget(parent=self.centralwidget)
+        self.widget_7.setStyleSheet("QWidget{\n"
+"background-color: rgb(206, 206, 206);\n"
+"border-radius: 8px;\n"
+"font: 8pt \"MS Reference Sans Serif\";\n"
+"width: 10px;\n"
+"height: 10px;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 7px;\n"
+"    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */\n"
+"    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */\n"
+"    color: rgb(0, 0, 0);\n"
+"    height: 20px;\n"
+"    text-align: center; /* Sửa chính tả từ text-algin thành text-align */\n"
+"    font-weight: bold; /* Chữ đậm để tạo ấn tượng */\n"
+"    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */\n"
+"    background:#4A569D; /* Gradient sáng hơn khi hover */\n"
+"    color: #ffffff; /* Đảm bảo màu chữ vẫn trắng khi hover */\n"
+"    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
+"    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
+"    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
+"}")
+        self.widget_7.setObjectName("widget_7")
+        self.gridLayout_41 = QtWidgets.QGridLayout(self.widget_7)
+        self.gridLayout_41.setObjectName("gridLayout_41")
+        self.sleep_3 = QtWidgets.QGroupBox(parent=self.widget_7)
+        self.sleep_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.sleep_3.setStyleSheet("QGroupBox {\n"
+"    border: 2px solid rgb(0, 226, 166);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QGroupBox:title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center;\n"
+"    padding: 0 10px;\n"
+"    background: transparent;\n"
+"    color: rgb(0, 0, 0);\n"
+"    font-size: 16px;\n"
+"}\n"
+"QGroupBox QLineEdit {\n"
+"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
+"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
+"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
+"    background-color: #333; /* Màu nền của QLineEdit */\n"
+"    color: #fff; /* Màu chữ của QLineEdit */\n"
+"}")
+        self.sleep_3.setObjectName("sleep_3")
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.sleep_3)
+        self.gridLayout_7.setObjectName("gridLayout_7")
+        self.pushButton_5 = QtWidgets.QPushButton(parent=self.sleep_3)
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.gridLayout_7.addWidget(self.pushButton_5, 1, 0, 1, 3)
+        self.label_5 = QtWidgets.QLabel(parent=self.sleep_3)
         font = QtGui.QFont()
         font.setFamily("MS Reference Sans Serif")
         font.setPointSize(8)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_6.addWidget(self.label_2, 0, 1, 1, 1)
-        self.lineEdit_8 = QtWidgets.QLineEdit(parent=self.sleep)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout_7.addWidget(self.label_5, 0, 1, 1, 1)
+        self.lineEdit_8 = QtWidgets.QLineEdit(parent=self.sleep_3)
         self.lineEdit_8.setObjectName("lineEdit_8")
-        self.gridLayout_6.addWidget(self.lineEdit_8, 0, 2, 1, 1)
-        self.lineEdit_7 = QtWidgets.QLineEdit(parent=self.sleep)
+        self.gridLayout_7.addWidget(self.lineEdit_8, 0, 2, 1, 1)
+        self.lineEdit_7 = QtWidgets.QLineEdit(parent=self.sleep_3)
         self.lineEdit_7.setObjectName("lineEdit_7")
-        self.gridLayout_6.addWidget(self.lineEdit_7, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.sleep, 1, 1, 1, 1)
-        self.click_2 = QtWidgets.QGroupBox(parent=self.widget_4)
-        self.click_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.click_2.setStyleSheet("QGroupBox {\n"
-"    border: 2px solid rgb(170, 0, 0);\n"
-"    border-radius: 10px;\n"
-"    padding: 10px;\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}\n"
-"\n"
-"QGroupBox:title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top center;\n"
-"    padding: 0 10px;\n"
-"    background: transparent;\n"
-"    color: rgb(0, 0, 0);\n"
-"    font-size: 16px;\n"
-"}\n"
-"\n"
-"QGroupBox QLineEdit {\n"
-"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
-"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
-"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
-"    background-color: #333; /* Màu nền của QLineEdit */\n"
-"    color: #fff; /* Màu chữ của QLineEdit */\n"
-"}")
-        self.click_2.setObjectName("click_2")
-        self.gridLayout_8 = QtWidgets.QGridLayout(self.click_2)
-        self.gridLayout_8.setObjectName("gridLayout_8")
-        self.lineEdit_9 = QtWidgets.QLineEdit(parent=self.click_2)
-        self.lineEdit_9.setText("")
-        self.lineEdit_9.setObjectName("lineEdit_9")
-        self.gridLayout_8.addWidget(self.lineEdit_9, 2, 0, 1, 1)
-        self.lineEdit_10 = QtWidgets.QLineEdit(parent=self.click_2)
-        self.lineEdit_10.setText("")
-        self.lineEdit_10.setObjectName("lineEdit_10")
-        self.gridLayout_8.addWidget(self.lineEdit_10, 2, 1, 1, 1)
-        self.pushButton_5 = QtWidgets.QPushButton(parent=self.click_2)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.gridLayout_8.addWidget(self.pushButton_5, 3, 0, 1, 2)
-        self.gridLayout.addWidget(self.click_2, 1, 4, 1, 1)
-        self.click = QtWidgets.QGroupBox(parent=self.widget_4)
-        self.click.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.click.setStyleSheet("QGroupBox {\n"
-"    border: 2px solid rgb(170, 0, 0);\n"
-"    border-radius: 10px;\n"
-"    padding: 10px;\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"}\n"
-"\n"
-"QGroupBox:title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top center;\n"
-"    padding: 0 10px;\n"
-"    background: transparent;\n"
-"    color: rgb(0, 0, 0);\n"
-"    font-size: 16px;\n"
-"}\n"
-"\n"
-"QGroupBox QLineEdit {\n"
-"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
-"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
-"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
-"    background-color: #333; /* Màu nền của QLineEdit */\n"
-"    color: #fff; /* Màu chữ của QLineEdit */\n"
-"}")
-        self.click.setObjectName("click")
-        self.gridLayout_7 = QtWidgets.QGridLayout(self.click)
-        self.gridLayout_7.setObjectName("gridLayout_7")
-        self.lineEdit_6 = QtWidgets.QLineEdit(parent=self.click)
-        self.lineEdit_6.setText("")
-        self.lineEdit_6.setObjectName("lineEdit_6")
-        self.gridLayout_7.addWidget(self.lineEdit_6, 2, 1, 1, 1)
-        self.lineEdit_5 = QtWidgets.QLineEdit(parent=self.click)
-        self.lineEdit_5.setText("")
-        self.lineEdit_5.setObjectName("lineEdit_5")
-        self.gridLayout_7.addWidget(self.lineEdit_5, 2, 0, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(parent=self.click)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout_7.addWidget(self.pushButton, 3, 1, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.click)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_7.addWidget(self.pushButton_2, 3, 0, 1, 1)
-        self.gridLayout.addWidget(self.click, 1, 3, 1, 1)
-        self.gridLayout_2.addWidget(self.widget_4, 0, 0, 1, 1)
+        self.gridLayout_7.addWidget(self.lineEdit_7, 0, 0, 1, 1)
+        self.gridLayout_41.addWidget(self.sleep_3, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.widget_7, 2, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout_2, 0, 0, 2, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -326,23 +469,33 @@ class Ui_MainWindow(object):
         self.pushButton_18.setText(_translate("MainWindow", "Xóa"))
         self.pushButton_17.setText(_translate("MainWindow", "Lưu"))
         self.pushButton_16.setText(_translate("MainWindow", "Thoát"))
-        self.chrome.setTitle(_translate("MainWindow", "Chrome"))
+        self.click_8.setTitle(_translate("MainWindow", "Chrome Profile"))
+        self.lineEdit_73.setPlaceholderText(_translate("MainWindow", "Profile Xpath"))
+        self.lineEdit_74.setPlaceholderText(_translate("MainWindow", "Điền link tại đây"))
+        self.pushButton_65.setText(_translate("MainWindow", "Get"))
+        self.chrome.setTitle(_translate("MainWindow", "Chrome Default"))
         self.lineEdit_12.setPlaceholderText(_translate("MainWindow", "Điền link tại đây"))
         self.pushButton_3.setText(_translate("MainWindow", "Add"))
-        self.sleep.setTitle(_translate("MainWindow", "Sleep"))
+        self.chrome_2.setTitle(_translate("MainWindow", "Chrome New"))
+        self.lineEdit_13.setPlaceholderText(_translate("MainWindow", "Điền link tại đây"))
         self.pushButton_4.setText(_translate("MainWindow", "Add"))
-        self.label_2.setText(_translate("MainWindow", "+-"))
+        self.click_7.setTitle(_translate("MainWindow", "Keyboard"))
+        self.lineEdit_69.setPlaceholderText(_translate("MainWindow", "Text"))
+        self.lineEdit_70.setPlaceholderText(_translate("MainWindow", "delay"))
+        self.pushButton_63.setText(_translate("MainWindow", "Add"))
+        self.sleep_12.setTitle(_translate("MainWindow", "Click Mouse"))
+        self.pushButton_58.setText(_translate("MainWindow", "Right"))
+        self.pushButton_59.setText(_translate("MainWindow", "Left"))
+        self.click_6.setTitle(_translate("MainWindow", "Move Mouse"))
+        self.pushButton_61.setText(_translate("MainWindow", "Get"))
+        self.pushButton_62.setText(_translate("MainWindow", "Add"))
+        self.lineEdit_67.setPlaceholderText(_translate("MainWindow", "Y"))
+        self.lineEdit_68.setPlaceholderText(_translate("MainWindow", "X"))
+        self.sleep_3.setTitle(_translate("MainWindow", "Sleep"))
+        self.pushButton_5.setText(_translate("MainWindow", "Add"))
+        self.label_5.setText(_translate("MainWindow", "+-"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "s"))
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "s"))
-        self.click_2.setTitle(_translate("MainWindow", "Keyboard"))
-        self.lineEdit_9.setPlaceholderText(_translate("MainWindow", "Text"))
-        self.lineEdit_10.setPlaceholderText(_translate("MainWindow", "delay"))
-        self.pushButton_5.setText(_translate("MainWindow", "Add"))
-        self.click.setTitle(_translate("MainWindow", "Click"))
-        self.lineEdit_6.setPlaceholderText(_translate("MainWindow", "Y"))
-        self.lineEdit_5.setPlaceholderText(_translate("MainWindow", "X"))
-        self.pushButton.setText(_translate("MainWindow", "Add"))
-        self.pushButton_2.setText(_translate("MainWindow", "Get"))
 
 
 if __name__ == "__main__":

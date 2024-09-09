@@ -44,7 +44,7 @@ time.sleep({time} - random.randint(-{time_random}, {time_random}))
         
         
         self.pushButton_3.clicked.connect(self.add_chrome)
-        self.pushButton_4.clicked.connect(self.add_sleep)
+        self.pushButton_5.clicked.connect(self.add_sleep)
         
         
     def run_test(self):
