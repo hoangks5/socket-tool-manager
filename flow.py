@@ -13,9 +13,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.connection_button()
         
-
+    # Tab Chrome
     def add_chrome(self):
-        link = self.lineEdit_12.text()
+        link = self.lineEdit_15.text()
         code_python = '''# --------------------- ADD CHROME ---------------------
 import webbrowser
 webbrowser.open_new_tab('{}')
@@ -23,8 +23,8 @@ webbrowser.open_new_tab('{}')
         # ghi thêm textedit ở đây
         self.textEdit.append(code_python)
     def add_sleep(self):
-        time = self.lineEdit_7.text()
-        time_random = self.lineEdit_8.text()
+        time = self.lineEdit_16.text()
+        time_random = self.lineEdit_17.text()
         code_python = '''# --------------------- ADD SLEEP ---------------------
 import time
 import random
@@ -36,15 +36,15 @@ time.sleep({time} - random.randint(-{time_random}, {time_random}))
     
         
         
+        
+        
     
     def connection_button(self):
         self.pushButton_19.clicked.connect(self.run_test)
         self.pushButton_18.clicked.connect(self.delete_step)
         self.pushButton_17.clicked.connect(self.save_file)
-        
-        
-        self.pushButton_3.clicked.connect(self.add_chrome)
-        self.pushButton_5.clicked.connect(self.add_sleep)
+        self.pushButton_7.clicked.connect(self.add_chrome)
+        self.pushButton_8.clicked.connect(self.add_sleep)
         
         
     def run_test(self):
