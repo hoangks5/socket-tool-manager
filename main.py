@@ -8,7 +8,7 @@ import sys
 import time
 from connect_socket import *
 from src.dashboard import Dashboard
-
+from src.load_clients_thread import LoadClientsThread
 
 
 class LoginWindow(QMainWindow):
@@ -50,33 +50,7 @@ class LoginWindow(QMainWindow):
         super().show()
         self.connect_button()
         
-        
-class LoadClientsThread(QtCore.QThread):
-    clients = QtCore.pyqtSignal(list)
-    old_clients = []
-    def __init__(self, ip_socket, port_socket):
-        self.ip_socket = ip_socket
-        self.port_socket = port_socket
-        super().__init__()
-    def run(self):
-        self.main()
-        
-    def main(self):
-        while True:
-            clients = get_clients(self.ip_socket, int(self.port_socket))
-            if clients != self.old_clients:
-                self.old_clients = clients
-                self.clients.emit(clients)
-                time.sleep(2)
-            else:
-                time.sleep(2)
-        
-
-    
-    
-    
-                                      
-    
+ 
     
 class MainWindow(QMainWindow):
     def __init__(self, ip_socket, port_socket):
@@ -141,6 +115,81 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
     
         
+        
+    # Tab Chrome
+    def add_chrome(self):
+        link = self.ui.lineEdit_19.text()
+        code_python = '''# --------------------- ADD CHROME ---------------------
+import webbrowser
+webbrowser.open_new_tab('{}')
+# --------------------------------------------------------'''.format(link)
+        # ghi thêm textedit ở đây
+        self.ui.textEdit_3.append(code_python)
+    def add_sleep(self):
+        time = self.ui.lineEdit_20.text()
+        time_random = self.ui.lineEdit_21.text()
+        code_python = '''# --------------------- ADD SLEEP ---------------------
+import time
+import random
+time.sleep({time} - random.randint(-{time_random}, {time_random}))
+# --------------------------------------------------------'''.format(time=time, time_random=time_random)
+        # ghi thêm textedit ở đây
+        self.ui.textEdit_3.append(code_python)
+        
+        
+    def run_test(self):
+        # lấy code từ textedit sau đó chạy
+        code = self.ui.textEdit_3.toPlainText()
+        # tạo 1 thread chạy exec code để không block UI
+        import threading
+        def run_code():
+            exec(code)
+        threading.Thread(target=run_code).start()
+    
+    
+    def delete_step(self):
+        # xóa bước cuối cùng
+        text = self.ui.textEdit_3.toPlainText()
+        import re
+
+
+        # Sửa lại biểu thức chính quy để khớp với đoạn văn bản
+        pattern = r'# ---------------------.*?# --------------------------------------------------------'
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+        if matches:
+            # xóa bước cuối cùng
+            last_match = matches[-1]
+            start, end = last_match.span()
+            text = text[:start] + text[end:]
+            self.ui.textEdit_3.setPlainText(text)
+        else:
+            self.ui.textEdit_3.setPlainText('')
+            
+    def save_file(self):
+        # tạo ra 1 qmessagebox để lưu file với 1 lineedit ở bên trên
+        
+        noti = QMessageBox()
+        noti.setWindowTitle("Save file")
+        noti.setText("Vui lòng nhập tên file để lưu")
+        noti.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+        noti.setDefaultButton(QMessageBox.StandardButton.Ok)
+        lineedit = QLineEdit()
+        lineedit.setPlaceholderText("Enter file name")
+        noti.layout().addWidget(lineedit)
+        
+        ret = noti.exec()
+        
+        if ret == QMessageBox.StandardButton.Ok:
+            file_name = lineedit.text()
+            if file_name:
+                with open(f'./scripts/{file_name}.py', 'w') as file:
+                    file.write(self.ui.textEdit_3.toPlainText())
+        
+        self.dashboard.add_item_combobox(self.ui.comboBox)
+        
+        
+        
+        
     def connect_button(self):
         self.ui.pushButton.clicked.connect(self.switch_to_dashboard)
         self.ui.pushButton_5.clicked.connect(self.switch_to_dashboard)
@@ -150,12 +199,16 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_7.clicked.connect(self.switch_to_monitor)
         self.ui.pushButton_4.clicked.connect(self.switch_to_setting)
         self.ui.pushButton_8.clicked.connect(self.switch_to_setting)
-        
         self.ui.pushButton_10.clicked.connect(self.logout)
-        
         self.ui.pushButton_11.clicked.connect(lambda: self.dashboard.push_select_all(self.ui.tableWidget))
         self.ui.pushButton_12.clicked.connect(self.dashboard.setup_script)
         
+        #appflow
+        self.ui.pushButton_27.clicked.connect(self.add_chrome)
+        self.ui.pushButton_28.clicked.connect(self.add_sleep)
+        self.ui.pushButton_22.clicked.connect(self.run_test)
+        self.ui.pushButton_23.clicked.connect(self.delete_step)
+        self.ui.pushButton_24.clicked.connect(self.save_file)
         
         
         

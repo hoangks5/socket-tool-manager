@@ -83,6 +83,8 @@ class Dashboard:
         
     
     def add_item_combobox(self, combobox):
+        # xóa item cũ
+        combobox.clear()
         list_script = get_script_name()
         combobox.addItems(list_script)
     
