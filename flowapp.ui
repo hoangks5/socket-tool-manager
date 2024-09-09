@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1235</width>
-    <height>801</height>
+    <width>1447</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -294,19 +294,32 @@ QLineEdit {
                 <string>Chrome Default</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_10">
-                <item row="0" column="0">
+                <item row="1" column="0">
                  <widget class="QLineEdit" name="lineEdit_15">
                   <property name="placeholderText">
                    <string>Điền link tại đây</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_7">
                   <property name="text">
                    <string>Add</string>
                   </property>
                  </widget>
+                </item>
+                <item row="0" column="0">
+                 <spacer name="horizontalSpacer_12">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </widget>
@@ -365,19 +378,32 @@ QLineEdit {
                 <string>Chrome New</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_9">
-                <item row="0" column="0">
+                <item row="1" column="0">
                  <widget class="QLineEdit" name="lineEdit_14">
                   <property name="placeholderText">
                    <string>Điền link tại đây</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_6">
                   <property name="text">
                    <string>Add</string>
                   </property>
                  </widget>
+                </item>
+                <item row="0" column="0">
+                 <spacer name="horizontalSpacer_13">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </widget>
@@ -402,7 +428,7 @@ QLineEdit {
         </widget>
         <widget class="QWidget" name="tab_2">
          <attribute name="title">
-          <string>Tab 2</string>
+          <string>Keyboard</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
@@ -442,129 +468,6 @@ QPushButton:pressed {
 }</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_38">
-             <item row="1" column="0">
-              <widget class="QGroupBox" name="click_6">
-               <property name="cursor">
-                <cursorShape>ArrowCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QGroupBox {
-    border: 2px solid rgb(170, 0, 0);
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-}
-
-QGroupBox:title {
-    subcontrol-origin: margin;
-    subcontrol-position: top center;
-    padding: 0 10px;
-    background: transparent;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-}
-
-QGroupBox QLineEdit {
-    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */
-    border-radius: 5px; /* Làm tròn góc của QLineEdit */
-    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */
-    background-color: #333; /* Màu nền của QLineEdit */
-    color: #fff; /* Màu chữ của QLineEdit */
-}</string>
-               </property>
-               <property name="title">
-                <string>Move Mouse</string>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_44">
-                <item row="3" column="0">
-                 <widget class="QPushButton" name="pushButton_61">
-                  <property name="text">
-                   <string>Get</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QPushButton" name="pushButton_62">
-                  <property name="text">
-                   <string>Add</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="lineEdit_67">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Y</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLineEdit" name="lineEdit_68">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>X</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QGroupBox" name="sleep_12">
-               <property name="cursor">
-                <cursorShape>ArrowCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QGroupBox {
-    border: 2px solid rgb(0, 226, 166);
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-}
-
-QGroupBox:title {
-    subcontrol-origin: margin;
-    subcontrol-position: top center;
-    padding: 0 10px;
-    background: transparent;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-}
-QGroupBox QLineEdit {
-    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */
-    border-radius: 5px; /* Làm tròn góc của QLineEdit */
-    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */
-    background-color: #333; /* Màu nền của QLineEdit */
-    color: #fff; /* Màu chữ của QLineEdit */
-}</string>
-               </property>
-               <property name="title">
-                <string>Click Mouse</string>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_42">
-                <item row="0" column="2">
-                 <widget class="QPushButton" name="pushButton_58">
-                  <property name="text">
-                   <string>Right</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QPushButton" name="pushButton_59">
-                  <property name="text">
-                   <string>Left</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
              <item row="0" column="0">
               <widget class="QGroupBox" name="click_7">
                <property name="cursor">
@@ -627,6 +530,19 @@ QGroupBox QLineEdit {
                   </property>
                  </widget>
                 </item>
+                <item row="0" column="0" colspan="2">
+                 <spacer name="horizontalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
                </layout>
               </widget>
              </item>
@@ -679,7 +595,7 @@ QGroupBox QLineEdit {
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="2" column="0" colspan="2">
                  <widget class="QLineEdit" name="lineEdit_71">
                   <property name="text">
                    <string/>
@@ -689,31 +605,34 @@ QGroupBox QLineEdit {
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="lineEdit_72">
-                  <property name="text">
-                   <string/>
+                <item row="0" column="0">
+                 <spacer name="horizontalSpacer_9">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
                   </property>
-                  <property name="placeholderText">
-                   <string>delay</string>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
                   </property>
-                 </widget>
+                 </spacer>
+                </item>
+                <item row="0" column="1">
+                 <spacer name="horizontalSpacer_10">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </widget>
-             </item>
-             <item row="0" column="3">
-              <spacer name="horizontalSpacer_4">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item row="0" column="2">
               <spacer name="horizontalSpacer_3">
@@ -728,7 +647,20 @@ QGroupBox QLineEdit {
                </property>
               </spacer>
              </item>
-             <item row="2" column="0">
+             <item row="0" column="3">
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="0">
               <spacer name="verticalSpacer_2">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -740,6 +672,283 @@ QGroupBox QLineEdit {
                 </size>
                </property>
               </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_3">
+         <attribute name="title">
+          <string>Mouse</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_7" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+background-color: rgb(206, 206, 206);
+border-radius: 8px;
+font: 8pt &quot;MS Reference Sans Serif&quot;;
+width: 10px;
+height: 10px;
+}
+
+
+QPushButton {
+    border-radius: 7px;
+    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */
+    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */
+    color: rgb(0, 0, 0);
+    height: 20px;
+    text-align: center; /* Sửa chính tả từ text-algin thành text-align */
+    font-weight: bold; /* Chữ đậm để tạo ấn tượng */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */
+}
+
+QPushButton:hover {
+    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */
+    background:#4A569D; /* Gradient sáng hơn khi hover */
+    color: #ffffff; /* Đảm bảo màu chữ vẫn trắng khi hover */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */
+}
+
+QPushButton:pressed {
+    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */
+    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */
+}</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_39">
+             <item row="4" column="0">
+              <spacer name="verticalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="0">
+              <widget class="QGroupBox" name="click_8">
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    border: 2px solid rgb(170, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox:title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 10px;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+QGroupBox QLineEdit {
+    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */
+    border-radius: 5px; /* Làm tròn góc của QLineEdit */
+    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */
+    background-color: #333; /* Màu nền của QLineEdit */
+    color: #fff; /* Màu chữ của QLineEdit */
+}</string>
+               </property>
+               <property name="title">
+                <string>Move Mouse</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_47">
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_65">
+                  <property name="text">
+                   <string>Get</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="lineEdit_73">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLineEdit" name="lineEdit_74">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="pushButton_67">
+                  <property name="text">
+                   <string>Add</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QGroupBox" name="sleep_13">
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    border: 2px solid rgb(0, 226, 166);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox:title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 10px;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+QGroupBox QLineEdit {
+    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */
+    border-radius: 5px; /* Làm tròn góc của QLineEdit */
+    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */
+    background-color: #333; /* Màu nền của QLineEdit */
+    color: #fff; /* Màu chữ của QLineEdit */
+}</string>
+               </property>
+               <property name="title">
+                <string>Click Mouse</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_43">
+                <item row="0" column="1">
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="pushButton_68">
+                  <property name="text">
+                   <string>Left</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="pushButton_60">
+                  <property name="text">
+                   <string>Right</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="2">
+              <widget class="QGroupBox" name="click_10">
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    border: 2px solid rgb(170, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+QGroupBox:title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 10px;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+QGroupBox QLineEdit {
+    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */
+    border-radius: 5px; /* Làm tròn góc của QLineEdit */
+    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */
+    background-color: #333; /* Màu nền của QLineEdit */
+    color: #fff; /* Màu chữ của QLineEdit */
+}</string>
+               </property>
+               <property name="title">
+                <string>Scroll</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_48">
+                <item row="1" column="0">
+                 <widget class="QLineEdit" name="lineEdit_75">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>+- Scroll Height</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_70">
+                  <property name="text">
+                   <string>Add</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
             </layout>
            </widget>
