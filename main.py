@@ -10,6 +10,9 @@ from connect_socket import *
 from src.dashboard import Dashboard
 from src.load_clients_thread import LoadClientsThread
 from src.script_keyboard import *
+from pynput import mouse
+
+
 
 class LoginWindow(QMainWindow):
     def __init__(self):
@@ -157,6 +160,66 @@ import time
 pyautogui.typewrite('{}', interval={})
 # --------------------------------------------------------'''.format(text, delay)
         self.ui.textEdit_3.append(code_python)
+    def get_key_multi(self):
+        key = listen_key()
+        # lấy key hiện tại trong lineedit
+        key_current = self.ui.lineEdit_87.text().split(" ")
+        key_current = [key for key in key_current if key != ""]
+        key_current.append(key)
+        self.ui.lineEdit_87.setText(" ".join(key_current))
+    def add_key_multi(self):
+        key = self.ui.lineEdit_87.text()
+        keys = key.split(" ")
+        keys_formatted = "', '".join(keys)
+        code_python = '''# --------------------- ADD KEY MULTI ---------------------
+import pyautogui
+pyautogui.hotkey('{}')
+# --------------------------------------------------------'''.format(keys_formatted)
+        self.ui.textEdit_3.append(code_python)
+        
+        
+    # Tab Mouse
+    def on_click(self, x, y, button, pressed):
+        if pressed:
+            print(f"Chuột được nhấn tại vị trí: ({x}, {y})")
+            self.ui.lineEdit_85.setText(str(x))
+            self.ui.lineEdit_84.setText(str(y))
+            # Sau khi lấy tọa độ, bạn có thể ngừng lắng nghe
+            return False
+
+    def get_mouse_position(self):
+        with mouse.Listener(on_click=self.on_click) as listener:
+            listener.join()
+    def add_mouse_move(self):
+        x = self.ui.lineEdit_85.text()
+        y = self.ui.lineEdit_84.text()
+        code_python = '''# --------------------- ADD MOUSE MOVE ---------------------
+import pyautogui
+pyautogui.moveTo({}, {})
+# --------------------------------------------------------'''.format(x, y)
+        self.ui.textEdit_3.append(code_python)
+    def add_mouse_right_click(self):
+        code_python = '''# --------------------- ADD MOUSE RIGHT CLICK ---------------------
+import pyautogui
+pyautogui.rightClick()
+# --------------------------------------------------------'''
+        self.ui.textEdit_3.append(code_python)
+    def add_mouse_left_click(self):
+        code_python = '''# --------------------- ADD MOUSE LEFT CLICK ---------------------
+import pyautogui
+pyautogui.leftClick()
+# --------------------------------------------------------'''
+        self.ui.textEdit_3.append(code_python)
+    def add_mouse_scroll(self):
+        wheel = self.ui.lineEdit_86.text()
+        # whell sẽ là số âm nếu muốn cuộn lên, dương nếu muốn cuộn xuống
+        code_python = '''# --------------------- ADD MOUSE SCROLL ---------------------
+import pyautogui
+pyautogui.scroll({wheel})
+# --------------------------------------------------------'''.format(wheel=wheel)
+        self.ui.textEdit_3.append(code_python)
+        
+        
         
         
     def run_test(self):
@@ -231,6 +294,14 @@ pyautogui.typewrite('{}', interval={})
         self.ui.pushButton_77.clicked.connect(self.get_key)
         self.ui.pushButton_78.clicked.connect(self.add_key)
         self.ui.pushButton_69.clicked.connect(self.add_text_keyboard)
+        self.ui.pushButton_83.clicked.connect(self.get_key_multi)
+        self.ui.pushButton_84.clicked.connect(self.add_key_multi)
+        self.ui.pushButton_79.clicked.connect(self.get_mouse_position)
+        self.ui.pushButton_80.clicked.connect(self.add_mouse_move)
+        self.ui.pushButton_81.clicked.connect(self.add_mouse_left_click)
+        self.ui.pushButton_61.clicked.connect(self.add_mouse_right_click)
+        self.ui.pushButton_82.clicked.connect(self.add_mouse_scroll)
+        
         
         
         self.ui.pushButton_22.clicked.connect(self.run_test)
