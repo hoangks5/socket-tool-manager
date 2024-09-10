@@ -6,7 +6,24 @@ import requests
 import os
 import datetime
 import random
+import json
+import socket
 
+def send_command(ip, port, client, file_path_python):
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = (ip, int(port))
+    client_socket.connect(server_address)
+    
+    
+    command = {
+        'cmd': 'python',
+        'clients': [client],
+        'code': open(file_path_python, 'r').read()
+    }
+
+    print('Sending command to server:', command)
+    client_socket.sendall(json.dumps(command).encode())
+    
 
 def get_flag_url(country_code):
     response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}')
@@ -262,3 +279,18 @@ class Dashboard:
         ]
         random_log = random.choice(logs)
         self.add_log_cmd(f"{random_log}")
+        
+        
+    def run_script(self, ip, port):
+        # lấy row được chọn
+        selected_rows = self.get_row_selected()
+
+        for row in selected_rows:
+            # lấy script từ combobox
+            script_name_now = self.ui.tableWidget.cellWidget(row, 4).currentText()
+            # thêm log
+            self.add_log_cmd(f"📜 [{self.get_current_time()}] [{self.ui.tableWidget.item(row, 2).text()}] Script {script_name_now} is running")
+            client = f"{self.ui.tableWidget.item(row, 2).text()}:{self.ui.tableWidget.item(row, 1).text()}"
+            # gửi lệnh đến server
+            send_command(ip, port, client, f'scripts/{script_name_now}')
+            

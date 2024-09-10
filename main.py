@@ -9,7 +9,7 @@ import time
 from connect_socket import *
 from src.dashboard import Dashboard
 from src.load_clients_thread import LoadClientsThread
-
+from src.script_keyboard import *
 
 class LoginWindow(QMainWindow):
     def __init__(self):
@@ -137,6 +137,28 @@ time.sleep({time} - random.randint(-{time_random}, {time_random}))
         self.ui.textEdit_3.append(code_python)
         
         
+    # Tab Keyboard
+    def get_key(self):
+        key = listen_key()
+        self.ui.lineEdit_83.setText(key)
+    def add_key(self):
+        key = self.ui.lineEdit_83.text()
+        code_python = '''# --------------------- ADD KEY ---------------------
+import pyautogui
+pyautogui.press('{}')
+# --------------------------------------------------------'''.format(key)
+        self.ui.textEdit_3.append(code_python)
+    def add_text_keyboard(self):
+        text = self.ui.lineEdit_72.text()
+        delay = self.ui.lineEdit_82.text()
+        code_python = '''# --------------------- ADD TEXT KEYBOARD ---------------------
+import pyautogui
+import time
+pyautogui.typewrite('{}', interval={})
+# --------------------------------------------------------'''.format(text, delay)
+        self.ui.textEdit_3.append(code_python)
+        
+        
     def run_test(self):
         # lấy code từ textedit sau đó chạy
         code = self.ui.textEdit_3.toPlainText()
@@ -202,15 +224,21 @@ time.sleep({time} - random.randint(-{time_random}, {time_random}))
         self.ui.pushButton_10.clicked.connect(self.logout)
         self.ui.pushButton_11.clicked.connect(lambda: self.dashboard.push_select_all(self.ui.tableWidget))
         self.ui.pushButton_12.clicked.connect(self.dashboard.setup_script)
-        
+        self.ui.pushButton_14.clicked.connect(lambda : self.dashboard.run_script(self.ip_socket, self.port_socket))
         #appflow
         self.ui.pushButton_27.clicked.connect(self.add_chrome)
         self.ui.pushButton_28.clicked.connect(self.add_sleep)
+        self.ui.pushButton_77.clicked.connect(self.get_key)
+        self.ui.pushButton_78.clicked.connect(self.add_key)
+        self.ui.pushButton_69.clicked.connect(self.add_text_keyboard)
+        
+        
         self.ui.pushButton_22.clicked.connect(self.run_test)
         self.ui.pushButton_23.clicked.connect(self.delete_step)
         self.ui.pushButton_24.clicked.connect(self.save_file)
         
         
+
         
 
 if __name__ == "__main__":

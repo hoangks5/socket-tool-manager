@@ -40,23 +40,21 @@ def get_clients(ip, port):
     return response['result']
 
 
-def send_command(client_socket, command):
+def send_command(ip, port, file_path_python):
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = (ip, port)
+    client_socket.connect(server_address)
+    
+    
+    command = {
+        'cmd': 'python',
+        'clients': ['DESKTOP-HF75HP8:118.70.190.129'],
+        'code': open(file_path_python, 'r').read()
+    }
 
-# Send a message to the server
-    try:
-
-        """ command = {
-            'cmd': 'python',
-            'clients': ['118.70.190.129'],
-            'code': 'import webbrowser; webbrowser.open("https://www.google.com")'
-        }
-        
-        client_socket.sendall(json.dumps(command).encode()) """
-        
-        
-        client_socket.shutdown(socket.SHUT_WR)
-        
-    finally:
-        client_socket.close()
+    print('Sending command to server:', command)
+    client_socket.sendall(json.dumps(command).encode())
+    
+   
     
     
