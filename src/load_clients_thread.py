@@ -17,7 +17,7 @@ def check_server(ip, port):
             'cmd': 'connect'
         }
         client_socket.sendall(json.dumps(command).encode())
-        response = client_socket.recv(1024)
+        response = client_socket.recv(4069)
         response = json.loads(response.decode())
         if response['result'] == 'success':
             return True
@@ -38,7 +38,7 @@ def get_clients(ip, port):
     print('Sending command to server:', command)
     client_socket.sendall(json.dumps(command).encode())
     # Receive response from server
-    response = client_socket.recv(1024)
+    response = client_socket.recv(4096)
     response = json.loads(response.decode())
     print('Received response from server:', response)
     return response['result']

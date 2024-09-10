@@ -26,16 +26,37 @@ def send_command(ip, port, client, file_path_python):
     
 
 def get_flag_url(country_code):
-    response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}')
-    data = response.json()
-    flag_url = data[0]['flags']['png']
-    return flag_url
+    # Đường dẫn lưu trữ cờ quốc gia
+    flags_dir = "flags"
+    if not os.path.exists(flags_dir):
+        os.makedirs(flags_dir)
+    
+    # Đường dẫn file cờ quốc gia
+    flag_path = os.path.join(flags_dir, f"{country_code}.png")
+    
+    # Kiểm tra xem file cờ quốc gia đã tồn tại chưa
+    if os.path.exists(flag_path):
+        print(f"Flag for {country_code} already exists. Loading from local.")
+        return flag_path
+    else:
+        print(f"Downloading flag for {country_code}.")
+        response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}')
+        data = response.json()
+        flag_url = data[0]['flags']['png']
+        
+        # Tải ảnh từ URL
+        img_data = requests.get(flag_url).content
+        with open(flag_path, 'wb') as file:
+            file.write(img_data)
+        
+        return flag_path
 
-def download_image(url):
-    response = requests.get(url)
+
+def download_image(file_path):
     image = QPixmap()
-    image.loadFromData(response.content)
+    image.load(file_path)
     return image
+
 
 def get_script_name():
     # đọc các file .py trong thư mục scripts
@@ -90,7 +111,7 @@ class Dashboard:
         self.ui.tableWidget.setColumnWidth(0, int(table_width * 0.01))
         self.ui.tableWidget.setColumnWidth(1, int(table_width * 0.3))
         self.ui.tableWidget.setColumnWidth(2, int(table_width * 0.3))
-        self.ui.tableWidget.setColumnWidth(3, int(table_width * 0.3))
+        self.ui.tableWidget.setColumnWidth(3, int(table_width * 0.35))
         self.ui.tableWidget.setColumnWidth(4, int(table_width * 0.2))
         self.ui.tableWidget.setColumnWidth(5, int(table_width * 0.25))
         self.ui.tableWidget.setColumnWidth(6, int(table_width * 0.15))
@@ -121,7 +142,7 @@ class Dashboard:
             flag_image = download_image(flag_url)
             # Create QIcon from QPixmap and set it to QTableWidgetItem
             flag_icon = QIcon(flag_image)
-            flag_item = QTableWidgetItem(f"{client['city']} - {client['country']}")
+            flag_item = QTableWidgetItem(f"{client['city']} - {client['country']} | {client['lat']}, {client['lon']}")
             #flag_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             flag_item.setIcon(flag_icon)
             self.ui.tableWidget.setItem(i, 3, flag_item)
@@ -240,46 +261,10 @@ class Dashboard:
     
     
     
-    # hàm test log
-    def setup_log_generation(self):
-        self.log_timer = QTimer(self)
-        self.log_timer.timeout.connect(self.generate_log)
-        self.log_timer.start(300)  # 1 second interval for generating logs
+    
     def get_current_time(self):
         return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    def generate_log(self):
-        icons = {
-        "loading": "🔄",
-        "request": "🌐",
-        "database": "💾",
-        "encrypted": "🔒",
-        "integrity": "✅",
-        "update": "⬆️",
-        "backup": "🗃️",
-        "auth": "🔑",
-        "progress": "📈",
-        "error": "❌",
-        "success": "🎉"
-    }
-
-        logs = [
-            f"{icons['loading']} [{self.get_current_time()}] Downloading data from server... Complete.",
-            f"{icons['progress']} [{self.get_current_time()}] Processing request from: 192.168.1.1...",
-            f"{icons['database']} [{self.get_current_time()}] Connecting to the database...",
-            f"{icons['encrypted']} [{self.get_current_time()}] Data has been encrypted and stored.",
-            f"{icons['integrity']} [{self.get_current_time()}] Verifying data integrity...",
-            f"{icons['success']} [{self.get_current_time()}] System update completed successfully.",
-            f"{icons['update']} [{self.get_current_time()}] Updating software version...",
-            f"{icons['backup']} [{self.get_current_time()}] Creating data backup...",
-            f"{icons['auth']} [{self.get_current_time()}] Authenticating user information...",
-            f"{icons['error']} [{self.get_current_time()}] Error encountered: Connection timeout.",
-            f"{icons['success']} [{self.get_current_time()}] Backup process completed successfully.",
-            f"{icons['progress']} [{self.get_current_time()}] System health check: 85% complete.",
-            f"{icons['update']} [{self.get_current_time()}] Applying configuration changes..."
-        ]
-        random_log = random.choice(logs)
-        self.add_log_cmd(f"{random_log}")
-        
+    
         
     def run_script(self, ip, port):
         # lấy row được chọn
