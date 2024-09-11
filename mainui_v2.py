@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1373, 852)
+        MainWindow.resize(1410, 852)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/logo-iart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
@@ -129,12 +129,12 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "height: 36px;\n"
 "border:none;\n"
-"padding-left:10px;\n"
+"padding-left:20px;\n"
 "border-top-left-radius:10px;\n"
 "border-bottom-left-radius:10px;\n"
 "border-top-right-radius:0px;\n"
 "border-bottom-right-radius:0px;\n"
-"font: 57 9pt \"Dubai Medium\";\n"
+"font: 57 12pt \"Dubai Medium\";\n"
 "}\n"
 "QPushButton:checked{\n"
 "background-color: rgb(255, 255, 255);\n"
