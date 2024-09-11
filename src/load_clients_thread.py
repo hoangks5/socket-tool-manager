@@ -35,12 +35,10 @@ def get_clients(ip, port):
     command = {
         'cmd': 'ls_clients'
     }
-    print('Sending command to server:', command)
     client_socket.sendall(json.dumps(command).encode())
     # Receive response from server
     response = client_socket.recv(4096)
     response = json.loads(response.decode())
-    print('Received response from server:', response)
     return response['result']
 
 
