@@ -8,7 +8,6 @@ from src.dashboard import Dashboard
 from src.load_clients_thread import LoadClientsThread
 from src.scripts import Scripts
 import sys
-from src.mapcanvas import MapCanvas, DataFetcher
 from src.get_boundary_screen import ScreenCapture
 from src.taskbar import TaskBar
 
@@ -67,35 +66,12 @@ class MainWindow(QMainWindow):
         self.dashboard = Dashboard(self.ui)
         self.scipts = Scripts(self.ui, self.dashboard)
         
-        self.map_canvas = MapCanvas(self.ui.widget_8, self.get_ip_locations_from_table())
-        
-        layout = QVBoxLayout(self.ui.widget_8)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(0)
-        layout.addWidget(self.map_canvas)
-        self.ui.widget_8.setLayout(layout)
-        
-        # Create and start the data fetcher thread
-        self.data_fetcher = DataFetcher(self.ui.tableWidget)
-        self.data_fetcher.data_fetched.connect(self.update_map_canvas)
-        self.data_fetcher.start()
         
         self.load_clients_thread = LoadClientsThread(self.ip_socket, self.port_socket)
         self.load_clients_thread.clients.connect(self.dashboard.update_clients)
         self.load_clients_thread.start()
     
-    def update_map_canvas(self, ip_locations):
-        self.map_canvas.update_data(ip_locations)
         
-    def get_ip_locations_from_table(self):
-        ip_locations = []
-        for row in range(self.ui.tableWidget.rowCount()):
-            ip = self.ui.tableWidget.item(row, 2).text()
-            lat = self.ui.tableWidget.item(row, 3).text().split("|")[1].split(",")[0]
-            lon = self.ui.tableWidget.item(row, 3).text().split("|")[1].split(",")[1]
-            country = self.ui.tableWidget.item(row, 3).text().split("|")[0].split("-")[1].strip()
-            ip_locations.append({'ip': ip, 'lat': float(lat), 'lon': float(lon), 'country': country})
-        return ip_locations
     
     def logout(self):
         self.close()

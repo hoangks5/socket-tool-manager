@@ -8,20 +8,29 @@ import datetime
 import random
 import json
 import socket
+import redis
 
-def send_command(ip, port, client, file_path_python):
+def send_file_to_redis(file_path, redis_key):
+    r = redis.Redis(host='3.18.29.6', port=6379, db=0)
+    r.set(redis_key, open(file_path, 'rb').read())
+    r.save()
+    
+
+def send_command(ip, port, file_path, client):
+    # gửi dữ liệu đến redis
+    redis_key = f"{ip}:{port}:{random.randint(1000, 9999)}:{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
+    send_file_to_redis(file_path, redis_key)
+    
+    
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_address = (ip, int(port))
     client_socket.connect(server_address)
-    
-    
     command = {
         'cmd': 'python',
-        'clients': [client],
-        'code': open(file_path_python, 'r', encoding='utf-8').read()
+        'clients': client,
+        'redis_key': redis_key,  
     }
-
-    print('Sending command to server:', command)
+    print('Sending redis_key to server:', redis_key)
     client_socket.sendall(json.dumps(command).encode())
     
 
@@ -277,5 +286,5 @@ class Dashboard:
             self.add_log_cmd(f"📜 [{self.get_current_time()}] [{self.ui.tableWidget.item(row, 2).text()}] Script {script_name_now} is running")
             client = f"{self.ui.tableWidget.item(row, 2).text()}:{self.ui.tableWidget.item(row, 1).text()}"
             # gửi lệnh đến server
-            send_command(ip, port, client, f'scripts/{script_name_now}')
+            send_command(ip, port, f"scripts/{script_name_now}", [client])
             
