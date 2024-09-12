@@ -18,7 +18,7 @@ def send_command(ip, port, client, file_path_python):
     command = {
         'cmd': 'python',
         'clients': [client],
-        'code': open(file_path_python, 'r').read()
+        'code': open(file_path_python, 'r', encoding='utf-8').read()
     }
 
     print('Sending command to server:', command)

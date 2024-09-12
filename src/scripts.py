@@ -271,7 +271,7 @@ time.sleep(1)
         if ret == QMessageBox.StandardButton.Ok:
             file_name = lineedit.text()
             if file_name:
-                with open(f'./scripts/{file_name}.py', 'w') as file:
+                with open(f'./scripts/{file_name}.py', 'w', encoding='utf-8') as file:
                     file.write(self.ui.textEdit_3.toPlainText())
         
         self.dashboard.add_item_combobox(self.ui.comboBox)
