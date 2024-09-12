@@ -227,9 +227,9 @@ time.sleep(1)
     
     def install(self):
         # update pip trước
-        os.system('python.exe -m pip install --upgrade pip')
+        subprocess.run(['python.exe', '-m', 'pip', 'install', '--upgrade', 'pip'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=subprocess.CREATE_NO_WINDOW)
         # cài đặt các thư viện cần thiết
-        os.system('pip install -r requirements.txt')
+        subprocess.run(['pip', 'install', '-r', 'requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=subprocess.CREATE_NO_WINDOW)
         
         
     def run_test(self):
@@ -243,7 +243,7 @@ time.sleep(1)
         def run_code():
             # cài đặt các thư viện cần thiết
             self.install()
-            subprocess.run(['python', 'temp.py'])
+            subprocess.run(['python', 'temp.py'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=subprocess.CREATE_NO_WINDOW)
         threading.Thread(target=run_code).start()
     def delete_step(self):
         # xóa bước cuối cùng
