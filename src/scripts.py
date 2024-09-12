@@ -233,8 +233,6 @@ time.sleep(1)
         
         
     def run_test(self):
-        # cài đặt các thư viện cần thiết
-        self.install()
         # lấy code từ textedit sau đó chạy
         code = self.ui.textEdit_3.toPlainText()
         # lưu code vào file
@@ -243,6 +241,8 @@ time.sleep(1)
         # tạo 1 thread chạy exec code để không block UI
         import threading
         def run_code():
+            # cài đặt các thư viện cần thiết
+            self.install()
             subprocess.run(['python', 'temp.py'])
         threading.Thread(target=run_code).start()
     def delete_step(self):
