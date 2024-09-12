@@ -3,6 +3,7 @@ import keyboard
 from pynput import mouse
 from PyQt6.QtWidgets import QMessageBox, QLineEdit
 import subprocess
+import os
 
 # tạo 1 hàm lắng nghe phím bấm sau đó trả về ký tự tương ứng
 def listen_key():
@@ -223,10 +224,17 @@ time.sleep(1)
 # --------------------------------------------------------'''.format(wheel=wheel)
         self.ui.textEdit_3.append(code_python)
         
-        
+    
+    def install(self):
+        # update pip trước
+        os.system('python.exe -m pip install --upgrade pip')
+        # cài đặt các thư viện cần thiết
+        os.system('pip install -r requirements.txt')
         
         
     def run_test(self):
+        # cài đặt các thư viện cần thiết
+        self.install()
         # lấy code từ textedit sau đó chạy
         code = self.ui.textEdit_3.toPlainText()
         # lưu code vào file

@@ -2,7 +2,7 @@ import socket
 import json
 import time
 
-def check_server(ip, port):
+def check_server_socket(ip, port):
     # Create a TCP socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Connect to the server

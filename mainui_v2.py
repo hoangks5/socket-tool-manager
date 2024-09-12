@@ -1135,7 +1135,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore

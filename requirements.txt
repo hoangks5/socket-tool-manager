@@ -1,9 +1,3 @@
-PyQt6
-requests
-keyboard
 pyautogui
-geopandas
-pynput
-pillow
-matplotlib
-pycountry
+keyboard
+undetected_chromedriver
