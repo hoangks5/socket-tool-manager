@@ -132,28 +132,66 @@ import base64
 from PIL import Image, ImageGrab
 from io import BytesIO
 import cv2
+import numpy as np
+
 def get_x_y_w_h_from_base64(base64_string):
+    # Capture the full screenshot
     screenshot = ImageGrab.grab()
-    # lưu screenshot vào 1 file tạm
+    # Save the screenshot to a temporary file
     screenshot.save('1.png')
-    # lưu base64 vào 1 file tạm
+    
+    # Save the base64 image to a temporary file
     with open('2.png', 'wb') as file:
         file.write(base64.b64decode(base64_string))
+    
+    # Load the images for template matching
     image = cv2.imread('1.png')
     template = cv2.imread('2.png')
     w, h = template.shape[1], template.shape[0]
+    
+    # Perform template matching
     result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    
+    # Set a threshold to consider matches
+    threshold = 0.8
+    match_locations = np.where(result >= threshold)
+    
+    # Draw rectangles and count matching points
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 2)
+    
+    # Add text with coordinates and match count
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.5
+    font_color = (0, 255, 0)
+    font_thickness = 1
+    text = 'TL: ' + str(top_left) + ' BR: ' + str(bottom_right) + ' Matches: ' + str(len(match_locations[0]))
+    
+    # Calculate text size
+    text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
+    text_w, text_h = text_size
+    text_x = top_left[0]
+    text_y = top_left[1] - 10  # Position text above the rectangle
+    
+    # Draw text on the image
+    cv2.putText(image, text, (text_x, text_y), font, font_scale, font_color, font_thickness, cv2.LINE_AA)
+    
+    # Show the result image with the rectangle and text
     cv2.imshow('Detected', image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    
+    # Save the result image
     cv2.imwrite('result.png', image)
+
+
 get_x_y_w_h_from_base64('{}')
-import time
+
+# Pause for a moment before exiting
 time.sleep(1)
+
 # --------------------------------------------------------'''.format(base64_image)
         self.ui.textEdit_3.append(code_python)
         
