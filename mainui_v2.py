@@ -966,6 +966,9 @@ class Ui_MainWindow(object):
         self.pushButton_85 = QtWidgets.QPushButton(parent=self.click_20)
         self.pushButton_85.setObjectName("pushButton_85")
         self.gridLayout_58.addWidget(self.pushButton_85, 2, 0, 1, 1)
+        self.pushButton_86 = QtWidgets.QPushButton(parent=self.click_20)
+        self.pushButton_86.setObjectName("pushButton_86")
+        self.gridLayout_58.addWidget(self.pushButton_86, 2, 1, 1, 1)
         self.lineEdit_88 = QtWidgets.QLineEdit(parent=self.click_20)
         self.lineEdit_88.setText("")
         self.lineEdit_88.setObjectName("lineEdit_88")
@@ -974,9 +977,6 @@ class Ui_MainWindow(object):
         self.lineEdit_89.setText("")
         self.lineEdit_89.setObjectName("lineEdit_89")
         self.gridLayout_58.addWidget(self.lineEdit_89, 1, 0, 1, 1)
-        self.pushButton_86 = QtWidgets.QPushButton(parent=self.click_20)
-        self.pushButton_86.setObjectName("pushButton_86")
-        self.gridLayout_58.addWidget(self.pushButton_86, 2, 1, 1, 1)
         self.lineEdit_90 = QtWidgets.QLineEdit(parent=self.click_20)
         self.lineEdit_90.setText("")
         self.lineEdit_90.setObjectName("lineEdit_90")
@@ -998,10 +998,104 @@ class Ui_MainWindow(object):
         self.gridLayout_41.addItem(spacerItem24, 0, 3, 1, 1)
         self.gridLayout_22.addWidget(self.widget_13, 0, 0, 1, 1)
         self.tabWidget_2.addTab(self.tab_6, "")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.gridLayout_9 = QtWidgets.QGridLayout(self.tab_2)
+        self.gridLayout_9.setObjectName("gridLayout_9")
+        self.widget_16 = QtWidgets.QWidget(parent=self.tab_2)
+        self.widget_16.setStyleSheet("QWidget{\n"
+"background-color: rgb(206, 206, 206);\n"
+"border-radius: 8px;\n"
+"font: 8pt \"MS Reference Sans Serif\";\n"
+"width: 10px;\n"
+"height: 10px;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 7px;\n"
+"    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */\n"
+"    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */\n"
+"    color: rgb(0, 0, 0);\n"
+"    height: 20px;\n"
+"    text-align: center; /* Sửa chính tả từ text-algin thành text-align */\n"
+"    font-weight: bold; /* Chữ đậm để tạo ấn tượng */\n"
+"    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */\n"
+"    background:#4A569D; /* Gradient sáng hơn khi hover */\n"
+"    color: #ffffff; /* Đảm bảo màu chữ vẫn trắng khi hover */\n"
+"    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
+"    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
+"    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
+"}\n"
+"\n"
+"\n"
+"QGroupBox {\n"
+"    border: 2px solid rgb(153, 0, 153);\n"
+"    border-radius: 10px;\n"
+"    padding: 10px;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QGroupBox:title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center;\n"
+"    padding: 3 10px;\n"
+"    background: transparent;\n"
+"    color: rgb(0, 0, 0);\n"
+"    font-size: 16px;\n"
+"}\n"
+"QLineEdit {\n"
+"    border: 1px solid #aaa; /* Đổi màu viền của QLineEdit */\n"
+"    border-radius: 5px; /* Làm tròn góc của QLineEdit */\n"
+"    padding: 5px; /* Khoảng cách giữa viền và nội dung của QLineEdit */\n"
+"    background-color: #333; /* Màu nền của QLineEdit */\n"
+"    color: #fff; /* Màu chữ của QLineEdit */\n"
+"}")
+        self.widget_16.setObjectName("widget_16")
+        self.gridLayout_43 = QtWidgets.QGridLayout(self.widget_16)
+        self.gridLayout_43.setObjectName("gridLayout_43")
+        self.click_24 = QtWidgets.QGroupBox(parent=self.widget_16)
+        self.click_24.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.click_24.setStyleSheet("")
+        self.click_24.setObjectName("click_24")
+        self.gridLayout_62 = QtWidgets.QGridLayout(self.click_24)
+        self.gridLayout_62.setObjectName("gridLayout_62")
+        self.pushButton_99 = QtWidgets.QPushButton(parent=self.click_24)
+        self.pushButton_99.setObjectName("pushButton_99")
+        self.gridLayout_62.addWidget(self.pushButton_99, 1, 0, 1, 1)
+        self.pushButton_100 = QtWidgets.QPushButton(parent=self.click_24)
+        self.pushButton_100.setObjectName("pushButton_100")
+        self.gridLayout_62.addWidget(self.pushButton_100, 1, 1, 1, 1)
+        self.lineEdit_102 = QtWidgets.QLineEdit(parent=self.click_24)
+        self.lineEdit_102.setText("")
+        self.lineEdit_102.setObjectName("lineEdit_102")
+        self.gridLayout_62.addWidget(self.lineEdit_102, 0, 0, 1, 2)
+        self.gridLayout_43.addWidget(self.click_24, 1, 1, 1, 1)
+        spacerItem25 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_43.addItem(spacerItem25, 4, 0, 1, 1)
+        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem26, 0, 0, 1, 1)
+        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem27, 0, 1, 1, 1)
+        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem28, 0, 2, 1, 1)
+        spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem29, 0, 3, 1, 1)
+        self.gridLayout_9.addWidget(self.widget_16, 0, 0, 1, 1)
+        self.tabWidget_2.addTab(self.tab_2, "")
         self.gridLayout_15.addWidget(self.tabWidget_2, 0, 0, 1, 1)
         self.gridLayout_23.addLayout(self.gridLayout_15, 1, 0, 2, 1)
-        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_23.addItem(spacerItem25, 0, 0, 1, 1)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_23.addItem(spacerItem30, 0, 0, 1, 1)
         self.widget_6 = QtWidgets.QWidget(parent=self.system)
         self.widget_6.setStyleSheet("QWidget {\n"
 "    background-color: rgb(20, 20, 20); /* Tối hơn để phù hợp với chủ đề tối */\n"
@@ -1088,16 +1182,16 @@ class Ui_MainWindow(object):
         self.widget_7.setObjectName("widget_7")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.widget_7)
         self.gridLayout_8.setObjectName("gridLayout_8")
-        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_8.addItem(spacerItem26, 0, 1, 1, 1)
+        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_8.addItem(spacerItem31, 0, 1, 1, 1)
         self.gridLayout_7 = QtWidgets.QGridLayout()
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.textEdit_3 = QtWidgets.QTextEdit(parent=self.widget_7)
         self.textEdit_3.setObjectName("textEdit_3")
         self.gridLayout_7.addWidget(self.textEdit_3, 0, 1, 1, 1)
         self.gridLayout_8.addLayout(self.gridLayout_7, 2, 1, 1, 1)
-        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_8.addItem(spacerItem27, 0, 0, 1, 1)
+        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_8.addItem(spacerItem32, 0, 0, 1, 1)
         self.widget_9 = QtWidgets.QWidget(parent=self.widget_7)
         self.widget_9.setObjectName("widget_9")
         self.gridLayout_8.addWidget(self.widget_9, 2, 0, 1, 1)
@@ -1150,7 +1244,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
-        self.tabWidget_2.setCurrentIndex(3)
+        self.tabWidget_2.setCurrentIndex(4)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore
         self.pushButton_4.toggled['bool'].connect(self.pushButton_8.setChecked) # type: ignore
@@ -1254,14 +1348,19 @@ class Ui_MainWindow(object):
         self.click_18.setTitle(_translate("MainWindow", "Scroll"))
         self.lineEdit_86.setPlaceholderText(_translate("MainWindow", "+- Scroll Height"))
         self.pushButton_82.setText(_translate("MainWindow", "Add"))
-        self.click_20.setTitle(_translate("MainWindow", "Move Random"))
+        self.click_20.setTitle(_translate("MainWindow", "Move Boundary"))
         self.pushButton_85.setText(_translate("MainWindow", "Get"))
+        self.pushButton_86.setText(_translate("MainWindow", "Add"))
         self.lineEdit_88.setPlaceholderText(_translate("MainWindow", "Height"))
         self.lineEdit_89.setPlaceholderText(_translate("MainWindow", "Width"))
-        self.pushButton_86.setText(_translate("MainWindow", "Add"))
         self.lineEdit_90.setPlaceholderText(_translate("MainWindow", "X"))
         self.lineEdit_91.setPlaceholderText(_translate("MainWindow", "Y"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_6), _translate("MainWindow", "Mouse"))
+        self.click_24.setTitle(_translate("MainWindow", "Move Mouse In Image"))
+        self.pushButton_99.setText(_translate("MainWindow", "Get"))
+        self.pushButton_100.setText(_translate("MainWindow", "Add"))
+        self.lineEdit_102.setPlaceholderText(_translate("MainWindow", "Base64 string"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), _translate("MainWindow", "AI"))
         self.pushButton_25.setText(_translate("MainWindow", "Xóa Hết"))
         self.pushButton_22.setText(_translate("MainWindow", "Chạy Thử"))
         self.pushButton_23.setText(_translate("MainWindow", "Quay Lại"))

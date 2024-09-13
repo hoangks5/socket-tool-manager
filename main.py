@@ -11,6 +11,7 @@ from src.load_clients_thread import LoadClientsThread
 from src.scripts import Scripts
 import sys
 from src.get_boundary_screen import ScreenCapture
+from src.get_image_screen import ScreenCapture as ScreenCapture2
 from src.taskbar import TaskBar
 import redis
 from pynput import mouse
@@ -143,7 +144,6 @@ class MainWindow(QMainWindow):
         self._original_state = self.windowState()
         self._original_pos = self.pos()
         self._original_size = self.size()
-        
         self.hide()
         time.sleep(1)
         window = ScreenCapture(self)
@@ -153,8 +153,33 @@ class MainWindow(QMainWindow):
         self.setMouseTracking(True)
         self.showFullScreen()
 
-        # Kết nối tín hiệu `closed` để khôi phục lại trạng thái của cửa sổ chính khi cửa sổ ScreenCapture bị đóng
         window.finished.connect(self.restore_window)
+        self.get_boundary()
+    
+    def get_base64_image_screen(self):
+        self._original_geometry = self.geometry()
+        self._original_state = self.windowState()
+        self._original_pos = self.pos()
+        self._original_size = self.size()
+        self.hide()
+        time.sleep(1)
+        window = ScreenCapture2(self)   
+        window.setParent(self)
+        screen = QApplication.primaryScreen().geometry()
+        self.setFixedSize(screen.size())
+        self.setMouseTracking(True)
+        self.showFullScreen()
+        
+        window.finished.connect(self.restore_window)
+        self.get_base64_image()
+        
+    def get_base64_image(self):
+        # lấy base64 từ clipboard
+        clipboard = QApplication.clipboard()
+        text = clipboard.text()
+        if text:
+            self.ui.lineEdit_102.setText(text)
+        
         
     def restore_window(self):
         # Khôi phục trạng thái và kích thước ban đầu của cửa sổ chính
@@ -164,6 +189,7 @@ class MainWindow(QMainWindow):
         self.resize(self._original_size)
         self.show()
         
+    def get_boundary(self):
         # Lấy tọa độ từ clipboard
         clipboard = QApplication.clipboard()
         text = clipboard.text()
@@ -173,7 +199,7 @@ class MainWindow(QMainWindow):
             self.ui.lineEdit_91.setText(str(y))
             self.ui.lineEdit_89.setText(str(width))
             self.ui.lineEdit_88.setText(str(height))
-        
+    
         
         
         
@@ -191,6 +217,8 @@ class MainWindow(QMainWindow):
         #appflow
         self.ui.pushButton_85.clicked.connect(self.get_mouse_boundary)
         self.ui.pushButton_79.clicked.connect(self.get_mouse_position)
+        self.ui.pushButton_99.clicked.connect(self.get_base64_image_screen)
+        
         
 
 if __name__ == "__main__":

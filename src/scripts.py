@@ -121,11 +121,42 @@ time.sleep(1)
         
         
     # Tab Mouse
-    
-
-    
-
-    
+    def add_mouse_move_random_image(self):
+        base64_image = self.ui.lineEdit_102.text()
+        code_python = '''# --------------------- ADD MOUSE MOVE RANDOM IMAGE ---------------------
+import pyautogui
+import random
+import time
+import math
+import base64
+from PIL import Image, ImageGrab
+from io import BytesIO
+import cv2
+def get_x_y_w_h_from_base64(base64_string):
+    screenshot = ImageGrab.grab()
+    # lưu screenshot vào 1 file tạm
+    screenshot.save('1.png')
+    # lưu base64 vào 1 file tạm
+    with open('2.png', 'wb') as file:
+        file.write(base64.b64decode(base64_string))
+    image = cv2.imread('1.png')
+    template = cv2.imread('2.png')
+    w, h = template.shape[1], template.shape[0]
+    result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    top_left = max_loc
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 2)
+    cv2.imshow('Detected', image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    cv2.imwrite('result.png', image)
+get_x_y_w_h_from_base64('{}')
+import time
+time.sleep(1)
+# --------------------------------------------------------'''.format(base64_image)
+        self.ui.textEdit_3.append(code_python)
+        
         
         
     def add_mouse_move_random_in_boundary(self):
@@ -291,6 +322,8 @@ time.sleep(1)
         self.ui.pushButton_95.clicked.connect(self.add_resize_chrome)
         self.ui.pushButton_94.clicked.connect(self.add_maximize_chrome)
         self.ui.pushButton_97.clicked.connect(self.add_zoom_chrome)
+        self.ui.pushButton_100.clicked.connect(self.add_mouse_move_random_image)
+        
         
         self.ui.pushButton_22.clicked.connect(self.run_test)
         self.ui.pushButton_23.clicked.connect(self.delete_step)

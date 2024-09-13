@@ -1,6 +1,14 @@
 import cv2
 import numpy as np
 
+from PIL import Image
+import base64
+from io import BytesIO
+
+
+
+
+
 # Đọc ảnh gốc và ảnh cắt
 image = cv2.imread('1.png')
 template = cv2.imread('2.png')
