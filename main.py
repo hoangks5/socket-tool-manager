@@ -2,6 +2,8 @@ from mainui_v2 import Ui_MainWindow
 from login import Ui_MainWindow as Ui_Login
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QVBoxLayout
 from PyQt6.QtCore import QTimer
+from PyQt6.QtCore import Qt
+from PyQt6.QtCore import QSize
 import sys
 from connect_socket import *
 from src.dashboard import Dashboard
@@ -11,6 +13,9 @@ import sys
 from src.get_boundary_screen import ScreenCapture
 from src.taskbar import TaskBar
 import redis
+from pynput import mouse
+
+
 class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -124,13 +129,60 @@ class MainWindow(QMainWindow):
         self.login_window.show()
         # disconnect thread
         self.load_clients_thread.terminate()
-
+        
+    def on_click(self, x, y, button, pressed):
+        if pressed:
+            print(f"Chuột được nhấn tại vị trí: ({x}, {y})")
+            self.ui.lineEdit_85.setText(str(x))
+            self.ui.lineEdit_84.setText(str(y))
+            # Sau khi lấy tọa độ, bạn có thể ngừng lắng nghe
+            return False
+        
     def get_mouse_boundary(self):
-        window = ScreenCapture(self.ui)
+        self._original_geometry = self.geometry()
+        self._original_state = self.windowState()
+        self._original_pos = self.pos()
+        self._original_size = self.size()
+        
+        self.hide()
+        time.sleep(1)
+        window = ScreenCapture(self)
         window.setParent(self)
-        window.showFullScreen()
+        screen = QApplication.primaryScreen().geometry()
+        self.setFixedSize(screen.size())
+        self.setMouseTracking(True)
+        self.showFullScreen()
+
+        # Kết nối tín hiệu `closed` để khôi phục lại trạng thái của cửa sổ chính khi cửa sổ ScreenCapture bị đóng
+        window.finished.connect(self.restore_window)
+        
+    def restore_window(self):
+        # Khôi phục trạng thái và kích thước ban đầu của cửa sổ chính
+        self.setGeometry(self._original_geometry)
+        self.setWindowState(self._original_state)
+        self.move(self._original_pos)
+        self.resize(self._original_size)
+        self.show()
+        
+        # Lấy tọa độ từ clipboard
+        clipboard = QApplication.clipboard()
+        text = clipboard.text()
+        if text:
+            x, y, width, height = map(int, text.split(","))
+            self.ui.lineEdit_90.setText(str(x))
+            self.ui.lineEdit_91.setText(str(y))
+            self.ui.lineEdit_89.setText(str(width))
+            self.ui.lineEdit_88.setText(str(height))
         
         
+        
+        
+    def get_mouse_position(self):
+        self.hide()
+        time.sleep(0.5)
+        with mouse.Listener(on_click=self.on_click) as listener:
+            listener.join()
+        self.show()
     def connect_button(self):
         self.ui.pushButton_10.clicked.connect(self.logout)
         self.ui.pushButton_11.clicked.connect(lambda: self.dashboard.push_select_all(self.ui.tableWidget))
@@ -138,6 +190,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_14.clicked.connect(lambda : self.dashboard.run_script(self.ip_socket, self.port_socket))
         #appflow
         self.ui.pushButton_85.clicked.connect(self.get_mouse_boundary)
+        self.ui.pushButton_79.clicked.connect(self.get_mouse_position)
         
 
 if __name__ == "__main__":

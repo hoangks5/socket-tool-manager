@@ -1,10 +1,9 @@
 
 import keyboard
-from pynput import mouse
 from PyQt6.QtWidgets import QMessageBox, QLineEdit
 import subprocess
 import os
-
+import time
 # tạo 1 hàm lắng nghe phím bấm sau đó trả về ký tự tương ứng
 def listen_key():
     key = keyboard.read_event()
@@ -122,18 +121,9 @@ time.sleep(1)
         
         
     # Tab Mouse
-    def on_click(self, x, y, button, pressed):
-        if pressed:
-            print(f"Chuột được nhấn tại vị trí: ({x}, {y})")
-            self.ui.lineEdit_85.setText(str(x))
-            self.ui.lineEdit_84.setText(str(y))
-            # Sau khi lấy tọa độ, bạn có thể ngừng lắng nghe
-            return False
+    
 
-    def get_mouse_position(self):
-        with mouse.Listener(on_click=self.on_click) as listener:
-            listener.join()
-            
+    
 
     
         
@@ -292,7 +282,6 @@ time.sleep(1)
         self.ui.pushButton_69.clicked.connect(self.add_text_keyboard)
         self.ui.pushButton_83.clicked.connect(self.get_key_multi)
         self.ui.pushButton_84.clicked.connect(self.add_key_multi)
-        self.ui.pushButton_79.clicked.connect(self.get_mouse_position)
         self.ui.pushButton_80.clicked.connect(self.add_mouse_move)
         self.ui.pushButton_81.clicked.connect(self.add_mouse_left_click)
         self.ui.pushButton_61.clicked.connect(self.add_mouse_right_click)
