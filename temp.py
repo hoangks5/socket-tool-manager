@@ -8,63 +8,39 @@ from PIL import Image, ImageGrab
 from io import BytesIO
 import cv2
 import numpy as np
-
 def get_x_y_w_h_from_base64(base64_string):
-    # Capture the full screenshot
     screenshot = ImageGrab.grab()
-    # Save the screenshot to a temporary file
     screenshot.save('1.png')
-    
-    # Save the base64 image to a temporary file
     with open('2.png', 'wb') as file:
         file.write(base64.b64decode(base64_string))
-    
-    # Load the images for template matching
     image = cv2.imread('1.png')
     template = cv2.imread('2.png')
     w, h = template.shape[1], template.shape[0]
-    
-    # Perform template matching
     result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    
-    # Set a threshold to consider matches
     threshold = 0.8
     match_locations = np.where(result >= threshold)
-    
-    # Draw rectangles and count matching points
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
-    cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 2)
-    
-    # Add text with coordinates and match count
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    font_scale = 0.5
-    font_color = (0, 255, 0)
-    font_thickness = 1
-    text = 'TL: ' + str(top_left) + ' BR: ' + str(bottom_right) + ' Matches: ' + str(len(match_locations[0]))
-    
-    # Calculate text size
-    text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
-    text_w, text_h = text_size
-    text_x = top_left[0]
-    text_y = top_left[1] - 10  # Position text above the rectangle
-    
-    # Draw text on the image
-    cv2.putText(image, text, (text_x, text_y), font, font_scale, font_color, font_thickness, cv2.LINE_AA)
-    
-    # Show the result image with the rectangle and text
-    cv2.imshow('Detected', image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    
-    # Save the result image
-    cv2.imwrite('result.png', image)
-
-
-get_x_y_w_h_from_base64('iVBORw0KGgoAAAANSUhEUgAAADUAAAAsCAIAAABKXWd0AAADI0lEQVR4nO1YPY6rMBD2Pr2Cbm9gOndcgJVLqvgCKHTpfAFWbtJF4QKUqRblAtDRWZsLuHTl0V4i3StGa1mJQlaY6G2Rr4qMfz7GM9984eV8PpNfjD//m8AdPPnF4ckvDk9+cfjt/P4+YlMAcM4BAKWUcx6z1cL8AODj46NpGj9CKS3LUik1b8OXBfsbAGRZ5jnhIHKllLZtCwCEkPV6/X/4vb6+EkLqug6jpbWWUiIzBF76+/s7pfTunovd7263uya32+18/HxET6dT13Va67Zt72fnORrW2u12myRJkiR+cBxHxliSJIyxw+FwseRwOOAja+305rH8PLMkSTabDQ4WRYEj2+02fI3rheGE5fnhGUVRjOPo+eHvoihCZpvN5iKW1lrGGGNs+oj5+qy1bpqGc973fZqmF0/7vvcpmGUZANR1DQBSSiEESmOapgAQls415tfH8XgkhNR1fWtC13VSSkJI27aoKVVVoTquVitfLtNVPJ+f1poQcqsAhRDOubquv76+9vu9c04pRSlVSlVVJaUMNXwCUf13Qh3yPDfGKKXatm3b9ng8ZlmGGoRajYGnlE7f73x+aZo65249DVWQc16WJQA0TZNlmdYaA+kz8iH88jwHALxlQgilVGvddd2t+ZxzY0xZlkIInKaU4pxrrf0mS/KrqooQgm9PKR2GoSxLLM9bSzBshJDPz08cyfN8+pT5/CileEEoH3i2MQYTC1MNobXGYr8GZvBECkbVB8oeAKxWK5/7yPJ0OmFBCCGEENcCiZgujlh+WB8oxZj7YYWSb3NljLl1j/v9nkzqwAL+Pk3TYRjwWj1LNIJ93/d9f0uBtdYAsF6vpyQ6pv9iq/U93hsZxljY+NHL+I6MndrPnD4iip+19vqM0KdYa9HLMMbGcfRLEH7wUfzO3xbmOgyhKQxj6Z3fXWeFWMDfo0lGh4x16pzztnkYhjC9UIyMMT8x97H5F0YR3XKIiwj5u/5h5BaLnwe2O2x0GFHO+dvbWxhR9Is/33NJfhdcpZRhY533R/hR/BDeQMz+kPBYfvH47d+Hnvzi8OQXhye/OPwDQaDi+c/AJrQAAAAASUVORK5CYII=')
-
-# Pause for a moment before exiting
+    x, y = top_left
+    w, h = bottom_right[0] - top_left[0], bottom_right[1] - top_left[1]
+    return x, y, w, h
+def move_like_human(x_start, y_start, x_end, y_end, duration):
+    steps = random.randint(1, 7)  # Giảm số bước để di chuyển nhanh hơn
+    sleep_time = duration / steps
+    for step in range(steps):
+        t = step / (steps - 1)  # Đảm bảo t = 1 ở bước cuối cùng
+        ease_t = (math.sin((t - 0.5) * math.pi) + 1) / 2  # Hiệu ứng di chuyển mượt
+        x = x_start + (x_end - x_start) * ease_t
+        y = y_start + (y_end - y_start) * ease_t
+        pyautogui.moveTo(x, y)
+        time.sleep(sleep_time)  # Thời gian nghỉ giữa mỗi bước
+    pyautogui.moveTo(x_end, y_end)
+x_start, y_start = pyautogui.position()
+x, y, w, h = get_x_y_w_h_from_base64('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')
+x_end = random.randint(x, x + w)
+y_end = random.randint(y, y + h)
+move_like_human(x_start, y_start, x_end, y_end, duration=0.02)
 time.sleep(1)
 
 # --------------------------------------------------------

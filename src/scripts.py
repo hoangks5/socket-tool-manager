@@ -1,6 +1,6 @@
 
 import keyboard
-from PyQt6.QtWidgets import QMessageBox, QLineEdit
+from PyQt6.QtWidgets import QMessageBox, QLineEdit, QApplication
 import subprocess
 import os
 import time
@@ -121,6 +121,22 @@ time.sleep(1)
         
         
     # Tab Mouse
+    def get_boundary(self):
+        # Lấy tọa độ từ clipboard
+        clipboard = QApplication.clipboard()
+        text = clipboard.text()
+        if text:
+            x, y, width, height = map(int, text.split(","))
+            self.ui.lineEdit_90.setText(str(x))
+            self.ui.lineEdit_91.setText(str(y))
+            self.ui.lineEdit_89.setText(str(width))
+            self.ui.lineEdit_88.setText(str(height))
+    def get_base64_image(self):
+        # lấy base64 từ clipboard
+        clipboard = QApplication.clipboard()
+        text = clipboard.text()
+        if text:
+            self.ui.lineEdit_102.setText(text)
     def add_mouse_move_random_image(self):
         base64_image = self.ui.lineEdit_102.text()
         code_python = '''# --------------------- ADD MOUSE MOVE RANDOM IMAGE ---------------------
@@ -133,63 +149,39 @@ from PIL import Image, ImageGrab
 from io import BytesIO
 import cv2
 import numpy as np
-
 def get_x_y_w_h_from_base64(base64_string):
-    # Capture the full screenshot
     screenshot = ImageGrab.grab()
-    # Save the screenshot to a temporary file
     screenshot.save('1.png')
-    
-    # Save the base64 image to a temporary file
     with open('2.png', 'wb') as file:
         file.write(base64.b64decode(base64_string))
-    
-    # Load the images for template matching
     image = cv2.imread('1.png')
     template = cv2.imread('2.png')
     w, h = template.shape[1], template.shape[0]
-    
-    # Perform template matching
     result = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    
-    # Set a threshold to consider matches
     threshold = 0.8
     match_locations = np.where(result >= threshold)
-    
-    # Draw rectangles and count matching points
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
-    cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 2)
-    
-    # Add text with coordinates and match count
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    font_scale = 0.5
-    font_color = (0, 255, 0)
-    font_thickness = 1
-    text = 'TL: ' + str(top_left) + ' BR: ' + str(bottom_right) + ' Matches: ' + str(len(match_locations[0]))
-    
-    # Calculate text size
-    text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
-    text_w, text_h = text_size
-    text_x = top_left[0]
-    text_y = top_left[1] - 10  # Position text above the rectangle
-    
-    # Draw text on the image
-    cv2.putText(image, text, (text_x, text_y), font, font_scale, font_color, font_thickness, cv2.LINE_AA)
-    
-    # Show the result image with the rectangle and text
-    cv2.imshow('Detected', image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    
-    # Save the result image
-    cv2.imwrite('result.png', image)
-
-
-get_x_y_w_h_from_base64('{}')
-
-# Pause for a moment before exiting
+    x, y = top_left
+    w, h = bottom_right[0] - top_left[0], bottom_right[1] - top_left[1]
+    return x, y, w, h
+def move_like_human(x_start, y_start, x_end, y_end, duration):
+    steps = random.randint(1, 7)  # Giảm số bước để di chuyển nhanh hơn
+    sleep_time = duration / steps
+    for step in range(steps):
+        t = step / (steps - 1)  # Đảm bảo t = 1 ở bước cuối cùng
+        ease_t = (math.sin((t - 0.5) * math.pi) + 1) / 2  # Hiệu ứng di chuyển mượt
+        x = x_start + (x_end - x_start) * ease_t
+        y = y_start + (y_end - y_start) * ease_t
+        pyautogui.moveTo(x, y)
+        time.sleep(sleep_time)  # Thời gian nghỉ giữa mỗi bước
+    pyautogui.moveTo(x_end, y_end)
+x_start, y_start = pyautogui.position()
+x, y, w, h = get_x_y_w_h_from_base64('{}')
+x_end = random.randint(x, x + w)
+y_end = random.randint(y, y + h)
+move_like_human(x_start, y_start, x_end, y_end, duration=0.02)
 time.sleep(1)
 
 # --------------------------------------------------------'''.format(base64_image)
@@ -215,11 +207,9 @@ def move_like_human(x_start, y_start, x_end, y_end, duration):
         ease_t = (math.sin((t - 0.5) * math.pi) + 1) / 2  # Hiệu ứng di chuyển mượt
         x = x_start + (x_end - x_start) * ease_t
         y = y_start + (y_end - y_start) * ease_t
-        
         pyautogui.moveTo(x, y)
         time.sleep(sleep_time)  # Thời gian nghỉ giữa mỗi bước
     pyautogui.moveTo(x_end, y_end)
-
 x_start, y_start = pyautogui.position()
 x_end = random.randint({}, {})
 y_end = random.randint({}, {})
@@ -332,9 +322,7 @@ time.sleep(1)
         lineedit = QLineEdit()
         lineedit.setPlaceholderText("Enter file name")
         noti.layout().addWidget(lineedit)
-        
         ret = noti.exec()
-        
         if ret == QMessageBox.StandardButton.Ok:
             file_name = lineedit.text()
             if file_name:
@@ -361,7 +349,8 @@ time.sleep(1)
         self.ui.pushButton_94.clicked.connect(self.add_maximize_chrome)
         self.ui.pushButton_97.clicked.connect(self.add_zoom_chrome)
         self.ui.pushButton_100.clicked.connect(self.add_mouse_move_random_image)
-        
+        self.ui.pushButton_101.clicked.connect(self.get_base64_image)
+        self.ui.pushButton_90.clicked.connect(self.get_boundary)
         
         self.ui.pushButton_22.clicked.connect(self.run_test)
         self.ui.pushButton_23.clicked.connect(self.delete_step)

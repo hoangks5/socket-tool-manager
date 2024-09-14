@@ -148,13 +148,10 @@ class MainWindow(QMainWindow):
         time.sleep(1)
         window = ScreenCapture(self)
         window.setParent(self)
-        screen = QApplication.primaryScreen().geometry()
-        self.setFixedSize(screen.size())
         self.setMouseTracking(True)
         self.showFullScreen()
 
         window.finished.connect(self.restore_window)
-        self.get_boundary()
     
     def get_base64_image_screen(self):
         self._original_geometry = self.geometry()
@@ -165,20 +162,10 @@ class MainWindow(QMainWindow):
         time.sleep(1)
         window = ScreenCapture2(self)   
         window.setParent(self)
-        screen = QApplication.primaryScreen().geometry()
-        self.setFixedSize(screen.size())
         self.setMouseTracking(True)
         self.showFullScreen()
-        
         window.finished.connect(self.restore_window)
-        self.get_base64_image()
-        
-    def get_base64_image(self):
-        # lấy base64 từ clipboard
-        clipboard = QApplication.clipboard()
-        text = clipboard.text()
-        if text:
-            self.ui.lineEdit_102.setText(text)
+    
         
         
     def restore_window(self):
@@ -200,7 +187,6 @@ class MainWindow(QMainWindow):
             self.ui.lineEdit_89.setText(str(width))
             self.ui.lineEdit_88.setText(str(height))
     
-        
         
         
     def get_mouse_position(self):
