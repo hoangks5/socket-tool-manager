@@ -401,6 +401,105 @@ class Ui_MainWindow(object):
         self.gridLayout_23.setObjectName("gridLayout_23")
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout_23.addItem(spacerItem4, 0, 3, 1, 1)
+        self.widget_7 = QtWidgets.QWidget(parent=self.system)
+        self.widget_7.setStyleSheet("QWidget {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
+"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
+"    font-family: \"Courier New\", Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */\n"
+"    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */\n"
+"    color: rgb(0, 0, 0); /* Màu chữ */\n"
+"    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */\n"
+"    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */\n"
+"    border-image: none; /* Không sử dụng border image */\n"
+"}\n"
+"")
+        self.widget_7.setObjectName("widget_7")
+        self.gridLayout_8 = QtWidgets.QGridLayout(self.widget_7)
+        self.gridLayout_8.setObjectName("gridLayout_8")
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_8.addItem(spacerItem5, 0, 1, 1, 1)
+        self.widget_9 = QtWidgets.QWidget(parent=self.widget_7)
+        self.widget_9.setObjectName("widget_9")
+        self.gridLayout_8.addWidget(self.widget_9, 2, 0, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_8.addItem(spacerItem6, 0, 0, 1, 1)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_8.addItem(spacerItem7, 0, 3, 1, 1)
+        self.textEdit_3 = QtWidgets.QTextEdit(parent=self.widget_7)
+        self.textEdit_3.setObjectName("textEdit_3")
+        self.gridLayout_8.addWidget(self.textEdit_3, 2, 1, 1, 3)
+        self.gridLayout_23.addWidget(self.widget_7, 2, 1, 1, 3)
+        self.widget_6 = QtWidgets.QWidget(parent=self.system)
+        self.widget_6.setStyleSheet("QWidget {\n"
+"    background-color: rgb(20, 20, 20); /* Tối hơn để phù hợp với chủ đề tối */\n"
+"    border-radius: 15px;\n"
+"    font: 8pt \"MS Reference Sans Serif\";\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */\n"
+"    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */\n"
+"    color: #ffffff; /* Màu chữ trắng để dễ đọc */\n"
+"    height: 40px;\n"
+"    width: 120px;\n"
+"    text-align: center; /* Sửa chính tả từ text-algin thành text-align */\n"
+"    font-weight: bold; /* Chữ đậm để tạo ấn tượng */\n"
+"    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */\n"
+"    background:rgb(255, 229, 241);\n"
+"    color: rgb(80, 85, 255);\n"
+"    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
+"    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
+"    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
+"}\n"
+"")
+        self.widget_6.setObjectName("widget_6")
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.widget_6)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.pushButton_22 = QtWidgets.QPushButton(parent=self.widget_6)
+        self.pushButton_22.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap("img/run_test.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_22.setIcon(icon11)
+        self.pushButton_22.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_22.setObjectName("pushButton_22")
+        self.gridLayout_14.addWidget(self.pushButton_22, 0, 1, 1, 1)
+        self.pushButton_23 = QtWidgets.QPushButton(parent=self.widget_6)
+        self.pushButton_23.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap("img/back.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_23.setIcon(icon12)
+        self.pushButton_23.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_23.setObjectName("pushButton_23")
+        self.gridLayout_14.addWidget(self.pushButton_23, 0, 3, 1, 1)
+        self.pushButton_25 = QtWidgets.QPushButton(parent=self.widget_6)
+        self.pushButton_25.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton_25.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap("img/delete.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_25.setIcon(icon13)
+        self.pushButton_25.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_25.setObjectName("pushButton_25")
+        self.gridLayout_14.addWidget(self.pushButton_25, 0, 5, 1, 1)
+        self.pushButton_24 = QtWidgets.QPushButton(parent=self.widget_6)
+        self.pushButton_24.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap("img/save.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_24.setIcon(icon14)
+        self.pushButton_24.setIconSize(QtCore.QSize(30, 30))
+        self.pushButton_24.setObjectName("pushButton_24")
+        self.gridLayout_14.addWidget(self.pushButton_24, 0, 0, 1, 1)
+        self.gridLayout_23.addWidget(self.widget_6, 1, 2, 1, 2)
         self.gridLayout_15 = QtWidgets.QGridLayout()
         self.gridLayout_15.setObjectName("gridLayout_15")
         self.tabWidget_2 = QtWidgets.QTabWidget(parent=self.system)
@@ -471,12 +570,12 @@ class Ui_MainWindow(object):
         self.widget_14.setObjectName("widget_14")
         self.gridLayout_42 = QtWidgets.QGridLayout(self.widget_14)
         self.gridLayout_42.setObjectName("gridLayout_42")
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_42.addItem(spacerItem5, 0, 1, 1, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_42.addItem(spacerItem6, 0, 2, 1, 1)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_42.addItem(spacerItem7, 0, 3, 1, 1)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_42.addItem(spacerItem8, 0, 1, 1, 1)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_42.addItem(spacerItem9, 0, 2, 1, 1)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_42.addItem(spacerItem10, 0, 3, 1, 1)
         self.chrome_8 = QtWidgets.QGroupBox(parent=self.widget_14)
         self.chrome_8.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         self.chrome_8.setStyleSheet("")
@@ -503,10 +602,10 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName("label_6")
         self.gridLayout_20.addWidget(self.label_6, 0, 1, 1, 1)
         self.gridLayout_42.addWidget(self.chrome_8, 1, 0, 1, 1)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_42.addItem(spacerItem8, 0, 0, 1, 1)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_42.addItem(spacerItem9, 3, 2, 1, 1)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_42.addItem(spacerItem11, 0, 0, 1, 1)
+        spacerItem12 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_42.addItem(spacerItem12, 3, 2, 1, 1)
         self.chrome_7 = QtWidgets.QGroupBox(parent=self.widget_14)
         self.chrome_7.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         self.chrome_7.setStyleSheet("")
@@ -618,14 +717,14 @@ class Ui_MainWindow(object):
         self.lineEdit_80.setObjectName("lineEdit_80")
         self.gridLayout_52.addWidget(self.lineEdit_80, 3, 0, 1, 2)
         self.gridLayout_17.addWidget(self.click_13, 1, 3, 1, 1)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_17.addItem(spacerItem10, 4, 0, 1, 1)
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_17.addItem(spacerItem11, 0, 0, 1, 1)
-        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_17.addItem(spacerItem12, 0, 3, 1, 1)
-        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_17.addItem(spacerItem13, 0, 7, 1, 1)
+        spacerItem13 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_17.addItem(spacerItem13, 4, 0, 1, 1)
+        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_17.addItem(spacerItem14, 0, 0, 1, 1)
+        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_17.addItem(spacerItem15, 0, 3, 1, 1)
+        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_17.addItem(spacerItem16, 0, 7, 1, 1)
         self.click_14 = QtWidgets.QGroupBox(parent=self.widget_11)
         self.click_14.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         self.click_14.setStyleSheet("")
@@ -657,8 +756,8 @@ class Ui_MainWindow(object):
         self.pushButton_97.setObjectName("pushButton_97")
         self.gridLayout_64.addWidget(self.pushButton_97, 2, 0, 1, 2)
         self.gridLayout_17.addWidget(self.click_26, 2, 4, 1, 1)
-        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_17.addItem(spacerItem14, 0, 4, 1, 1)
+        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_17.addItem(spacerItem17, 0, 4, 1, 1)
         self.click_25 = QtWidgets.QGroupBox(parent=self.widget_11)
         self.click_25.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         self.click_25.setStyleSheet("")
@@ -826,16 +925,16 @@ class Ui_MainWindow(object):
         self.lineEdit_83.setObjectName("lineEdit_83")
         self.gridLayout_54.addWidget(self.lineEdit_83, 2, 0, 1, 2)
         self.gridLayout_40.addWidget(self.click_16, 1, 1, 1, 1)
-        spacerItem15 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_40.addItem(spacerItem15, 2, 0, 1, 1)
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_40.addItem(spacerItem16, 0, 0, 1, 1)
-        spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_40.addItem(spacerItem17, 0, 1, 1, 1)
-        spacerItem18 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_40.addItem(spacerItem18, 0, 2, 1, 1)
+        spacerItem18 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_40.addItem(spacerItem18, 2, 0, 1, 1)
         spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_40.addItem(spacerItem19, 0, 3, 1, 1)
+        self.gridLayout_40.addItem(spacerItem19, 0, 0, 1, 1)
+        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_40.addItem(spacerItem20, 0, 1, 1, 1)
+        spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_40.addItem(spacerItem21, 0, 2, 1, 1)
+        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_40.addItem(spacerItem22, 0, 3, 1, 1)
         self.gridLayout_21.addWidget(self.widget_12, 0, 0, 1, 1)
         self.tabWidget_2.addTab(self.tab_5, "")
         self.tab_6 = QtWidgets.QWidget()
@@ -989,16 +1088,16 @@ class Ui_MainWindow(object):
         self.pushButton_86.setObjectName("pushButton_86")
         self.gridLayout_58.addWidget(self.pushButton_86, 3, 0, 1, 2)
         self.gridLayout_41.addWidget(self.click_20, 1, 1, 1, 1)
-        spacerItem20 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_41.addItem(spacerItem20, 4, 0, 1, 1)
-        spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_41.addItem(spacerItem21, 0, 0, 1, 1)
-        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_41.addItem(spacerItem22, 0, 1, 1, 1)
-        spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_41.addItem(spacerItem23, 0, 2, 1, 1)
+        spacerItem23 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_41.addItem(spacerItem23, 4, 0, 1, 1)
         spacerItem24 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_41.addItem(spacerItem24, 0, 3, 1, 1)
+        self.gridLayout_41.addItem(spacerItem24, 0, 0, 1, 1)
+        spacerItem25 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_41.addItem(spacerItem25, 0, 1, 1, 1)
+        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_41.addItem(spacerItem26, 0, 2, 1, 1)
+        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_41.addItem(spacerItem27, 0, 3, 1, 1)
         self.gridLayout_22.addWidget(self.widget_13, 0, 0, 1, 1)
         self.tabWidget_2.addTab(self.tab_6, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -1066,16 +1165,16 @@ class Ui_MainWindow(object):
         self.widget_16.setObjectName("widget_16")
         self.gridLayout_43 = QtWidgets.QGridLayout(self.widget_16)
         self.gridLayout_43.setObjectName("gridLayout_43")
-        spacerItem25 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_43.addItem(spacerItem25, 4, 0, 1, 1)
-        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_43.addItem(spacerItem26, 0, 0, 1, 1)
-        spacerItem27 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_43.addItem(spacerItem27, 0, 1, 1, 1)
-        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_43.addItem(spacerItem28, 0, 2, 1, 1)
+        spacerItem28 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_43.addItem(spacerItem28, 4, 0, 1, 1)
         spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_43.addItem(spacerItem29, 0, 3, 1, 1)
+        self.gridLayout_43.addItem(spacerItem29, 0, 0, 1, 1)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem30, 0, 1, 1, 1)
+        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem31, 0, 2, 1, 1)
+        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_43.addItem(spacerItem32, 0, 3, 1, 1)
         self.click_24 = QtWidgets.QGroupBox(parent=self.widget_16)
         self.click_24.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         self.click_24.setStyleSheet("")
@@ -1100,108 +1199,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.addTab(self.tab_2, "")
         self.gridLayout_15.addWidget(self.tabWidget_2, 0, 0, 1, 1)
         self.gridLayout_23.addLayout(self.gridLayout_15, 1, 0, 2, 1)
-        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_23.addItem(spacerItem30, 0, 0, 1, 1)
-        self.widget_6 = QtWidgets.QWidget(parent=self.system)
-        self.widget_6.setStyleSheet("QWidget {\n"
-"    background-color: rgb(20, 20, 20); /* Tối hơn để phù hợp với chủ đề tối */\n"
-"    border-radius: 15px;\n"
-"    font: 8pt \"MS Reference Sans Serif\";\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #c2185b; /* Màu viền đỏ hồng đậm */\n"
-"    background: linear-gradient(145deg, #ff4081, #c2185b); /* Gradient từ hồng nhạt đến đỏ đậm */\n"
-"    color: #ffffff; /* Màu chữ trắng để dễ đọc */\n"
-"    height: 40px;\n"
-"    width: 120px;\n"
-"    text-align: center; /* Sửa chính tả từ text-algin thành text-align */\n"
-"    font-weight: bold; /* Chữ đậm để tạo ấn tượng */\n"
-"    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng cho nút bấm */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    border: 2px solid #f50057; /* Màu viền hồng sáng hơn khi hover */\n"
-"    background:rgb(255, 229, 241);\n"
-"    color: rgb(80, 85, 255);\n"
-"    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Đổ bóng nổi bật hơn khi hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background: linear-gradient(145deg, #d81b60, #c2185b); /* Gradient tối hơn khi nhấn */\n"
-"    border: 2px solid #b71c1c; /* Màu viền đỏ đậm hơn khi nhấn */\n"
-"    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lõm khi nhấn */\n"
-"}\n"
-"")
-        self.widget_6.setObjectName("widget_6")
-        self.gridLayout_14 = QtWidgets.QGridLayout(self.widget_6)
-        self.gridLayout_14.setObjectName("gridLayout_14")
-        self.pushButton_25 = QtWidgets.QPushButton(parent=self.widget_6)
-        self.pushButton_25.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_25.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap("img/delete.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_25.setIcon(icon11)
-        self.pushButton_25.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_25.setObjectName("pushButton_25")
-        self.gridLayout_14.addWidget(self.pushButton_25, 0, 5, 1, 1)
-        self.pushButton_22 = QtWidgets.QPushButton(parent=self.widget_6)
-        self.pushButton_22.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap("img/run_test.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_22.setIcon(icon12)
-        self.pushButton_22.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_22.setObjectName("pushButton_22")
-        self.gridLayout_14.addWidget(self.pushButton_22, 0, 1, 1, 1)
-        self.pushButton_23 = QtWidgets.QPushButton(parent=self.widget_6)
-        self.pushButton_23.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap("img/back.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_23.setIcon(icon13)
-        self.pushButton_23.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_23.setObjectName("pushButton_23")
-        self.gridLayout_14.addWidget(self.pushButton_23, 0, 3, 1, 1)
-        self.pushButton_24 = QtWidgets.QPushButton(parent=self.widget_6)
-        self.pushButton_24.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap("img/save.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_24.setIcon(icon14)
-        self.pushButton_24.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_24.setObjectName("pushButton_24")
-        self.gridLayout_14.addWidget(self.pushButton_24, 0, 0, 1, 1)
-        self.gridLayout_23.addWidget(self.widget_6, 1, 2, 1, 2)
-        self.widget_7 = QtWidgets.QWidget(parent=self.system)
-        self.widget_7.setStyleSheet("QWidget {\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
-"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
-"    font-family: \"Courier New\", Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */\n"
-"    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */\n"
-"    color: rgb(0, 0, 0); /* Màu chữ */\n"
-"    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */\n"
-"    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */\n"
-"    border-image: none; /* Không sử dụng border image */\n"
-"}\n"
-"")
-        self.widget_7.setObjectName("widget_7")
-        self.gridLayout_8 = QtWidgets.QGridLayout(self.widget_7)
-        self.gridLayout_8.setObjectName("gridLayout_8")
-        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_8.addItem(spacerItem31, 0, 1, 1, 1)
-        self.gridLayout_7 = QtWidgets.QGridLayout()
-        self.gridLayout_7.setObjectName("gridLayout_7")
-        self.textEdit_3 = QtWidgets.QTextEdit(parent=self.widget_7)
-        self.textEdit_3.setObjectName("textEdit_3")
-        self.gridLayout_7.addWidget(self.textEdit_3, 0, 1, 1, 1)
-        self.gridLayout_8.addLayout(self.gridLayout_7, 2, 1, 1, 1)
-        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_8.addItem(spacerItem32, 0, 0, 1, 1)
-        self.widget_9 = QtWidgets.QWidget(parent=self.widget_7)
-        self.widget_9.setObjectName("widget_9")
-        self.gridLayout_8.addWidget(self.widget_9, 2, 0, 1, 1)
-        self.gridLayout_23.addWidget(self.widget_7, 2, 1, 1, 3)
+        spacerItem33 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_23.addItem(spacerItem33, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.system)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -1250,7 +1249,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(1)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore
         self.pushButton_4.toggled['bool'].connect(self.pushButton_8.setChecked) # type: ignore
@@ -1293,6 +1292,10 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.pushButton_22.setText(_translate("MainWindow", "Chạy Thử"))
+        self.pushButton_23.setText(_translate("MainWindow", "Quay Lại"))
+        self.pushButton_25.setText(_translate("MainWindow", "Xóa Hết"))
+        self.pushButton_24.setText(_translate("MainWindow", "Lưu Script"))
         self.chrome_8.setTitle(_translate("MainWindow", "Delay Step"))
         self.pushButton_28.setText(_translate("MainWindow", "Add"))
         self.lineEdit_20.setPlaceholderText(_translate("MainWindow", "s"))
@@ -1369,10 +1372,6 @@ class Ui_MainWindow(object):
         self.pushButton_99.setText(_translate("MainWindow", "Crop"))
         self.pushButton_101.setText(_translate("MainWindow", "Paste"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), _translate("MainWindow", "AI"))
-        self.pushButton_25.setText(_translate("MainWindow", "Xóa Hết"))
-        self.pushButton_22.setText(_translate("MainWindow", "Chạy Thử"))
-        self.pushButton_23.setText(_translate("MainWindow", "Quay Lại"))
-        self.pushButton_24.setText(_translate("MainWindow", "Lưu Script"))
 
 
 if __name__ == "__main__":

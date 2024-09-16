@@ -74,8 +74,28 @@ import time
 time.sleep(1)
 # --------------------------------------------------------'''.format(zoom)
         self.ui.textEdit_3.append(code_python)
-        
-        
+    def add_go_to_url(self):
+        url = self.ui.lineEdit_99.text()
+        code_python = '''# --------------------- ADD GO TO URL ---------------------
+driver.get('{}')
+import time
+time.sleep(1)
+# --------------------------------------------------------'''.format(url)
+        self.ui.textEdit_3.append(code_python)
+    def add_chrome_profile(self):
+        profile = self.ui.lineEdit_77.text()
+        code_python = '''# --------------------- ADD CHROME PROFILE ---------------------
+import undetected_chromedriver as uc
+import time
+options = uc.ChromeOptions()
+profile = 'C:/Users/Admin/AppData/Local/Google/Chrome/User Data/'
+options.add_argument(f'--user-data-dir=' + profile)
+options.add_argument('--profile-directory={}')
+driver = uc.Chrome(options=options)
+time.sleep(1)
+# --------------------------------------------------------'''.format(profile)
+        self.ui.textEdit_3.append(code_python)
+    
     # Tab Keyboard
     def get_key(self):
         key = listen_key()
@@ -351,6 +371,8 @@ time.sleep(1)
         self.ui.pushButton_100.clicked.connect(self.add_mouse_move_random_image)
         self.ui.pushButton_101.clicked.connect(self.get_base64_image)
         self.ui.pushButton_90.clicked.connect(self.get_boundary)
+        self.ui.pushButton_98.clicked.connect(self.add_go_to_url)
+        self.ui.pushButton_74.clicked.connect(self.add_chrome_profile)
         
         self.ui.pushButton_22.clicked.connect(self.run_test)
         self.ui.pushButton_23.clicked.connect(self.delete_step)
