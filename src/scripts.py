@@ -374,6 +374,7 @@ time.sleep(1)
         self.ui.pushButton_98.clicked.connect(self.add_go_to_url)
         self.ui.pushButton_74.clicked.connect(self.add_chrome_profile)
         
+        
         self.ui.pushButton_22.clicked.connect(self.run_test)
         self.ui.pushButton_23.clicked.connect(self.delete_step)
         self.ui.pushButton_24.clicked.connect(self.save_file)
