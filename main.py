@@ -15,6 +15,7 @@ from src.get_image_screen import ScreenCapture as ScreenCapture2
 from src.taskbar import TaskBar
 import redis
 from pynput import mouse
+from src.tool_tip_groupbox import DescriptionGroupBox
 
 
 class LoginWindow(QMainWindow):
@@ -116,7 +117,7 @@ class MainWindow(QMainWindow):
         self.taskbar = TaskBar(self.ui)
         self.dashboard = Dashboard(self.ui)
         self.scipts = Scripts(self.ui, self.dashboard)
-        
+        self.description_groupbox = DescriptionGroupBox(self.ui)
         
         self.load_clients_thread = LoadClientsThread(self.ip_socket, self.port_socket)
         self.load_clients_thread.clients.connect(self.dashboard.update_clients)
