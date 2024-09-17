@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1835, 891)
+        MainWindow.resize(1546, 891)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/logo-iart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
@@ -549,7 +549,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 299, 675))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 241, 675))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setObjectName("gridLayout_7")
@@ -1345,19 +1345,57 @@ class Ui_MainWindow(object):
         self.widget_8.setObjectName("widget_8")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_8)
         self.gridLayout_6.setObjectName("gridLayout_6")
-        self.label_5 = QtWidgets.QLabel(parent=self.widget_8)
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_5.setFont(font)
-        self.label_5.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.label_5.setAutoFillBackground(False)
-        self.label_5.setStyleSheet("")
-        self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("img/comingsoon.svg"))
-        self.label_5.setScaledContents(False)
-        self.label_5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_5.setObjectName("label_5")
-        self.gridLayout_6.addWidget(self.label_5, 0, 0, 1, 1)
+        self.calendarWidget = QtWidgets.QCalendarWidget(parent=self.widget_8)
+        self.calendarWidget.setStyleSheet("QCalendarWidget {\n"
+"    background-color: #2c3e50; /* Màu nền */\n"
+"    border: 1px solid #34495e; /* Viền xung quanh */\n"
+"    border-radius: 10px; /* Bo tròn góc */\n"
+"    padding: 10px; /* Khoảng cách bên trong */\n"
+"}\n"
+"\n"
+"QCalendarWidget QAbstractItemView {\n"
+"    background-color: #34495e; /* Màu nền của ngày */\n"
+"    selection-background-color: #2980b9; /* Màu nền khi chọn */\n"
+"    selection-color: white; /* Màu chữ khi chọn */\n"
+"    alternate-background-color: #2c3e50; /* Màu nền của các hàng lẻ */\n"
+"    border-radius: 5px; /* Bo tròn góc */\n"
+"}\n"
+"\n"
+"QCalendarWidget QHeaderView::section {\n"
+"    background-color: #34495e; /* Màu nền của tiêu đề tuần */\n"
+"    color: white; /* Màu chữ */\n"
+"    padding: 5px; /* Khoảng cách bên trong */\n"
+"    border: 1px solid #2c3e50; /* Viền của tiêu đề tuần */\n"
+"    border-radius: 5px; /* Bo tròn góc */\n"
+"}\n"
+"\n"
+"QCalendarWidget QToolButton {\n"
+"    background-color: #2980b9; /* Màu nền của các nút điều khiển */\n"
+"    color: white; /* Màu chữ */\n"
+"    border: none; /* Không có viền */\n"
+"    border-radius: 5px; /* Bo tròn góc */\n"
+"}\n"
+"\n"
+"QCalendarWidget QToolButton:hover {\n"
+"    background-color: #3498db; /* Màu nền khi di chuột qua */\n"
+"}\n"
+"\n"
+"QCalendarWidget QToolButton:pressed {\n"
+"    background-color: #1f77d1; /* Màu nền khi nhấn */\n"
+"}\n"
+"")
+        self.calendarWidget.setObjectName("calendarWidget")
+        self.gridLayout_6.addWidget(self.calendarWidget, 0, 0, 1, 1)
+        spacerItem37 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem37, 4, 0, 1, 1)
+        spacerItem38 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem38, 5, 0, 1, 1)
+        spacerItem39 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem39, 3, 0, 1, 1)
+        spacerItem40 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem40, 2, 0, 1, 1)
+        spacerItem41 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem41, 1, 0, 1, 1)
         self.gridLayout_4.addWidget(self.widget_8, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
         self.page = QtWidgets.QWidget()
@@ -1383,7 +1421,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.tabWidget_2.setCurrentIndex(1)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore

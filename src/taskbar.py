@@ -1,20 +1,25 @@
 from PyQt6.QtCore import QTimer, QObject
-
+import requests
 class TaskBar(QObject):
     def __init__(self, ui):
+        self.title = self.get_title()
         super().__init__()
         self.ui = ui
         self.connect_button()
         self.setup_marquee()
         self.ui.textEdit.verticalScrollBar().setVisible(False)
         self.ui.textEdit.horizontalScrollBar().setVisible(False)
-        
         # tắt scroll stackwidget
         self.ui.stackedWidget.setContentsMargins(0, 0, 0, 0)
         self.ui.stackedWidget.setFrameStyle(0)
         
 
-        
+    def get_title(self):
+        github_raw = "https://raw.githubusercontent.com/hoangks5/version_tool_socket/main/title_run.txt"
+        # Lấy title từ github
+        rq = requests.get(github_raw)
+        text = rq.text
+        return text
         
     def connect_button(self):
         self.ui.pushButton.clicked.connect(self.switch_to_dashboard)
@@ -26,7 +31,7 @@ class TaskBar(QObject):
         self.ui.pushButton_4.clicked.connect(self.switch_to_setting)
         self.ui.pushButton_8.clicked.connect(self.switch_to_setting)
     def setup_marquee(self):
-        self.text = " "*250 + " Khuyến mãi giảm giá 50% cho tất cả các sản phẩm. Hãy nhanh tay đặt hàng ngay hôm nay! "
+        self.text = " "*250 + self.title
         self.index = 0
         self.paused = False
         # Tạo QTimer để cuộn chữ
