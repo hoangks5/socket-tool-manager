@@ -28,11 +28,13 @@ class ViewFlow:
             code = text[start:end]
             name = code.split("\n")[0].replace("# ---------------------", "").replace(" ---------------------", "")
             step_widget = QWidget()
+            step_widget.setStyleSheet("border: 0px")
             step_layout = QHBoxLayout()
             button = QPushButton(parent=self.ui.widget_9, text=name)
+            button.setStyleSheet("background-color: blue; color: white")
             button.clicked.connect(lambda checked, i=index: self.highlight_code(i))
             step_layout.addWidget(button)
-            delete_button = QPushButton("X")
+            delete_button = QPushButton(parent=self.ui.widget_9, text="X")
             delete_button.setStyleSheet("background-color: red")
             delete_button.clicked.connect(lambda checked, i=index: self.delete_step(i))
             step_layout.addWidget(delete_button)
@@ -422,11 +424,11 @@ time.sleep(1)
             self.ui.textEdit_3.setPlainText(text)
         else:
             self.ui.textEdit_3.setPlainText('')
+        self.view_flow.print()
     def delete_all_step(self):
         self.ui.textEdit_3.setPlainText('')
+        self.view_flow.print()
     def save_file(self):
-        # tạo ra 1 qmessagebox để lưu file với 1 lineedit ở bên trên
-        
         noti = QMessageBox()
         noti.setWindowTitle("Save file")
         noti.setText("Vui lòng nhập tên file để lưu")
@@ -443,6 +445,7 @@ time.sleep(1)
                     file.write(self.ui.textEdit_3.toPlainText())
         
         self.dashboard.add_item_combobox(self.ui.comboBox)
+
         
     def connect_button(self):
         self.ui.pushButton_27.clicked.connect(self.add_chrome)
