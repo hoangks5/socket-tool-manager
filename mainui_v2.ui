@@ -754,16 +754,7 @@ p, li { white-space: pre-wrap; }
             <widget class="QWidget" name="widget_7" native="true">
              <property name="styleSheet">
               <string notr="true">QWidget {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
-    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
-    font-family: &quot;Courier New&quot;, Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */
-    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */
-    color: rgb(0, 0, 0); /* Màu chữ */
-    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
-    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
-    border-image: none; /* Không sử dụng border image */
+    border:None
 }
 </string>
              </property>
@@ -808,14 +799,43 @@ p, li { white-space: pre-wrap; }
                </spacer>
               </item>
               <item row="2" column="1" colspan="3">
-               <widget class="QTextEdit" name="textEdit_3"/>
+               <widget class="QTextEdit" name="textEdit_3">
+                <property name="styleSheet">
+                 <string notr="true">QWidget {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
+    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+    font-family: &quot;Courier New&quot;, Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */
+    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */
+    color: rgb(0, 0, 0); /* Màu chữ */
+    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
+    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
+    border-image: none; /* Không sử dụng border image */
+}
+</string>
+                </property>
+               </widget>
               </item>
               <item row="2" column="0">
                <widget class="QWidget" name="widget_9" native="true">
                 <property name="styleSheet">
-                 <string notr="true">QPushButton {
+                 <string notr="true">QWidget {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
+    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+    font-family: &quot;Courier New&quot;, Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */
+    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */
+    color: rgb(0, 0, 0); /* Màu chữ */
+    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
+    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
+    border-image: none; /* Không sử dụng border image */
+}
+QPushButton {
 font: 7pt &quot;MS Shell Dlg 2&quot;;
-}</string>
+}
+</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_7">
                  <item row="1" column="0">

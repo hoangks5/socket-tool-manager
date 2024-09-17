@@ -6,6 +6,8 @@ import os
 import time
 from PyQt6.QtWidgets import QLabel, QPushButton, QWidget, QHBoxLayout, QVBoxLayout
 from functools import partial
+from PyQt6.QtGui import QTextCursor, QTextCharFormat
+from PyQt6.QtCore import Qt
 import re
 
 class ViewFlow:
@@ -15,7 +17,7 @@ class ViewFlow:
     def print(self):
         # Lấy layout gridLayout_7 từ widget_9
         layout = self.ui.gridLayout_7
-        # clear tất cả các widget trước khi in
+        # Clear tất cả các widget trước khi in
         for i in reversed(range(layout.count())):
             widget = layout.itemAt(i).widget()
             if widget is not None:
@@ -26,32 +28,33 @@ class ViewFlow:
         pattern = r'# ---------------------.*?# --------------------------------------------------------'
         matches = list(re.finditer(pattern, text, re.DOTALL))
 
-        # Tạo label và button cho mỗi bước
+        # Tạo button cho mỗi bước
         for index, match in enumerate(matches):
             start, end = match.span()
             code = text[start:end]
             # Lấy tên bước từ code
             name = code.split("\n")[0].replace("# ---------------------", "").replace(" ---------------------", "")
             
-            # Tạo một QWidget để chứa label và button
+            # Tạo một QWidget để chứa button
             step_widget = QWidget()
             step_layout = QHBoxLayout()  # Đây là layout ngang, có thể thay đổi nếu cần
 
-            # Tạo một label
-            label = QLabel(name)
-            step_layout.addWidget(label)
+            # Tạo một button với tên bước
+            button = QPushButton(parent=self.ui.widget_9, text=name)
+            button.clicked.connect(lambda checked, i=index: self.highlight_code(i))
+            step_layout.addWidget(button)
 
             # Tạo một button xóa bước
-            button = QPushButton("X")
-            button.clicked.connect(partial(self.delete_step, index))
-            step_layout.addWidget(button)
+            delete_button = QPushButton("X")
+            delete_button.clicked.connect(lambda checked, i=index: self.delete_step(i))
+            step_layout.addWidget(delete_button)
             
-            # Cài đặt layout cho QWidget chứa label và button
+            # Cài đặt layout cho QWidget chứa button
             step_widget.setLayout(step_layout)
             
-            # Đặt kích thước cố định cho QWidget chứa label và button
+            # Đặt kích thước cố định cho QWidget chứa button
             step_widget.setFixedSize(300, 60)  # Đặt kích thước cố định cho step_widget (rộng x cao)
-            button.setFixedSize(30, 30)
+            delete_button.setFixedSize(30, 30)
             
             # Thêm QWidget vào layout gridLayout_7 của widget_9
             layout.addWidget(step_widget)
@@ -65,10 +68,52 @@ class ViewFlow:
             match = matches[index]
             start, end = match.span()
             text = text[:start] + text[end:]
-            text = text.strip()
+            text = text.strip().strip("\n")
             self.ui.textEdit_3.setPlainText(text)
             # Xóa tất cả các widget sau khi xóa bước
             self.print()
+
+    def highlight_code(self, index):
+        # Xóa tất cả các highlight trước khi highlight bước mới
+        text = self.ui.textEdit_3.toPlainText()
+        pattern = r'# ---------------------.*?# --------------------------------------------------------'
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+        if matches:
+            for match in matches:
+                start, end = match.span()
+                cursor = self.ui.textEdit_3.textCursor()
+                cursor.setPosition(start)
+                cursor.setPosition(end, QTextCursor.MoveMode.KeepAnchor)
+                char_format = QTextCharFormat()
+                char_format.setBackground(Qt.GlobalColor.white)
+                cursor.setCharFormat(char_format)
+                cursor.setPosition(end)
+        
+        # Làm nổi bật đoạn mã tương ứng
+        text = self.ui.textEdit_3.toPlainText()
+        pattern = r'# ---------------------.*?# --------------------------------------------------------'
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+        if matches:
+            match = matches[index]
+            start, end = match.span()
+
+            print(start, end)
+            
+        # lấy text cursor
+        cursor = self.ui.textEdit_3.textCursor()
+        # set vị trí con trỏ
+        cursor.setPosition(start)
+        # set vị trí con trỏ cuối
+        cursor.setPosition(end, QTextCursor.MoveMode.KeepAnchor)
+        # tạo 1 QTextCharFormat để set màu cho text
+        char_format = QTextCharFormat()
+        char_format.setBackground(Qt.GlobalColor.green)
+        # set màu cho text
+        cursor.setCharFormat(char_format)
+        # set con trỏ về vị trí cuối cùng
+        cursor.setPosition(end)
+        
+        
             
         
             
@@ -93,12 +138,12 @@ class Scripts:
     # Tab Chrome
     def add_chrome(self):
         link = self.ui.lineEdit_19.text()
-        code_python = '''# --------------------- ADD CHROME {} ---------------------
+        code_python = '''# --------------------- ADD CHROME {link} ---------------------
 import webbrowser
-webbrowser.open_new_tab('{}')
+webbrowser.open_new_tab('{link}')
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(link, link)
+# --------------------------------------------------------'''.format(link=link)
         # ghi thêm textedit ở đây
         self.ui.textEdit_3.append(code_python)
         self.view_flow.print()
@@ -122,16 +167,17 @@ import time
 time.sleep(1)
 # --------------------------------------------------------'''
         self.ui.textEdit_3.append(code_python)
-        
+        self.view_flow.print()
     def add_resize_chrome(self):
         width = self.ui.lineEdit_95.text()
         height = self.ui.lineEdit_96.text()
-        code_python = '''# --------------------- ADD RESIZE CHROME ---------------------
-driver.set_window_size({}, {})
+        code_python = '''# --------------------- ADD RESIZE CHROME {width}x{height} ---------------------
+driver.set_window_size({width}, {height})
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(width, height)
+# --------------------------------------------------------'''.format(width=width, height=height)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_maximize_chrome(self):
         code_python = '''# --------------------- ADD MAXIMIZE CHROME ---------------------
 driver.maximize_window()
@@ -139,22 +185,25 @@ import time
 time.sleep(1)
 # --------------------------------------------------------'''
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_zoom_chrome(self):
         zoom = self.ui.lineEdit_98.text()
-        code_python = '''# --------------------- ADD ZOOM CHROME ---------------------
-driver.execute_script("document.body.style.zoom='{}%'")
+        code_python = '''# --------------------- ADD ZOOM CHROME {zoom}% ---------------------
+driver.execute_script("document.body.style.zoom='{zoom}%'")
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(zoom)
+# --------------------------------------------------------'''.format(zoom=zoom)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_go_to_url(self):
         url = self.ui.lineEdit_99.text()
-        code_python = '''# --------------------- ADD GO TO URL ---------------------
-driver.get('{}')
+        code_python = '''# --------------------- ADD GO TO URL {url} ---------------------
+driver.get('{url}')
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(url)
+# --------------------------------------------------------'''.format(url=url)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_chrome_profile(self):
         profile = self.ui.lineEdit_77.text()
         code_python = '''# --------------------- ADD CHROME PROFILE ---------------------
@@ -168,31 +217,33 @@ driver = uc.Chrome(options=options)
 time.sleep(1)
 # --------------------------------------------------------'''.format(profile)
         self.ui.textEdit_3.append(code_python)
-    
+        self.view_flow.print()
     # Tab Keyboard
     def get_key(self):
         key = listen_key()
         self.ui.lineEdit_83.setText(key)
     def add_key(self):
         key = self.ui.lineEdit_83.text()
-        code_python = '''# --------------------- ADD KEY ---------------------
+        code_python = '''# --------------------- ADD KEY {key} ---------------------
 import pyautogui
-pyautogui.press('{}')
+pyautogui.press('{key}')
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(key)
+# --------------------------------------------------------'''.format(key=key)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_text_keyboard(self):
         text = self.ui.lineEdit_72.text()
-        code_python = f'''# --------------------- ADD TEXT KEYBOARD ---------------------
+        code_python = f'''# --------------------- ADD TEXT KEYBOARD {text} ---------------------
 import pyautogui
 import time
 import random
 for s in '{text}':
     pyautogui.typewrite(s, interval=random.randint(1,10)/50)
 time.sleep(1)
-# --------------------------------------------------------'''
+# --------------------------------------------------------'''.format(text=text)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def get_key_multi(self):
         key = listen_key()
         # lấy key hiện tại trong lineedit
@@ -204,14 +255,14 @@ time.sleep(1)
         key = self.ui.lineEdit_87.text()
         keys = key.split(" ")
         keys_formatted = "', '".join(keys)
-        code_python = '''# --------------------- ADD KEY MULTI ---------------------
+        code_python = '''# --------------------- ADD KEY MULTI {keys} ---------------------
 import pyautogui
-pyautogui.hotkey('{}')
+pyautogui.hotkey('{keys}')
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(keys_formatted)
+# --------------------------------------------------------'''.format(keys=keys_formatted)
         self.ui.textEdit_3.append(code_python)
-        
+        self.view_flow.print()
         
     # Tab Mouse
     def get_boundary(self):
@@ -271,23 +322,21 @@ def move_like_human(x_start, y_start, x_end, y_end, duration):
         time.sleep(sleep_time)  # Thời gian nghỉ giữa mỗi bước
     pyautogui.moveTo(x_end, y_end)
 x_start, y_start = pyautogui.position()
-x, y, w, h = get_x_y_w_h_from_base64('{}')
+x, y, w, h = get_x_y_w_h_from_base64('{base64_image}')
 x_end = random.randint(x, x + w)
 y_end = random.randint(y, y + h)
 move_like_human(x_start, y_start, x_end, y_end, duration=0.02)
 time.sleep(1)
 
-# --------------------------------------------------------'''.format(base64_image)
+# --------------------------------------------------------'''.format(base64_image=base64_image)
         self.ui.textEdit_3.append(code_python)
-        
-        
-        
+        self.view_flow.print()
     def add_mouse_move_random_in_boundary(self):
         x = self.ui.lineEdit_90.text()
         y = self.ui.lineEdit_91.text()
         width = self.ui.lineEdit_89.text()
         height = self.ui.lineEdit_88.text()
-        code_python = '''# --------------------- ADD MOUSE MOVE RANDOM IN BOUNDARY ---------------------
+        code_python = '''# --------------------- ADD MOUSE MOVE RANDOM IN BOUNDARY {x}, {y}, {width}, {height} ---------------------
 import pyautogui
 import random
 import time
@@ -308,9 +357,9 @@ x_end = random.randint({}, {})
 y_end = random.randint({}, {})
 move_like_human(x_start, y_start, x_end, y_end, duration=0.02)
 time.sleep(1)
-# --------------------------------------------------------'''.format(int(x), int(x) + int(width), int(y), int(y) + int(height))
+# --------------------------------------------------------'''.format(int(x), int(x) + int(width), int(y), int(y) + int(height),x=int(x), y=int(y), width=int(width), height=int(height))
         self.ui.textEdit_3.append(code_python)
-        
+        self.view_flow.print()
         
     def add_mouse_move(self):
         x = self.ui.lineEdit_85.text()

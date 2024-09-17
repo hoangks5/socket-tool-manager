@@ -403,16 +403,7 @@ class Ui_MainWindow(object):
         self.gridLayout_23.addItem(spacerItem4, 0, 3, 1, 1)
         self.widget_7 = QtWidgets.QWidget(parent=self.system)
         self.widget_7.setStyleSheet("QWidget {\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
-"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
-"    font-family: \"Courier New\", Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */\n"
-"    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */\n"
-"    color: rgb(0, 0, 0); /* Màu chữ */\n"
-"    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */\n"
-"    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */\n"
-"    border-image: none; /* Không sử dụng border image */\n"
+"    border:None\n"
 "}\n"
 "")
         self.widget_7.setObjectName("widget_7")
@@ -425,12 +416,38 @@ class Ui_MainWindow(object):
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout_8.addItem(spacerItem7, 0, 0, 1, 1)
         self.textEdit_3 = QtWidgets.QTextEdit(parent=self.widget_7)
+        self.textEdit_3.setStyleSheet("QWidget {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
+"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
+"    font-family: \"Courier New\", Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */\n"
+"    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */\n"
+"    color: rgb(0, 0, 0); /* Màu chữ */\n"
+"    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */\n"
+"    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */\n"
+"    border-image: none; /* Không sử dụng border image */\n"
+"}\n"
+"")
         self.textEdit_3.setObjectName("textEdit_3")
         self.gridLayout_8.addWidget(self.textEdit_3, 2, 1, 1, 3)
         self.widget_9 = QtWidgets.QWidget(parent=self.widget_7)
-        self.widget_9.setStyleSheet("QPushButton {\n"
+        self.widget_9.setStyleSheet("QWidget {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
+"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
+"    font-family: \"Courier New\", Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */\n"
+"    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */\n"
+"    color: rgb(0, 0, 0); /* Màu chữ */\n"
+"    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */\n"
+"    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */\n"
+"    border-image: none; /* Không sử dụng border image */\n"
+"}\n"
+"QPushButton {\n"
 "font: 7pt \"MS Shell Dlg 2\";\n"
-"}")
+"}\n"
+"")
         self.widget_9.setObjectName("widget_9")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.widget_9)
         self.gridLayout_7.setObjectName("gridLayout_7")
