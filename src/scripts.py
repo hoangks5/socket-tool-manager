@@ -65,6 +65,7 @@ class ViewFlow:
             match = matches[index]
             start, end = match.span()
             text = text[:start] + text[end:]
+            text = text.strip()
             self.ui.textEdit_3.setPlainText(text)
             # Xóa tất cả các widget sau khi xóa bước
             self.print()
@@ -104,13 +105,14 @@ time.sleep(1)
     def add_sleep(self):
         time = self.ui.lineEdit_20.text()
         time_random = self.ui.lineEdit_21.text()
-        code_python = '''# --------------------- ADD SLEEP ---------------------
+        code_python = '''# --------------------- ADD SLEEP {time_} ---------------------
 import time
 import random
 time.sleep({time} - random.randint(-{time_random}, {time_random}))
-# --------------------------------------------------------'''.format(time=time, time_random=time_random)
+# --------------------------------------------------------'''.format(time=time, time_random=time_random, time_=f'{time} + random.randint(-{time_random}, {time_random})')
         # ghi thêm textedit ở đây
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_chrome_new_undetected_chromedriver(self):
         code_python = '''# --------------------- ADD CHROME NEW UNDETECTED CHROMEDRIVER ---------------------
 from undetected_chromedriver import Chrome, ChromeOptions
