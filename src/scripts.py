@@ -15,52 +15,33 @@ class ViewFlow:
         self.ui = ui
 
     def print(self):
-        # Lấy layout gridLayout_7 từ widget_9
         layout = self.ui.gridLayout_7
-        # Clear tất cả các widget trước khi in
         for i in reversed(range(layout.count())):
             widget = layout.itemAt(i).widget()
             if widget is not None:
                 widget.deleteLater()
-
-        # Đếm xem có bao nhiêu bước
         text = self.ui.textEdit_3.toPlainText()
         pattern = r'# ---------------------.*?# --------------------------------------------------------'
         matches = list(re.finditer(pattern, text, re.DOTALL))
-
-        # Tạo button cho mỗi bước
         for index, match in enumerate(matches):
             start, end = match.span()
             code = text[start:end]
-            # Lấy tên bước từ code
             name = code.split("\n")[0].replace("# ---------------------", "").replace(" ---------------------", "")
-            
-            # Tạo một QWidget để chứa button
             step_widget = QWidget()
-            step_layout = QHBoxLayout()  # Đây là layout ngang, có thể thay đổi nếu cần
-
-            # Tạo một button với tên bước
+            step_layout = QHBoxLayout()
             button = QPushButton(parent=self.ui.widget_9, text=name)
             button.clicked.connect(lambda checked, i=index: self.highlight_code(i))
             step_layout.addWidget(button)
-
-            # Tạo một button xóa bước
             delete_button = QPushButton("X")
+            delete_button.setStyleSheet("background-color: red")
             delete_button.clicked.connect(lambda checked, i=index: self.delete_step(i))
             step_layout.addWidget(delete_button)
-            
-            # Cài đặt layout cho QWidget chứa button
             step_widget.setLayout(step_layout)
-            
-            # Đặt kích thước cố định cho QWidget chứa button
-            step_widget.setFixedSize(300, 60)  # Đặt kích thước cố định cho step_widget (rộng x cao)
+            step_widget.setFixedSize(300, 60)
             delete_button.setFixedSize(30, 30)
-            
-            # Thêm QWidget vào layout gridLayout_7 của widget_9
             layout.addWidget(step_widget)
 
     def delete_step(self, index):
-        # Xóa bước thứ index
         text = self.ui.textEdit_3.toPlainText()
         pattern = r'# ---------------------.*?# --------------------------------------------------------'
         matches = list(re.finditer(pattern, text, re.DOTALL))
@@ -70,11 +51,9 @@ class ViewFlow:
             text = text[:start] + text[end:]
             text = text.strip().strip("\n")
             self.ui.textEdit_3.setPlainText(text)
-            # Xóa tất cả các widget sau khi xóa bước
             self.print()
 
     def highlight_code(self, index):
-        # Xóa tất cả các highlight trước khi highlight bước mới
         text = self.ui.textEdit_3.toPlainText()
         pattern = r'# ---------------------.*?# --------------------------------------------------------'
         matches = list(re.finditer(pattern, text, re.DOTALL))
@@ -88,29 +67,18 @@ class ViewFlow:
                 char_format.setBackground(Qt.GlobalColor.white)
                 cursor.setCharFormat(char_format)
                 cursor.setPosition(end)
-        
-        # Làm nổi bật đoạn mã tương ứng
         text = self.ui.textEdit_3.toPlainText()
         pattern = r'# ---------------------.*?# --------------------------------------------------------'
         matches = list(re.finditer(pattern, text, re.DOTALL))
         if matches:
             match = matches[index]
             start, end = match.span()
-
-            print(start, end)
-            
-        # lấy text cursor
         cursor = self.ui.textEdit_3.textCursor()
-        # set vị trí con trỏ
         cursor.setPosition(start)
-        # set vị trí con trỏ cuối
         cursor.setPosition(end, QTextCursor.MoveMode.KeepAnchor)
-        # tạo 1 QTextCharFormat để set màu cho text
         char_format = QTextCharFormat()
         char_format.setBackground(Qt.GlobalColor.green)
-        # set màu cho text
         cursor.setCharFormat(char_format)
-        # set con trỏ về vị trí cuối cùng
         cursor.setPosition(end)
         
         
@@ -364,7 +332,7 @@ time.sleep(1)
     def add_mouse_move(self):
         x = self.ui.lineEdit_85.text()
         y = self.ui.lineEdit_84.text()
-        code_python = '''# --------------------- ADD MOUSE MOVE ---------------------
+        code_python = '''# --------------------- ADD MOUSE MOVE {x}, {y} ---------------------
 import pyautogui
 import random
 import time
@@ -382,12 +350,13 @@ def move_like_human(x_start, y_start, x_end, y_end, duration):
         time.sleep(sleep_time)  # Thời gian nghỉ giữa mỗi bước
     pyautogui.moveTo(x_end, y_end)
 x_start, y_start = pyautogui.position()
-x_end = {}
-y_end = {}
+x_end = {x}
+y_end = {y}
 move_like_human(x_start, y_start, x_end, y_end, duration=0.02)
 time.sleep(1)
-# --------------------------------------------------------'''.format(x, y)
+# --------------------------------------------------------'''.format(x=x, y=y)
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_mouse_right_click(self):
         code_python = '''# --------------------- ADD MOUSE RIGHT CLICK ---------------------
 import pyautogui
@@ -396,6 +365,7 @@ import time
 time.sleep(1)
 # --------------------------------------------------------'''
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_mouse_left_click(self):
         code_python = '''# --------------------- ADD MOUSE LEFT CLICK ---------------------
 import pyautogui
@@ -404,17 +374,18 @@ import time
 time.sleep(1)
 # --------------------------------------------------------'''
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_mouse_scroll(self):
         wheel = self.ui.lineEdit_86.text()
         # whell sẽ là số âm nếu muốn cuộn lên, dương nếu muốn cuộn xuống
-        code_python = '''# --------------------- ADD MOUSE SCROLL ---------------------
+        code_python = '''# --------------------- ADD MOUSE SCROLL {wheel} ---------------------
 import pyautogui
 pyautogui.scroll({wheel})
 import time
 time.sleep(1)
 # --------------------------------------------------------'''.format(wheel=wheel)
         self.ui.textEdit_3.append(code_python)
-        
+        self.view_flow.print()
     
     def install(self):
         # update pip trước

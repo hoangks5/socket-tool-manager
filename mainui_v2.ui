@@ -759,19 +759,6 @@ p, li { white-space: pre-wrap; }
 </string>
              </property>
              <layout class="QGridLayout" name="gridLayout_8">
-              <item row="0" column="1">
-               <spacer name="horizontalSpacer_14">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
               <item row="0" column="3">
                <spacer name="horizontalSpacer_7">
                 <property name="orientation">
@@ -856,6 +843,19 @@ font: 7pt &quot;MS Shell Dlg 2&quot;;
                  </item>
                 </layout>
                </widget>
+              </item>
+              <item row="0" column="1">
+               <spacer name="horizontalSpacer_14">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
