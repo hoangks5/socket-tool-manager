@@ -4,6 +4,76 @@ from PyQt6.QtWidgets import QMessageBox, QLineEdit, QApplication
 import subprocess
 import os
 import time
+from PyQt6.QtWidgets import QLabel, QPushButton, QWidget, QHBoxLayout, QVBoxLayout
+from functools import partial
+import re
+
+class ViewFlow:
+    def __init__(self, ui):
+        self.ui = ui
+
+    def print(self):
+        # Lấy layout gridLayout_7 từ widget_9
+        layout = self.ui.gridLayout_7
+        # clear tất cả các widget trước khi in
+        for i in reversed(range(layout.count())):
+            widget = layout.itemAt(i).widget()
+            if widget is not None:
+                widget.deleteLater()
+
+        # Đếm xem có bao nhiêu bước
+        text = self.ui.textEdit_3.toPlainText()
+        pattern = r'# ---------------------.*?# --------------------------------------------------------'
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+
+        # Tạo label và button cho mỗi bước
+        for index, match in enumerate(matches):
+            start, end = match.span()
+            code = text[start:end]
+            # Lấy tên bước từ code
+            name = code.split("\n")[0].replace("# ---------------------", "").replace(" ---------------------", "")
+            
+            # Tạo một QWidget để chứa label và button
+            step_widget = QWidget()
+            step_layout = QHBoxLayout()  # Đây là layout ngang, có thể thay đổi nếu cần
+
+            # Tạo một label
+            label = QLabel(name)
+            step_layout.addWidget(label)
+
+            # Tạo một button xóa bước
+            button = QPushButton("X")
+            button.clicked.connect(partial(self.delete_step, index))
+            step_layout.addWidget(button)
+            
+            # Cài đặt layout cho QWidget chứa label và button
+            step_widget.setLayout(step_layout)
+            
+            # Đặt kích thước cố định cho QWidget chứa label và button
+            step_widget.setFixedSize(300, 60)  # Đặt kích thước cố định cho step_widget (rộng x cao)
+            button.setFixedSize(30, 30)
+            
+            # Thêm QWidget vào layout gridLayout_7 của widget_9
+            layout.addWidget(step_widget)
+
+    def delete_step(self, index):
+        # Xóa bước thứ index
+        text = self.ui.textEdit_3.toPlainText()
+        pattern = r'# ---------------------.*?# --------------------------------------------------------'
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+        if matches:
+            match = matches[index]
+            start, end = match.span()
+            text = text[:start] + text[end:]
+            self.ui.textEdit_3.setPlainText(text)
+            # Xóa tất cả các widget sau khi xóa bước
+            self.print()
+            
+        
+            
+        
+        
+
 # tạo 1 hàm lắng nghe phím bấm sau đó trả về ký tự tương ứng
 def listen_key():
     key = keyboard.read_event()
@@ -16,20 +86,21 @@ class Scripts:
         self.ui = ui
         self.dashboard = dashboard
         self.connect_button()
-    
+        self.view_flow = ViewFlow(ui)
     
         
     # Tab Chrome
     def add_chrome(self):
         link = self.ui.lineEdit_19.text()
-        code_python = '''# --------------------- ADD CHROME ---------------------
+        code_python = '''# --------------------- ADD CHROME {} ---------------------
 import webbrowser
 webbrowser.open_new_tab('{}')
 import time
 time.sleep(1)
-# --------------------------------------------------------'''.format(link)
+# --------------------------------------------------------'''.format(link, link)
         # ghi thêm textedit ở đây
         self.ui.textEdit_3.append(code_python)
+        self.view_flow.print()
     def add_sleep(self):
         time = self.ui.lineEdit_20.text()
         time_random = self.ui.lineEdit_21.text()
