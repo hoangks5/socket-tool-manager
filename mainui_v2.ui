@@ -760,6 +760,219 @@ p, li { white-space: pre-wrap; }
              </property>
              <layout class="QGridLayout" name="gridLayout_8">
               <item row="0" column="3">
+               <spacer name="horizontalSpacer_14">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="2" column="2" colspan="4">
+               <widget class="QTextEdit" name="textEdit_3">
+                <property name="styleSheet">
+                 <string notr="true">QTextEdit {
+	
+	font: 57 8pt &quot;Dubai Medium&quot;;
+    background-color: rgb(255, 255, 255); /* Màu nền của QTextEdit */
+    border-radius: 7px;
+    border: 2px solid rgb(0, 80, 118); /* Đường viền */
+    color: rgb(0, 0, 0); /* Màu chữ */
+    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
+    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
+}
+
+/* Tùy chỉnh thanh cuộn khi QTextEdit hiển thị thanh cuộn */
+QTextEdit QScrollBar:vertical {
+    background-color: rgb(240, 240, 240); /* Màu nền thanh cuộn */
+    width: 12px; /* Độ rộng của thanh cuộn */
+    margin: 15px 0 15px 0;
+    border-radius: 6px; /* Bo góc cho thanh cuộn */
+}
+
+QTextEdit QScrollBar::handle:vertical {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn */
+    min-height: 20px;
+    border-radius: 6px; /* Bo góc cho thanh cuộn */
+}
+
+QTextEdit QScrollBar::handle:vertical:hover {
+    background-color: rgb(0, 128, 255); /* Màu thanh cuộn khi hover */
+}
+
+QTextEdit QScrollBar::add-line:vertical, QTextEdit QScrollBar::sub-line:vertical {
+    border: none;
+    background-color: none;
+    height: 0px;
+}
+
+QTextEdit QScrollBar::add-page:vertical, QTextEdit QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Tương tự cho thanh cuộn ngang nếu cần */
+QTextEdit QScrollBar:horizontal {
+    background-color: rgb(240, 240, 240); /* Màu nền thanh cuộn */
+    height: 12px;
+    margin: 0 15px 0 15px;
+    border-radius: 6px;
+}
+
+QTextEdit QScrollBar::handle:horizontal {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn ngang */
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QTextEdit QScrollBar::handle:horizontal:hover {
+    background-color: rgb(0, 128, 255); /* Màu thanh cuộn khi hover */
+}
+
+QTextEdit QScrollBar::add-line:horizontal, QTextEdit QScrollBar::sub-line:horizontal {
+    border: none;
+    background-color: none;
+    width: 0px;
+}
+
+QTextEdit QScrollBar::add-page:horizontal, QTextEdit QScrollBar::sub-page:horizontal {
+    background: none;
+}
+</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QScrollArea" name="scrollArea">
+                <property name="styleSheet">
+                 <string notr="true">QScrollArea {
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    border: 2px solid rgb(0, 80, 118);
+    color: rgb(0, 0, 0);
+    selection-background-color: rgb(0, 128, 255);
+    selection-color: rgb(255, 255, 255);
+}
+
+QScrollBar:vertical {
+    border: none;
+    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn */
+    width: 12px;
+    margin: 15px 0 15px 0; /* Khoảng cách giữa đầu và cuối thanh cuộn */
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn */
+    min-height: 20px; /* Chiều cao tối thiểu của thanh cuộn */
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background-color: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn ngang */
+    height: 12px;
+    margin: 0 15px 0 15px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn ngang */
+    min-width: 20px; /* Chiều rộng tối thiểu của thanh cuộn ngang */
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background-color: none;
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+QPushButton {
+    border-radius: 10px;
+    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
+    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+	
+	
+	
+	font: 57 9pt &quot;Dubai Medium&quot;;
+}
+</string>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>299</width>
+                   <height>675</height>
+                  </rect>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_7">
+                  <item row="0" column="0">
+                   <widget class="QWidget" name="widget_9" native="true"/>
+                  </item>
+                  <item row="1" column="0">
+                   <spacer name="verticalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>638</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_15">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1">
+               <spacer name="horizontalSpacer_17">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="5">
                <spacer name="horizontalSpacer_7">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -774,75 +987,6 @@ p, li { white-space: pre-wrap; }
               </item>
               <item row="0" column="0">
                <spacer name="horizontalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="2" column="1" colspan="3">
-               <widget class="QTextEdit" name="textEdit_3">
-                <property name="styleSheet">
-                 <string notr="true">QWidget {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
-    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
-    font-family: &quot;Courier New&quot;, Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */
-    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */
-    color: rgb(0, 0, 0); /* Màu chữ */
-    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
-    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
-    border-image: none; /* Không sử dụng border image */
-}
-</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QWidget" name="widget_9" native="true">
-                <property name="styleSheet">
-                 <string notr="true">QWidget {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
-    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
-    font-family: &quot;Courier New&quot;, Courier, monospace; /* Sử dụng phông chữ monospace cho mã nguồn */
-    font-size: 12px; /* Cỡ chữ phù hợp với việc hiển thị mã nguồn */
-    color: rgb(0, 0, 0); /* Màu chữ */
-    selection-background-color: rgb(0, 128, 255); /* Màu nền khi chọn văn bản */
-    selection-color: rgb(255, 255, 255); /* Màu chữ khi chọn văn bản */
-    border-image: none; /* Không sử dụng border image */
-}
-QPushButton {
-font: 7pt &quot;MS Shell Dlg 2&quot;;
-}
-</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_7">
-                 <item row="0" column="0">
-                  <spacer name="verticalSpacer_3">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>658</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <spacer name="horizontalSpacer_14">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
