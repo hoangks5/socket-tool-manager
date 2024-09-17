@@ -42,6 +42,8 @@ class ViewFlow:
             step_widget.setFixedSize(300, 60)
             delete_button.setFixedSize(30, 30)
             layout.addWidget(step_widget)
+            
+            
 
     def delete_step(self, index):
         text = self.ui.textEdit_3.toPlainText()
