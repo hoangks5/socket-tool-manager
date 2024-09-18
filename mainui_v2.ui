@@ -2538,7 +2538,72 @@ QLineEdit {
            <item row="0" column="0">
             <widget class="QWidget" name="widget_8" native="true">
              <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="5">
+               <spacer name="horizontalSpacer_30">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
               <item row="0" column="1">
+               <spacer name="horizontalSpacer_19">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="7">
+               <spacer name="horizontalSpacer_18">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_23">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="6">
+               <spacer name="horizontalSpacer_28">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="1" colspan="2">
                <widget class="QCalendarWidget" name="calendarWidget">
                 <property name="styleSheet">
                  <string notr="true">QCalendarWidget {
@@ -2582,7 +2647,7 @@ QCalendarWidget QToolButton:pressed {
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
+              <item row="5" column="0">
                <spacer name="verticalSpacer_5">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -2595,7 +2660,7 @@ QCalendarWidget QToolButton:pressed {
                 </property>
                </spacer>
               </item>
-              <item row="0" column="0">
+              <item row="1" column="0">
                <spacer name="verticalSpacer_4">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -2608,7 +2673,7 @@ QCalendarWidget QToolButton:pressed {
                 </property>
                </spacer>
               </item>
-              <item row="2" column="0">
+              <item row="4" column="0">
                <spacer name="verticalSpacer_13">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -2621,129 +2686,291 @@ QCalendarWidget QToolButton:pressed {
                 </property>
                </spacer>
               </item>
-              <item row="2" column="1">
-               <widget class="QTableWidget" name="tableWidget_2">
-                <column>
-                 <property name="text">
-                  <string>0h</string>
+              <item row="2" column="0">
+               <spacer name="verticalSpacer_14">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="2" column="1" rowspan="4" colspan="9">
+               <widget class="QScrollArea" name="scrollArea_2">
+                <property name="styleSheet">
+                 <string notr="true">QScrollArea {
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    border: 2px solid rgb(0, 80, 118);
+    color: rgb(0, 0, 0);
+    selection-background-color: rgb(0, 128, 255);
+    selection-color: rgb(255, 255, 255);
+}
+
+QScrollBar:vertical {
+    border: none;
+    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn */
+    width: 12px;
+    margin: 15px 0 15px 0; /* Khoảng cách giữa đầu và cuối thanh cuộn */
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn */
+    min-height: 20px; /* Chiều cao tối thiểu của thanh cuộn */
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background-color: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn ngang */
+    height: 12px;
+    margin: 0 15px 0 15px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgb(0, 80, 118); /* Màu thanh cuộn ngang */
+    min-width: 20px; /* Chiều rộng tối thiểu của thanh cuộn ngang */
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background-color: none;
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+QPushButton {
+    border-radius: 10px;
+    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */
+    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+	
+	
+	
+	font: 57 9pt &quot;Dubai Medium&quot;;
+}
+</string>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>1239</width>
+                   <height>574</height>
+                  </rect>
                  </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>1h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>2h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>3h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>4h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>5h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>6h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>7h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>8h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>9h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>10h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>11h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>12h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>13h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>14h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>15h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>16h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>17h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>18h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>19h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>20h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>21h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>22h</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>23h</string>
-                 </property>
-                </column>
+                 <layout class="QGridLayout" name="gridLayout_10">
+                  <item row="0" column="0">
+                   <widget class="QTableWidget" name="tableWidget_2">
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget {
+    background-color: #2e2e2e; /* Màu nền của table */
+    border: none;
+    color: #e0e0e0; /* Màu chữ */
+    gridline-color: #555555; /* Màu của các đường lưới */
+}
+
+QTableWidget::item:selected {
+    background-color: #5a5a5a; /* Màu nền khi chọn một ô */
+    color: #ffffff; /* Màu chữ khi chọn một ô */
+}
+
+QHeaderView::section {
+    background-color: #333333; /* Màu nền của tiêu đề cột */
+    color: #ffffff; /* Màu chữ của tiêu đề cột */
+    padding: 5px; /* Khoảng cách padding */
+    border: 1px solid #444444; /* Đường viền của tiêu đề cột */
+}
+
+QTableCornerButton::section {
+    background-color: #333333; /* Màu nền của góc table */
+    border: 1px solid #444444; /* Đường viền của góc table */
+}
+QHeaderView::section {
+        border: none;  /* Loại bỏ viền cho các tiêu đề cột */
+    }
+QTableWidget::item:selected {
+        background-color: transparent;  /* Loại bỏ màu nền khi mục được chọn */
+    }
+</string>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="gridStyle">
+                     <enum>Qt::NoPen</enum>
+                    </property>
+                    <row>
+                     <property name="text">
+                      <string>0h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>1h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>2h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>3h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>4h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>5h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>6h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>7h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>8h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>9h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>10h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>11h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>12h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>13h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>14h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>15h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>16h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>17h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>18h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>19h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>20h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>21h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>22h</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>23h</string>
+                     </property>
+                    </row>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
+              </item>
+              <item row="0" column="3">
+               <spacer name="horizontalSpacer_31">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="4">
+               <spacer name="horizontalSpacer_32">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
@@ -2801,7 +3028,7 @@ QCalendarWidget QToolButton:pressed {
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>218</x>
+     <x>266</x>
      <y>39</y>
     </hint>
     <hint type="destinationlabel">
@@ -2817,7 +3044,7 @@ QCalendarWidget QToolButton:pressed {
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>208</x>
+     <x>266</x>
      <y>39</y>
     </hint>
     <hint type="destinationlabel">
@@ -2833,12 +3060,12 @@ QCalendarWidget QToolButton:pressed {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>39</x>
-     <y>200</y>
+     <x>43</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>202</y>
+     <x>180</x>
+     <y>243</y>
     </hint>
    </hints>
   </connection>
@@ -2849,8 +3076,8 @@ QCalendarWidget QToolButton:pressed {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>46</x>
-     <y>142</y>
+     <x>43</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>111</x>
@@ -2945,12 +3172,12 @@ QCalendarWidget QToolButton:pressed {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>201</y>
+     <x>173</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>30</x>
-     <y>206</y>
+     <x>40</x>
+     <y>243</y>
     </hint>
    </hints>
   </connection>

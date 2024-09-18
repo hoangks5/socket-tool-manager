@@ -16,6 +16,7 @@ from src.taskbar import TaskBar
 import redis
 from pynput import mouse
 from src.tool_tip_groupbox import DescriptionGroupBox
+from src.schedule import Schedule
 
 
         
@@ -119,6 +120,7 @@ class MainWindow(QMainWindow):
         self.taskbar = TaskBar(self.ui)
         self.dashboard = Dashboard(self.ui)
         self.scipts = Scripts(self.ui, self.dashboard)
+        self.schedule = Schedule(self.ui)
         self.description_groupbox = DescriptionGroupBox(self.ui)
         
         self.load_clients_thread = LoadClientsThread(self.ip_socket, self.port_socket)

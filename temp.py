@@ -1,80 +1,102 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QPushButton, QCalendarWidget, QHBoxLayout, QFormLayout, QLineEdit
-from PyQt6.QtCore import Qt, QDate
+import sys
+from PyQt6.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QHBoxLayout, 
+    QCalendarWidget, QPushButton, QTableWidget, QTableWidgetItem, 
+    QInputDialog, QMessageBox
+)
+from PyQt6.QtCore import QDate
 
-class SchedulerApp(QMainWindow):
+class CalendarApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('VPS Scheduler')
+        self.setWindowTitle("Calendar Task App")
+        self.setGeometry(100, 100, 600, 400)
 
-        # Create main widget and layout
-        self.main_widget = QWidget()
-        self.setCentralWidget(self.main_widget)
-        self.layout = QVBoxLayout(self.main_widget)
+        # Dictionary to store tasks for each day
+        self.tasks = {}
 
-        # Calendar
+        # Create layout
+        main_layout = QVBoxLayout()
+
+        # Create calendar widget
         self.calendar = QCalendarWidget()
-        self.calendar.setGridVisible(True)
-        self.calendar.clicked.connect(self.show_hourly_schedule)
-        self.layout.addWidget(self.calendar)
+        self.calendar.selectionChanged.connect(self.show_tasks)
+        main_layout.addWidget(self.calendar)
 
-        # Table for scheduling
-        self.table = QTableWidget(0, 2)  # 0 rows, 2 columns
-        self.table.setHorizontalHeaderLabels(['VPS', 'Schedule'])
-        self.layout.addWidget(self.table)
+        # Create table for showing tasks
+        self.task_table = QTableWidget()
+        self.task_table.setColumnCount(2)
+        self.task_table.setHorizontalHeaderLabels(["Time", "Task"])
+        main_layout.addWidget(self.task_table)
 
-        # Add schedule button
-        self.add_schedule_button = QPushButton('Add Schedule')
-        self.add_schedule_button.clicked.connect(self.add_schedule)
-        self.layout.addWidget(self.add_schedule_button)
+        # Create buttons for adding, editing, and removing tasks
+        button_layout = QHBoxLayout()
+        self.add_task_btn = QPushButton("Add Task")
+        self.add_task_btn.clicked.connect(self.add_task)
+        self.remove_task_btn = QPushButton("Remove Task")
+        self.remove_task_btn.clicked.connect(self.remove_task)
+        button_layout.addWidget(self.add_task_btn)
+        button_layout.addWidget(self.remove_task_btn)
+        
+        main_layout.addLayout(button_layout)
 
-        # Input form for new schedule
-        self.form_layout = QFormLayout()
-        self.vps_input = QLineEdit()
-        self.script_input = QLineEdit()
-        self.form_layout.addRow('VPS:', self.vps_input)
-        self.form_layout.addRow('Script:', self.script_input)
-        self.layout.addLayout(self.form_layout)
+        # Set main layout
+        self.setLayout(main_layout)
 
-        # Hourly schedule table
-        self.hourly_table = QTableWidget(24, 2)  # 24 rows, 2 columns
-        self.hourly_table.setHorizontalHeaderLabels(['Hour', 'Scheduled Script'])
-        self.hourly_table.setVerticalHeaderLabels([f'{i:02d}:00' for i in range(24)])
-        self.layout.addWidget(self.hourly_table)
-
-        # Populate table with VPS
-        self.populate_table()
-
-    def populate_table(self):
-        # Example data - you can replace this with your own logic
-        vps_list = ['VPS1', 'VPS2', 'VPS3']
-        for vps in vps_list:
-            row_position = self.table.rowCount()
-            self.table.insertRow(row_position)
-            self.table.setItem(row_position, 0, QTableWidgetItem(vps))
-            self.table.setItem(row_position, 1, QTableWidgetItem(''))
-
-    def add_schedule(self):
-        vps = self.vps_input.text()
-        script = self.script_input.text()
-        if vps and script:
-            row_position = self.table.rowCount()
-            self.table.insertRow(row_position)
-            self.table.setItem(row_position, 0, QTableWidgetItem(vps))
-            self.table.setItem(row_position, 1, QTableWidgetItem(script))
-
-    def show_hourly_schedule(self):
+    def show_tasks(self):
+        """Display tasks for the selected date."""
+        self.task_table.setRowCount(0)  # Clear the table
         selected_date = self.calendar.selectedDate()
-        # Clear the hourly table
-        self.hourly_table.clearContents()
+        date_str = selected_date.toString("yyyy-MM-dd")
+        
+        if date_str in self.tasks:
+            tasks_for_day = self.tasks[date_str]
+            for time, task in tasks_for_day:
+                row_position = self.task_table.rowCount()
+                self.task_table.insertRow(row_position)
+                self.task_table.setItem(row_position, 0, QTableWidgetItem(time))
+                self.task_table.setItem(row_position, 1, QTableWidgetItem(task))
 
-        # For demonstration, this just shows empty data
-        # Replace with your logic to show scheduled scripts for the selected date
-        for hour in range(24):
-            self.hourly_table.setItem(hour, 1, QTableWidgetItem('No script scheduled'))
+    def add_task(self):
+        """Add a new task for the selected date."""
+        selected_date = self.calendar.selectedDate()
+        date_str = selected_date.toString("yyyy-MM-dd")
 
-if __name__ == '__main__':
-    app = QApplication([])
-    window = SchedulerApp()
-    window.resize(800, 600)
+        # Get task details from the user
+        time, ok = QInputDialog.getText(self, "Task Time", "Enter task time (e.g. 14:00):")
+        if not ok or not time:
+            return
+        task, ok = QInputDialog.getText(self, "Task Description", "Enter task description:")
+        if not ok or not task:
+            return
+
+        # Store task
+        if date_str not in self.tasks:
+            self.tasks[date_str] = []
+        self.tasks[date_str].append((time, task))
+
+        # Update the table
+        self.show_tasks()
+
+    def remove_task(self):
+        """Remove the selected task from the table."""
+        selected_row = self.task_table.currentRow()
+        if selected_row < 0:
+            QMessageBox.warning(self, "No Selection", "Please select a task to remove.")
+            return
+
+        selected_date = self.calendar.selectedDate()
+        date_str = selected_date.toString("yyyy-MM-dd")
+        
+        if date_str in self.tasks:
+            del self.tasks[date_str][selected_row]
+            if not self.tasks[date_str]:  # Remove date if no tasks left
+                del self.tasks[date_str]
+        
+        self.show_tasks()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = CalendarApp()
     window.show()
-    app.exec()
+    sys.exit(app.exec())

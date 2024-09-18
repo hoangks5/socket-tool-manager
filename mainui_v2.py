@@ -1345,6 +1345,16 @@ class Ui_MainWindow(object):
         self.widget_8.setObjectName("widget_8")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_8)
         self.gridLayout_6.setObjectName("gridLayout_6")
+        spacerItem37 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem37, 0, 5, 1, 1)
+        spacerItem38 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem38, 0, 1, 1, 1)
+        spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem39, 0, 7, 1, 1)
+        spacerItem40 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem40, 0, 2, 1, 1)
+        spacerItem41 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem41, 0, 6, 1, 1)
         self.calendarWidget = QtWidgets.QCalendarWidget(parent=self.widget_8)
         self.calendarWidget.setStyleSheet("QCalendarWidget {\n"
 "    background-color: #2c3e50; /* Màu nền */\n"
@@ -1385,17 +1395,178 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.calendarWidget.setObjectName("calendarWidget")
-        self.gridLayout_6.addWidget(self.calendarWidget, 0, 0, 1, 1)
-        spacerItem37 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_6.addItem(spacerItem37, 4, 0, 1, 1)
-        spacerItem38 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_6.addItem(spacerItem38, 5, 0, 1, 1)
-        spacerItem39 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_6.addItem(spacerItem39, 3, 0, 1, 1)
-        spacerItem40 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_6.addItem(spacerItem40, 2, 0, 1, 1)
-        spacerItem41 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_6.addItem(spacerItem41, 1, 0, 1, 1)
+        self.gridLayout_6.addWidget(self.calendarWidget, 1, 1, 1, 2)
+        spacerItem42 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem42, 5, 0, 1, 1)
+        spacerItem43 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem43, 1, 0, 1, 1)
+        spacerItem44 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem44, 4, 0, 1, 1)
+        spacerItem45 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.gridLayout_6.addItem(spacerItem45, 2, 0, 1, 1)
+        self.scrollArea_2 = QtWidgets.QScrollArea(parent=self.widget_8)
+        self.scrollArea_2.setStyleSheet("QScrollArea {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 7px;\n"
+"    border: 2px solid rgb(0, 80, 118);\n"
+"    color: rgb(0, 0, 0);\n"
+"    selection-background-color: rgb(0, 128, 255);\n"
+"    selection-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn */\n"
+"    width: 12px;\n"
+"    margin: 15px 0 15px 0; /* Khoảng cách giữa đầu và cuối thanh cuộn */\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: rgb(0, 80, 118); /* Màu thanh cuộn */\n"
+"    min-height: 20px; /* Chiều cao tối thiểu của thanh cuộn */\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+"    border: none;\n"
+"    background-color: none;\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background-color: rgb(230, 230, 230); /* Màu nền thanh cuộn ngang */\n"
+"    height: 12px;\n"
+"    margin: 0 15px 0 15px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background-color: rgb(0, 80, 118); /* Màu thanh cuộn ngang */\n"
+"    min-width: 20px; /* Chiều rộng tối thiểu của thanh cuộn ngang */\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {\n"
+"    border: none;\n"
+"    background-color: none;\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"QPushButton {\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid rgb(0, 128, 255); /* Thay đổi màu sắc và độ dày của border */\n"
+"    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */\n"
+"    \n"
+"    \n"
+"    \n"
+"    font: 57 9pt \"Dubai Medium\";\n"
+"}\n"
+"")
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1239, 574))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_10.setObjectName("gridLayout_10")
+        self.tableWidget_2 = QtWidgets.QTableWidget(parent=self.scrollAreaWidgetContents)
+        self.tableWidget_2.setStyleSheet("QTableWidget {\n"
+"    background-color: #2e2e2e; /* Màu nền của table */\n"
+"    border: none;\n"
+"    color: #e0e0e0; /* Màu chữ */\n"
+"    gridline-color: #555555; /* Màu của các đường lưới */\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #5a5a5a; /* Màu nền khi chọn một ô */\n"
+"    color: #ffffff; /* Màu chữ khi chọn một ô */\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #333333; /* Màu nền của tiêu đề cột */\n"
+"    color: #ffffff; /* Màu chữ của tiêu đề cột */\n"
+"    padding: 5px; /* Khoảng cách padding */\n"
+"    border: 1px solid #444444; /* Đường viền của tiêu đề cột */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #333333; /* Màu nền của góc table */\n"
+"    border: 1px solid #444444; /* Đường viền của góc table */\n"
+"}\n"
+"QHeaderView::section {\n"
+"        border: none;  /* Loại bỏ viền cho các tiêu đề cột */\n"
+"    }\n"
+"QTableWidget::item:selected {\n"
+"        background-color: transparent;  /* Loại bỏ màu nền khi mục được chọn */\n"
+"    }\n"
+"")
+        self.tableWidget_2.setShowGrid(False)
+        self.tableWidget_2.setGridStyle(QtCore.Qt.PenStyle.NoPen)
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        self.tableWidget_2.setColumnCount(0)
+        self.tableWidget_2.setRowCount(24)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(15, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(16, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(17, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(18, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(19, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(20, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(21, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(22, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setVerticalHeaderItem(23, item)
+        self.gridLayout_10.addWidget(self.tableWidget_2, 0, 0, 1, 1)
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout_6.addWidget(self.scrollArea_2, 2, 1, 4, 9)
+        spacerItem46 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem46, 0, 3, 1, 1)
+        spacerItem47 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_6.addItem(spacerItem47, 0, 4, 1, 1)
         self.gridLayout_4.addWidget(self.widget_8, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
         self.page = QtWidgets.QWidget()
@@ -1545,6 +1716,54 @@ class Ui_MainWindow(object):
         self.pushButton_99.setText(_translate("MainWindow", "Crop"))
         self.pushButton_101.setText(_translate("MainWindow", "Paste"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), _translate("MainWindow", "AI"))
+        item = self.tableWidget_2.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0h"))
+        item = self.tableWidget_2.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1h"))
+        item = self.tableWidget_2.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2h"))
+        item = self.tableWidget_2.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3h"))
+        item = self.tableWidget_2.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4h"))
+        item = self.tableWidget_2.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5h"))
+        item = self.tableWidget_2.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6h"))
+        item = self.tableWidget_2.verticalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7h"))
+        item = self.tableWidget_2.verticalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8h"))
+        item = self.tableWidget_2.verticalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9h"))
+        item = self.tableWidget_2.verticalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10h"))
+        item = self.tableWidget_2.verticalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11h"))
+        item = self.tableWidget_2.verticalHeaderItem(12)
+        item.setText(_translate("MainWindow", "12h"))
+        item = self.tableWidget_2.verticalHeaderItem(13)
+        item.setText(_translate("MainWindow", "13h"))
+        item = self.tableWidget_2.verticalHeaderItem(14)
+        item.setText(_translate("MainWindow", "14h"))
+        item = self.tableWidget_2.verticalHeaderItem(15)
+        item.setText(_translate("MainWindow", "15h"))
+        item = self.tableWidget_2.verticalHeaderItem(16)
+        item.setText(_translate("MainWindow", "16h"))
+        item = self.tableWidget_2.verticalHeaderItem(17)
+        item.setText(_translate("MainWindow", "17h"))
+        item = self.tableWidget_2.verticalHeaderItem(18)
+        item.setText(_translate("MainWindow", "18h"))
+        item = self.tableWidget_2.verticalHeaderItem(19)
+        item.setText(_translate("MainWindow", "19h"))
+        item = self.tableWidget_2.verticalHeaderItem(20)
+        item.setText(_translate("MainWindow", "20h"))
+        item = self.tableWidget_2.verticalHeaderItem(21)
+        item.setText(_translate("MainWindow", "21h"))
+        item = self.tableWidget_2.verticalHeaderItem(22)
+        item.setText(_translate("MainWindow", "22h"))
+        item = self.tableWidget_2.verticalHeaderItem(23)
+        item.setText(_translate("MainWindow", "23h"))
 
 
 if __name__ == "__main__":
