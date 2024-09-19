@@ -7,10 +7,15 @@ class DescriptionGroupBox:
 
     def set_tooltips(self):
         """Set tooltips for various UI elements in the application with HTML formatting."""
-
+        # General Section
+        self.ui.chrome_8.setToolTip("Thêm thời gian chờ random , ví dụ <b>10 +- 2</b> khoảng thời gian chờ từ 8 đến 12 giây")
+        self.ui.chrome_7.setToolTip("Mở một <b>URL</b> trong trong trình duyệt mặc định")
         # Browser Section
-        self.ui.chrome_6.setToolTip("Tạo <b>chrome</b> mới để chạy")
-
+        self.ui.chrome_6.setToolTip("Khởi tạo <b>Chrome</b> mới")
+        self.ui.click_13.setToolTip("Khởi tạo <b>Chrome Profile</b> mới, nếu chưa có sẽ tạo mới với đường dẫn <i>Profile Xpath</i>")
+        self.ui.click_25.setToolTip("Resize <b>Chrome</b> với kích thước <b>width</b>, <b>height</b>, click <b>Full</b> để lấy kích thước toàn màn hình")
+        self.ui.click_27.setToolTip("Truy cập tới <b>URL</b>")
+        self.ui.click_26.setToolTip("Phóng to hoặc thu nhỏ Page , giá trị mặc định là <b>100</b> tương đương giá trị măc định của trình duyệt")
         # Keyboard Section
         self.ui.click_15.setToolTip("Gõ một đoạn văn bản như một <b>người dùng</b>")
         self.ui.click_16.setToolTip(

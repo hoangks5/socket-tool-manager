@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1546</width>
+    <width>1863</width>
     <height>891</height>
    </rect>
   </property>
@@ -328,7 +328,7 @@ QPushButton:hover {
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>Map View</string>
+            <string>Schedule</string>
            </property>
            <property name="icon">
             <iconset>
@@ -489,7 +489,7 @@ border:none;
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="dashboard">
           <layout class="QGridLayout" name="gridLayout">
@@ -1128,7 +1128,7 @@ QPushButton:pressed {
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="tab">
                 <attribute name="title">

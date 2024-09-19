@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1546, 891)
+        MainWindow.resize(1863, 891)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/logo-iart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
@@ -1592,8 +1592,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(0)
         self.pushButton_9.toggled['bool'].connect(self.widget.setHidden) # type: ignore
         self.pushButton_9.toggled['bool'].connect(self.widget_2.setVisible) # type: ignore
         self.pushButton_4.toggled['bool'].connect(self.pushButton_8.setChecked) # type: ignore
@@ -1611,7 +1611,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Iart VPSControl Pro "))
         self.pushButton_5.setText(_translate("MainWindow", "Dashboard     "))
         self.pushButton_6.setText(_translate("MainWindow", "Scripts"))
-        self.pushButton_7.setText(_translate("MainWindow", "Map View"))
+        self.pushButton_7.setText(_translate("MainWindow", "Schedule"))
         self.pushButton_8.setText(_translate("MainWindow", "Setting"))
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Hostname"))
