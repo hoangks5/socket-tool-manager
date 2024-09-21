@@ -104,6 +104,32 @@ QPushButton:hover {
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="pushButton_16">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>img/browser.svg</normaloff>img/browser.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="pushButton_2">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -276,11 +302,37 @@ QPushButton:hover {
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>Dashboard     </string>
+            <string>Computer</string>
            </property>
            <property name="icon">
             <iconset>
              <normaloff>img/dashboard.svg</normaloff>img/dashboard.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_15">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>GoLogin</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>img/browser.svg</normaloff>img/browser.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -921,8 +973,8 @@ QPushButton {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>100</width>
-                   <height>30</height>
+                   <width>38</width>
+                   <height>18</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_7">
@@ -2775,7 +2827,7 @@ QPushButton {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>98</width>
+                   <width>74</width>
                    <height>74</height>
                   </rect>
                  </property>
@@ -3061,11 +3113,11 @@ QTableWidget::item:selected {
    <hints>
     <hint type="sourcelabel">
      <x>43</x>
-     <y>243</y>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
-     <x>180</x>
-     <y>243</y>
+     <x>215</x>
+     <y>309</y>
     </hint>
    </hints>
   </connection>
@@ -3077,11 +3129,11 @@ QTableWidget::item:selected {
    <hints>
     <hint type="sourcelabel">
      <x>43</x>
-     <y>177</y>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>111</x>
-     <y>144</y>
+     <x>181</x>
+     <y>243</y>
     </hint>
    </hints>
   </connection>
@@ -3093,11 +3145,11 @@ QTableWidget::item:selected {
    <hints>
     <hint type="sourcelabel">
      <x>43</x>
-     <y>83</y>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
-     <x>94</x>
-     <y>83</y>
+     <x>164</x>
+     <y>177</y>
     </hint>
    </hints>
   </connection>
@@ -3140,12 +3192,12 @@ QTableWidget::item:selected {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>118</x>
-     <y>82</y>
+     <x>188</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
-     <x>42</x>
-     <y>84</y>
+     <x>43</x>
+     <y>177</y>
     </hint>
    </hints>
   </connection>
@@ -3156,12 +3208,12 @@ QTableWidget::item:selected {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>144</y>
+     <x>190</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>41</x>
-     <y>146</y>
+     <x>43</x>
+     <y>243</y>
     </hint>
    </hints>
   </connection>
@@ -3172,12 +3224,44 @@ QTableWidget::item:selected {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>243</y>
+     <x>215</x>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
-     <x>40</x>
-     <y>243</y>
+     <x>43</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_15</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_16</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_16</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_15</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>91</y>
     </hint>
    </hints>
   </connection>
