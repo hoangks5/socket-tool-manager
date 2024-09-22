@@ -15,6 +15,7 @@ class TaskBar(QObject):
         
 
     def get_title(self):
+        return "Tool Socket"
         github_raw = "https://raw.githubusercontent.com/hoangks5/version_tool_socket/main/title_run.txt"
         # Lấy title từ github
         rq = requests.get(github_raw)
