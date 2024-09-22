@@ -1598,7 +1598,7 @@ class Ui_MainWindow(object):
         self.pushButton_17.setGeometry(QtCore.QRect(1510, 20, 75, 23))
         self.pushButton_17.setObjectName("pushButton_17")
         self.tableWidget_3 = QtWidgets.QTableWidget(parent=self.page)
-        self.tableWidget_3.setGeometry(QtCore.QRect(0, 60, 1611, 761))
+        self.tableWidget_3.setGeometry(QtCore.QRect(0, 60, 1251, 761))
         self.tableWidget_3.setStyleSheet("QScrollArea {\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-radius: 7px;\n"

@@ -17,7 +17,7 @@ import redis
 from pynput import mouse
 from src.tool_tip_groupbox import DescriptionGroupBox
 from src.schedule import Schedule
-from src.gologin import GoLogin
+from src.gologin_src import GoLogin
 
 
         

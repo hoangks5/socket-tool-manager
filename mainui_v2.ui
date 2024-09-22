@@ -3062,7 +3062,7 @@ QTableWidget::item:selected {
             <rect>
              <x>0</x>
              <y>60</y>
-             <width>1611</width>
+             <width>1251</width>
              <height>761</height>
             </rect>
            </property>
